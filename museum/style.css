@@ -339,6 +339,51 @@ body {
 /* Visiting styles end */
 
 
+/*Explore styles start */
+
+.explore {
+    padding: 75px 0;
+}
+
+.explore__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    column-gap: 60px;
+}
+
+.explore__description {
+    max-width: 660px;
+}
+
+.explore__title {
+    padding-bottom: 25px;
+    border-bottom: 3px solid #710707;
+    margin: 0 0 75px 0;
+}
+
+.explore__text {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 39px;
+    margin: 0 0 25px 0;
+    padding-right: 5px;
+}
+
+.explore__text span {
+    color: #9d8665;
+}
+
+.explore__img {
+    max-width: 720px;
+    max-height: 700px;
+    margin-top: 15px;
+}
+
+
+/*Explore styles end */
+
+
 /* styles start */
 
 
