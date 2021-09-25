@@ -122,8 +122,6 @@ body {
     padding-top: 150px;
     max-width: 1440px;
     margin: 0 auto;
-    /* background-color: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%); */
-    /* background:  no-repeat  #030303; */
 }
 
 .title {
@@ -218,6 +216,7 @@ body {
 }
 
 .square {
+    cursor: pointer;
     align-self: center;
     width: 16px;
     height: 16px;
@@ -231,6 +230,7 @@ body {
 }
 
 .arrow {
+    cursor: pointer;
     align-self: center;
     padding: 0 10px;
     margin: 52px 0;
@@ -250,3 +250,96 @@ body {
 
 
 /* Welcome styles end */
+
+
+/* Visiting styles start */
+
+.visiting {
+    padding: 75px 0;
+}
+
+.visiting__container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.visiting__title {
+    color: #9D8665;
+    padding-bottom: 25px;
+    margin: 0 0 75px 0;
+    border-bottom: 3px solid #710707;
+}
+
+.visiting__cards {
+    display: flex;
+    flex-wrap: wrap;
+    color: #000000;
+    column-gap: 60px;
+    row-gap: 75px;
+}
+
+.visiting__card {
+    display: block;
+    text-decoration: none;
+    max-width: 440px;
+    color: #000000;
+}
+
+.visiting__card:hover {
+    color: #9D8665;
+}
+
+.visiting__card:active {
+    color: #7E6C51;
+}
+
+.visiting__card img {
+    max-width: 440px;
+    max-height: 285px;
+    margin-bottom: 25px;
+}
+
+.visiting__card__title {
+    font-family: 'Forum';
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    margin: 0 0 10px 0;
+    position: relative;
+}
+
+.visiting__card__title::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background-color: #710707;
+    width: 300px;
+    bottom: 0;
+    left: 0;
+}
+
+.visiting__card__subtitle1 {
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 26px;
+    margin: 0 0 10px 0;
+}
+
+.visiting__card__subtitle2 {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 21px;
+    margin: 0;
+}
+
+
+/* Visiting styles end */
+
+
+/* styles start */
+
+
+/* styles end */
