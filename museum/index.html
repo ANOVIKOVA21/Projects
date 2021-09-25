@@ -14,52 +14,77 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header dark">
         <div class="header__container">
             <div class="header__logo">
                 <div class="header__img"></div>
-                <p class="header__text">Louvre</p>
+                <h1 class="header__text">Louvre</h1>
             </div>
             <nav class="header__nav">
                 <ul class="header__menu">
-                    <li><a href="">Visiting</a></li>
-                    <li><a href="">Explore</a></li>
-                    <li><a href="">Video</a></li>
-                    <li><a href="">Gallery</a></li>
-                    <li><a href="">Tickets</a></li>
-                    <li><a href="">Contacts</a></li>
+                    <li><a href="#visiting">Visiting</a></li>
+                    <li><a href="#explore">Explore</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#tickets">Tickets</a></li>
+                    <li><a href="#contacts">Contacts</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
         <div class="container">
-            <section class="welcome">
+            <section class="welcome dark">
+                <div class="welcome__container">
+                    <div class="welcome__content">
+                        <h2 class="welcome__title title"><span class="welkome__block">Welcome</span>to the Louvre</h2>
+                        <p class="welcome__subtitle">From the castle to the museum</p>
+                        <button class="welcome__button"><a
+                                href="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736">Discover
+                                the Louvre</a></button>
+                    </div>
+
+                    <div class="welcome__img">
+
+                    </div>
+                    <div class="welcome__slider">
+                        <p class="num">01</p>
+                        <p class="num">|</p>
+                        <p class="num">05</p>
+                        <div class="square sq1"></div>
+                        <div class="square"></div>
+                        <div class="square"></div>
+                        <div class="square"></div>
+                        <div class="square"></div>
+                        <div class="arrow arw1"><img src="assets/svg/arrow1.svg" alt="arrow left"></div>
+                        <div class="arrow arw2"><img src="assets/svg/arrow2.svg" alt="arrow right"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="visiting" id="visiting">
                 <div class="container"></div>
             </section>
-            <section class="visiting">
+            <section class="explore dark" id="explore">
                 <div class="container"></div>
             </section>
-            <section class="explore">
+            <section class="video" id="video">
                 <div class="container"></div>
             </section>
-            <section class="video">
+            <section class="gallery dark" id="gallery">
                 <div class="container"></div>
             </section>
-            <section class="gallery">
+            <section class="tickets" id="tickets">
                 <div class="container"></div>
             </section>
-            <section class="tickets">
-                <div class="container"></div>
-            </section>
-            <section class="contacts">
+            <section class="contacts" id="contacts">
                 <div class="container"></div>
             </section>
         </div>
     </main>
-    <footer>
+    <footer class="footer dark">
         <div class="container"></div>
     </footer>
+    <script src="index.js"></script>
 </body>
 
 </html>

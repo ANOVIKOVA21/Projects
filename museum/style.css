@@ -12,7 +12,17 @@ html {
 body {
     max-width: 1920px;
     margin: 0;
+    font-family: 'Roboto';
+    font-weight: 300;
 }
+
+.dark {
+    background-color: #030303;
+    color: #FFFFFF;
+}
+
+
+/* Header styles start */
 
 .header__container {
     display: flex;
@@ -20,10 +30,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    background-color: black;
     max-width: 1440px;
     max-height: 150px;
-    color: #FFFFFF;
     font-family: 'Roboto';
 }
 
@@ -31,9 +39,6 @@ body {
     margin-right: 10px;
     display: flex;
     align-items: baseline;
-    /* 
-    background-repeat: no-repeat;
-     */
     transition: 1s;
     max-width: 199px;
 }
@@ -97,3 +102,151 @@ body {
     text-decoration: none;
     color: inherit;
 }
+
+.header__menu li a:hover {
+    color: #9D8665;
+}
+
+.header__menu li a:active {
+    color: #7E6C51;
+}
+
+
+/* Header styles end */
+
+
+/* Welcome styles start */
+
+.welcome__container {
+    position: relative;
+    padding-top: 150px;
+    max-width: 1440px;
+    margin: 0 auto;
+    /* background-color: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%); */
+    /* background:  no-repeat  #030303; */
+}
+
+.title {
+    font-family: 'Forum';
+    font-weight: normal;
+    font-size: 80px;
+    line-height: 90px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.welcome__content {
+    position: relative;
+    z-index: 1;
+}
+
+.welcome__title {
+    /* max-width: 593px; */
+    padding-right: 5px;
+    margin: 0 0 25px 0;
+}
+
+.welkome__block {
+    display: block;
+}
+
+.welcome__subtitle {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 2px;
+    margin-bottom: 75px;
+}
+
+.welcome__button {
+    font-family: inherit;
+    font-size: 22px;
+    line-height: 26px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 2px;
+    background: #710707;
+    border-radius: 10px;
+    padding: 23px 64px;
+    border: 0;
+    margin-bottom: 272px;
+}
+
+.welcome__button a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.welcome__button:hover {
+    background: #9D8665;
+}
+
+.welcome__img {
+    width: 1000px;
+    height: 750px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url("assets/img/1.jpg");
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+.welcome__slider {
+    max-width: 600px;
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    background-color: #030303;
+}
+
+.num {
+    padding: 5px;
+    margin: 35px 0;
+    font-family: 'Roboto';
+    font-size: 22px;
+    line-height: 40px;
+    align-self: center;
+}
+
+.num:first-child {
+    margin-left: 69px;
+}
+
+.square {
+    align-self: center;
+    width: 16px;
+    height: 16px;
+    background-color: #FFFFFF;
+    margin: 52px 25px 52px 0;
+}
+
+.sq1 {
+    margin-left: 50px;
+    background: #D2B183;
+}
+
+.arrow {
+    align-self: center;
+    padding: 0 10px;
+    margin: 52px 0;
+}
+
+.arw1 {
+    margin-left: 30px;
+}
+
+.arw2 {
+    margin-right: 65px;
+}
+
+.arrow:first-child {
+    padding: 30px;
+}
+
+
+/* Welcome styles end */
