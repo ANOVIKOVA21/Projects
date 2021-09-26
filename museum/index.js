@@ -25,3 +25,12 @@ slider.addEventListener('click', (event) => {
         return container.style.backgroundImage = `linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%),url(${currentImg})`;
     }
 })
+
+// для input
+
+const controls = document.querySelector('.video__controls')
+controls.addEventListener('input', function(event) {
+    if (event.target.tagName != 'INPUT') return
+    const value = event.target.value;
+    event.target.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
+})
