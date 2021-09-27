@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>museum</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -39,9 +38,8 @@
                     <div class="welcome__content">
                         <h2 class="welcome__title title"><span class="welkome__block">Welcome</span>to the Louvre</h2>
                         <p class="welcome__subtitle">From the castle to the museum</p>
-                        <button class="welcome__button"><a
-                                href="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736">Discover
-                                the Louvre</a></button>
+                        <button class="welcome__button"><a href="/museum/tours/tour7.html" target="_blank">Discover the
+                                Louvre</a></button>
                     </div>
 
                     <div class="welcome__img">
@@ -65,37 +63,37 @@
                 <div class="visiting__container">
                     <h2 class="visiting__title title">Virtual tour</h2>
                     <div class="visiting__cards">
-                        <a href="" class="visiting__card">
+                        <a href="/museum/tours/tour1.html" target="_blank" class="visiting__card">
                             <img src="assets/img/rp.jpg" alt="Royal Palace">
                             <h3 class="visiting__card__title">Royal Palace</h3>
                             <p class="visiting__card__subtitle1">360° Virtual Tour</p>
                             <p class="visiting__card__subtitle2">Google Street Panorama View</p>
                         </a>
-                        <a href="" class="visiting__card">
+                        <a href="/museum/tours/tour2.html" target="_blank" class="visiting__card">
                             <img src="assets/img/dw.jpg" alt="Denon Wing">
                             <h3 class="visiting__card__title">Denon Wing</h3>
                             <p class="visiting__card__subtitle1">360° Virtual Tour</p>
                             <p class="visiting__card__subtitle2">Google Street Panorama View</p>
                         </a>
-                        <a href="" class="visiting__card">
+                        <a href="/museum/tours/tour3.html" target="_blank" class="visiting__card">
                             <img src="assets/img/cp.jpg" alt="Colonnade Perrault">
                             <h3 class="visiting__card__title">Colonnade Perrault</h3>
                             <p class="visiting__card__subtitle1">360° Virtual Tour</p>
                             <p class="visiting__card__subtitle2">Google Street Panorama View</p>
                         </a>
-                        <a href="" class="visiting__card">
+                        <a href="/museum/tours/4" target="_blank" class="visiting__card">
                             <img src="assets/img/gh.jpg" alt="Greek hall">
                             <h3 class="visiting__card__title">Greek hall</h3>
                             <p class="visiting__card__subtitle1">360° Virtual Tour</p>
                             <p class="visiting__card__subtitle2">Google Street Panorama View</p>
                         </a>
-                        <a href="" class="visiting__card">
+                        <a href="/museum/tours/5" target="_blank" class="visiting__card">
                             <img src="assets/img/mn.jpg" alt="Mona Lisa">
                             <h3 class="visiting__card__title">Mona Lisa</h3>
                             <p class="visiting__card__subtitle1">360° Virtual Tour</p>
                             <p class="visiting__card__subtitle2">Google Street Panorama View</p>
                         </a>
-                        <a href="" class="visiting__card">
+                        <a href="/museum/tours/6" target="_blank" class="visiting__card">
                             <img src="assets/img/np.jpg" alt="Night Palace">
                             <h3 class="visiting__card__title">Night Palace</h3>
                             <p class="visiting__card__subtitle1">360° Virtual Tour</p>
@@ -198,14 +196,14 @@
                         <p class="tickets__age">Basic 18+</p>
                         <div class="tickets__val">
                             <button type="button" onclick="this.nextElementSibling.stepDown()" class="less">–</button>
-                            <input type="number" min="0" value="1" class="tickets__num">
+                            <input type="number" min="0" max="20" value="1" class="tickets__num">
                             <button type="button" onclick="this.previousElementSibling.stepUp()" class="more">+</button>
                         </div>
 
                         <p class="tickets__age">Senior 65+</p>
                         <div class="tickets__val">
                             <button type="button" onclick="this.nextElementSibling.stepDown()" class="less">–</button>
-                            <input type="number" min="0" value="1" class="tickets__num" readonly>
+                            <input type="number" min="0" max="20" value="1" class="tickets__num" readonly>
                             <button type="button" onclick="this.previousElementSibling.stepUp()" class="more">+</button>
                         </div>
 
@@ -233,7 +231,46 @@
         </div>
     </main>
     <footer class="footer dark">
-        <div class="container"></div>
+        <div class="footer__container">
+            <div class="footer__logo">
+                <div class="footer__img"></div>
+                <p class="footer__text">Louvre</p>
+            </div>
+            <nav class="footer__nav">
+                <ul class="footer__menu">
+                    <li><a href="#visiting">Visiting</a></li>
+                    <li><a href="#explore">Explore</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#tickets">Tickets</a></li>
+                    <li><a href="#contacts">Contacts</a></li>
+                </ul>
+            </nav>
+            <ul class="footer__network">
+                <li>
+                    <a href="https://www.youtube.com/user/louvre"><img src="assets/svg/Youtube.svg" alt="Youtube"></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/museelouvre/"><img src="assets/svg/Instagram.svg" alt="Instagram"></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/museedulouvre"><img src="assets/svg/Facebook.svg" alt="Facebook"></a>
+                </li>
+                <li>
+                    <a href="http://twitter.com/museelouvre"><img src="assets/svg/Twitter.svg" alt="Twitter"></a>
+                </li>
+                <li>
+                    <a href="https://www.pinterest.fr/museedulouvre/"><img src="assets/svg/Pinterest.svg" alt="Pinterest"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__footer">
+            <ul class="footer__info">
+                <li>© 2021</li>
+                <li>The Rolling Scopes School</li>
+                <li>Anna Novikova</li>
+            </ul>
+        </div>
     </footer>
     <script src="index.js"></script>
 </body>
