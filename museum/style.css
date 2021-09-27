@@ -560,6 +560,178 @@ body {
 /*Gallery styles end */
 
 
+/*Tickets styles start */
+
+.tickets {
+    padding: 75px 0;
+}
+
+.tickets__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 60px;
+    padding-bottom: 75px;
+}
+
+.tickets__title {
+    color: #9D8665;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #710707;
+    margin: 0 0 75px 0;
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+
+.tickets__subtitle {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    margin: 0 0 25px 0;
+}
+
+.tickets__type {
+    display: flex;
+    flex-direction: column;
+}
+
+.tickets__type label {
+    font-size: 22px;
+    line-height: 26px;
+}
+
+.tickets__type input {
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+}
+
+.tickets__type input+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    margin-top: 25px;
+}
+
+.tickets__type input+label::before {
+    cursor: pointer;
+    content: '';
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    margin-right: 23px;
+}
+
+.tickets__type input:checked+label::before {
+    background: url("assets/svg/circle.svg") no-repeat center;
+}
+
+.tickets__amount {
+    display: flex;
+    flex-direction: column;
+    margin-left: 177px;
+}
+
+.amount {
+    text-align: right;
+}
+
+.tickets__age {
+    margin: 0 0 13px 25px;
+    font-size: 22px;
+    line-height: 26px;
+}
+
+.tickets__val {
+    border: 3px solid #000000;
+    max-width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px 25px;
+}
+
+.tickets__num {
+    width: 20px;
+    text-align: center;
+    border: none;
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+}
+
+.tickets__num::-webkit-outer-spin-button,
+.tickets__num::-webkit-inner-spin-button {
+    display: none;
+}
+
+.less,
+.more {
+    border: 0;
+    background-color: white;
+    margin: 0;
+    max-width: 18px;
+    font-size: 32px;
+    line-height: 37px;
+    margin: 0 10px;
+    padding: 0 6px 4px 3px;
+}
+
+.more {
+    max-width: 19px;
+    padding: 3px 6px 4px 3px;
+}
+
+.tickets__total {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    margin: 30px 0 60px 25px;
+    letter-spacing: 1.65px;
+}
+
+.tickets__buy {
+    /* max-width: 175px; */
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    background: #000000;
+    border-radius: 2px;
+    color: #FFFFFF;
+    border: none;
+    letter-spacing: 2px;
+    padding: 12px 38px 12px 38px;
+}
+
+.tickets__parallax {
+    width: 100%;
+    height: 400px;
+    background-image: url("assets/img/parallax.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+/* .more {
+    border: 0;
+    background-color: none;
+    margin: 0;
+    max-width: 19px;
+    font-size: 32px;
+    line-height: 37px;
+} */
+
+
+/*Tickets styles end  */
+
+
 /* styles start */
 
 

@@ -161,27 +161,59 @@
                     <h2 class="gallery__title title">Art Gallery</h2>
                     <div class="gallery__img__container">
                         <div class="gallery__img">
-                            <img src="assets/img/galery2.jpg" alt="">
-                            <img src="assets/img/galery9.jpg" alt="">
-                            <img src="assets/img/galery4.jpg" alt="">
-                            <img src="assets/img/galery6.jpg" alt="">
-                            <img src="assets/img/galery14.jpg" alt="">
-                            <img src="assets/img/galery1.jpg" alt="">
-                            <img src="assets/img/galery8.jpg" alt="">
-                            <img src="assets/img/galery3.jpg" alt="">
-                            <img src="assets/img/galery5.jpg" alt="">
-                            <img src="assets/img/galery11.jpg" alt="">
-                            <img src="assets/img/galery7.jpg" alt="">
-                            <img src="assets/img/galery10.jpg" alt="">
-                            <img src="assets/img/galery15.jpg" alt="">
-                            <img src="assets/img/galery12.jpg" alt="">
-                            <img src="assets/img/galery13.jpg" alt="">
+                            <img src="assets/img/galery2.jpg" alt="picture">
+                            <img src="assets/img/galery9.jpg" alt="picture">
+                            <img src="assets/img/galery4.jpg" alt="picture">
+                            <img src="assets/img/galery6.jpg" alt="picture">
+                            <img src="assets/img/galery14.jpg" alt="picture">
+                            <img src="assets/img/galery1.jpg" alt="picture">
+                            <img src="assets/img/galery8.jpg" alt="picture">
+                            <img src="assets/img/galery3.jpg" alt="picture">
+                            <img src="assets/img/galery5.jpg" alt="picture">
+                            <img src="assets/img/galery11.jpg" alt="picture">
+                            <img src="assets/img/galery7.jpg" alt="picture">
+                            <img src="assets/img/galery10.jpg" alt="picture">
+                            <img src="assets/img/galery15.jpg" alt="picture">
+                            <img src="assets/img/galery12.jpg" alt="picture">
+                            <img src="assets/img/galery13.jpg" alt="picture">
                         </div>
                     </div>
                 </div>
             </section>
             <section class="tickets" id="tickets">
-                <div class="container"></div>
+                <div class="tickets__container">
+                    <h2 class="tickets__title title">Buy Tickets</h2>
+                    <img src="assets/img/tickets1.jpg" alt="picture">
+                    <div class="tickets__type">
+                        <p class="tickets__subtitle">Ticket Type</p>
+                        <input type="radio" name="exhibition" value="permanent" id="permanent_type" checked>
+                        <label for="permanent_type">Permanent exhibition</label>
+                        <input type="radio" name="exhibition" value="temporary" id="temporary_type">
+                        <label for="temporary_type">Temporary exhibition</label>
+                        <input type="radio" name="exhibition" value="combined" id="combined_type">
+                        <label for="combined_type">Combined Admission</label>
+                    </div>
+                    <div class="tickets__amount">
+                        <p class="tickets__subtitle amount">Amount</p>
+                        <p class="tickets__age">Basic 18+</p>
+                        <div class="tickets__val">
+                            <button type="button" onclick="this.nextElementSibling.stepDown()" class="less">–</button>
+                            <input type="number" min="0" value="1" class="tickets__num">
+                            <button type="button" onclick="this.previousElementSibling.stepUp()" class="more">+</button>
+                        </div>
+
+                        <p class="tickets__age">Senior 65+</p>
+                        <div class="tickets__val">
+                            <button type="button" onclick="this.nextElementSibling.stepDown()" class="less">–</button>
+                            <input type="number" min="0" value="1" class="tickets__num" readonly>
+                            <button type="button" onclick="this.previousElementSibling.stepUp()" class="more">+</button>
+                        </div>
+
+                        <p class="tickets__total">Total €200</p>
+                        <button type="button" class="tickets__buy">Buy Now</button>
+                    </div>
+                </div>
+                <div class="tickets__parallax"></div>
             </section>
             <section class="contacts" id="contacts">
                 <div class="container"></div>
