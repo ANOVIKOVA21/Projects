@@ -10,7 +10,7 @@
         }
         
         body {
-            max-width: 1920px;
+            /* max-width: 1920px; */
             margin: 0;
             font-family: 'Roboto';
             font-weight: 300;
@@ -133,15 +133,15 @@
         .welcome__content {
             position: relative;
             z-index: 1;
+            padding-bottom: 272px;
         }
         
         .welcome__title {
-            /* max-width: 593px; */
             padding-right: 5px;
             margin: 0 0 25px 0;
         }
         
-        .welkome__block {
+        .welcome__block {
             display: block;
         }
         
@@ -155,6 +155,8 @@
         }
         
         .welcome__button {
+            display: block;
+            max-width: 360px;
             font-family: inherit;
             font-size: 22px;
             line-height: 26px;
@@ -164,11 +166,6 @@
             background: #710707;
             border-radius: 10px;
             padding: 23px 64px;
-            border: 0;
-            margin-bottom: 272px;
-        }
-        
-        .welcome__button a {
             color: #FFFFFF;
             text-decoration: none;
         }
@@ -287,6 +284,10 @@
             transition: 1s;
         }
         
+        .visiting__card:hover .visiting__card__title::after {
+            width: 100%;
+        }
+        
         .visiting__card:active {
             color: #7E6C51;
         }
@@ -344,6 +345,7 @@
             max-width: 1440px;
             margin: 0 auto;
             display: flex;
+            flex-wrap: wrap;
             column-gap: 60px;
         }
         
@@ -402,15 +404,16 @@
         }
         
         .video__main {
-            max-width: 1440px;
+            width: 100%;
             margin: 0;
             padding-bottom: 40px;
         }
         
         .video__video {
-            width: 1440px;
-            max-height: 650px;
             display: block;
+            width: 100%;
+            max-height: 650px;
+            object-fit: cover
         }
         
         .video__controls {
@@ -425,10 +428,6 @@
             border: 0;
             background: transparent;
             padding: 5px;
-        }
-        
-        .video__play {
-            margin: 22px 0px 22px 0px;
         }
         
         .video__controls input {
@@ -545,6 +544,7 @@
         
         .tickets {
             padding: 75px 0;
+            position: relative;
         }
         
         .tickets__container {
@@ -615,7 +615,7 @@
         .tickets__amount {
             display: flex;
             flex-direction: column;
-            margin-left: 177px;
+            margin-left: auto;
         }
         
         .amount {
@@ -638,7 +638,7 @@
         }
         
         .tickets__num {
-            width: 20px;
+            width: 30px;
             text-align: center;
             border: none;
             font-family: "Roboto";
@@ -701,8 +701,423 @@
             width: 100%;
             height: 400px;
             background-image: url("assets/img/parallax.jpg");
-            background-size: cover;
+            /* background-size: cover; */
+            background-size: contain;
             background-attachment: fixed;
+            background-position: left bottom;
+        }
+        
+        .booking__tickets {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 245, 215, 0.5);
+            top: 30%;
+            transition: 1s;
+            right: -100%;
+        }
+        
+        .booking__container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1440px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            padding: 91px 235px;
+            position: relative;
+        }
+        
+        .booking__close {
+            position: absolute;
+            right: 2%;
+            top: 5%;
+        }
+        
+        .booking__form {
+            max-width: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .booking__logo {
+            border-bottom: 3px solid rgba(116, 12, 17, 0.9);
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        
+        .booking__img {
+            background-image: url("assets/svg/logo_gold.svg");
+            background-size: cover;
+            width: 85px;
+            height: 41px;
+        }
+        
+        .booking__title {
+            font-size: 50px;
+            line-height: 55px;
+            color: #9D8665;
+            letter-spacing: 0;
+            margin: 0 0 13px 0;
+        }
+        
+        .booking__subtitle {
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            color: #710707;
+            margin: 0 0 10px 0;
+        }
+        
+        .booking__date,
+        .booking__time {
+            border: none;
+            max-width: 190px;
+            width: 100%;
+        }
+        
+        .booking__date__container,
+        .booking__time__container {
+            max-width: 190px;
+            border: 1px solid #030303;
+            padding: 10px 15px 12px 15px;
+        }
+        
+        .booking__date__placeholder,
+        .booking__time__placeholder {
+            display: flex;
+            column-gap: 15px;
+            background-color: #FFFFFF;
+        }
+        
+        .booking__date__placeholder p {
+            margin: 0 60px 0 0;
+        }
+        
+        .booking__time__placeholder p {
+            margin: 0 58px 0 0;
+        }
+        
+        .booking__user {
+            width: 100%;
+            padding: 10px 0 12px 43px;
+            border: 1px solid #030303;
+        }
+        
+        .booking__user::-webkit-input-placeholder {
+            color: #030303;
+        }
+        
+        .booking__date,
+        .booking__time,
+        .booking__user {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+        }
+        
+        .booking__form input[type="text"] {
+            background: url(assets/svg/name.svg) no-repeat left 15px center;
+        }
+        
+        .booking__form input[type="email"] {
+            background: url(assets/svg/email.svg) no-repeat left 15px center;
+        }
+        
+        .booking__form.input[type="tel"] {
+            background: url(assets/svg/tel.svg) no-repeat left 15px center;
+        }
+        
+        .booking__form input[name="type"] {
+            background: url(assets/svg/ballot.svg) no-repeat left 15px center, url(assets/svg/arrow_down.svg) no-repeat right 15px center;
+        }
+        
+        .booking__form input[name="type"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+        }
+        
+        .booking__entry {
+            padding: 9px 15px 15px 15px;
+            border: 1px solid #030303;
+            width: 100%;
+        }
+        
+        h4 {
+            font-family: 'Forum';
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 20px;
+            text-transform: capitalize;
+            color: #9D8665;
+            padding-bottom: 5px;
+            margin: 0 0 15px 0;
+            border-bottom: 2px solid rgba(116, 12, 17, 0.9);
+        }
+        
+        .booking__entry__basic,
+        .booking__entry__senior {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .booking__entry__basic p {
+            margin: 3px 0 19px 0;
+        }
+        
+        .booking__entry__senior p {
+            margin: 3px 0 0 0;
+        }
+        
+        .booking__val {
+            border: 1px solid #030303;
+            max-width: 105px;
+            max-height: 25px;
+            margin: 0;
+        }
+        
+        .booking__less,
+        .booking__more {
+            border: 0;
+            background-color: #030303;
+            color: #FFFFFF;
+            height: 100%;
+            width: 35px;
+        }
+        
+        .booking__num {
+            border: 1px solid #030303;
+            width: 35px;
+            font-weight: 400;
+            line-height: 23px;
+            max-height: 25px;
+        }
+        
+        .booking__overview {
+            max-width: 530px;
+            padding: 25px 28px 25px 30px;
+            border: 1px solid #030303;
+        }
+        
+        .overview__data {
+            background: url(assets/img/ticket_img.jpg) no-repeat top right;
+            margin-bottom: 22px;
+        }
+        
+        h5 {
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 37px;
+            color: #272727;
+            margin: 0 0 2px 0;
+        }
+        
+        .overview__subtitle {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 26px;
+            color: #740C11;
+            opacity: 0.9;
+            margin: 0 0 10px 0;
+        }
+        
+        .overview__date,
+        .overview__time,
+        .overview__type {
+            padding-left: 30px;
+            margin: 0 0 5px 0;
+        }
+        
+        .overview__date {
+            background: url(assets/svg/date.svg) no-repeat left center;
+        }
+        
+        .overview__time {
+            background: url(assets/svg/time.svg) no-repeat left center;
+        }
+        
+        .overview__type {
+            background: url(assets/svg/check_circle.svg) no-repeat left center;
+        }
+        
+        .overview__receipt {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 22px;
+            line-height: 26px;
+            row-gap: 7px;
+            padding-bottom: 9px;
+            border-bottom: 2px solid #740C11;
+            margin-bottom: 10px;
+        }
+        
+        .overview__receipt p {
+            margin: 0;
+        }
+        
+        .overview__amount {
+            display: inline-block;
+            width: 32px;
+            background-color: #030303;
+            color: #A4A4A3;
+            border-radius: 17%;
+            margin-right: 10px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 21px;
+        }
+        
+        .overview__price {
+            padding-left: 120px;
+        }
+        
+        .overview__total {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 32px;
+            line-height: 37px;
+            position: relative;
+        }
+        
+        .overview__total p {
+            margin: 0;
+        }
+        
+        .overview__card-back,
+        .overview__card-front {
+            max-width: 360px;
+            border-radius: 3px;
+            font-size: 12px;
+            line-height: 14px;
+            color: #161615;
+        }
+        
+        .overview__card-back {
+            padding: 25px 0 15px 0;
+            margin: 40px 0 0 auto;
+            background: #939393;
+        }
+        
+        .overview__card-band {
+            height: 45px;
+            background: #161615;
+            margin-bottom: 15px;
+        }
+        
+        .overview__card-cvv {
+            max-width: 75px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 6px;
+            margin-right: 20px;
+            margin-left: auto;
+        }
+        
+        .overview__card-cvv input {
+            height: 36px;
+            background: #FFFFFF;
+            border: 0.5px solid #A4A4A3;
+        }
+        
+        .overview__card-cvv label {
+            text-align: center;
+            padding-right: 4px;
+        }
+        
+        .overview__card-cvv p {
+            max-width: 55px;
+            margin: 0 auto;
+            font-size: 10px;
+            line-height: 12px;
+            color: #161615;
+            font-weight: normal;
+        }
+        
+        .overview__card-front {
+            position: absolute;
+            padding: 16px 20px 15px 20px;
+            background-color: #BCBCBC;
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 5px;
+            column-gap: 15px;
+            top: 125%;
+            background: url(assets/svg/Visa.svg) no-repeat top 18% right 7%, url(assets/svg/Mastercard.svg)no-repeat top 36% right 7%, #BCBCBC;
+        }
+        
+        .overview__card-front input {
+            height: 35px;
+            border: 0.5px solid #A4A4A3;
+            margin-bottom: 5px;
+        }
+        
+        .overview__card-front label {
+            width: 100%;
+        }
+        
+        .card-number {
+            width: 215px;
+        }
+        
+        .card-number::-webkit-inner-spin-button {
+            display: none;
+        }
+        
+        .month,
+        .year {
+            width: 100px;
+            padding-left: 8px;
+        }
+        
+        .month::-webkit-inner-spin-button,
+        .year::-webkit-inner-spin-button {
+            opacity: 1;
+            -webkit-appearance: none;
+            background: #A4A4A3 url('assets/svg/Arrows.svg') no-repeat 50% 50%;
+            width: 14px;
+            height: 23px;
+            padding: 4px;
+            border-left: 0.5px solid #A4A4A3;
+        }
+        
+        .month::-webkit-calendar-picker-indicator {
+            opacity: 0;
+        }
+        
+        .overview__card-front .cardholder-name {
+            width: 100%;
+            margin: 0;
+        }
+        
+        .overview__button {
+            background: #710707;
+            opacity: 0.9;
+            font-size: 22px;
+            font-weight: 300;
+            color: #FFFFFF;
+            padding: 11px 85px 10px;
+            border: none;
+            margin: 28px 0 0 auto;
+            display: block;
+            cursor: pointer;
+            transition: 1s;
+        }
+        
+        .overview__button:hover {
+            background: #9D8665;
+            border-radius: 2px;
+            color: #000000;
         }
         /*Tickets styles end  */
         /*Contacts styles start */

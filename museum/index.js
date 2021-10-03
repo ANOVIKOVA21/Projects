@@ -34,3 +34,44 @@ controls.addEventListener('input', function(event) {
     const value = event.target.value;
     event.target.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
 })
+
+// для input date
+let dateContainer = document.querySelector('.booking__date__container')
+let placeholderDate = document.querySelector('.booking__date__placeholder')
+let inputDate = document.querySelector('.booking__date')
+dateContainer.addEventListener('focus', () => {
+    placeholderDate.style.display = 'none'
+    inputDate.hidden = false
+})
+inputDate.addEventListener('blur', () => {
+    if (!inputDate.value) {
+        placeholderDate.style.display = ''
+        inputDate.hidden = true
+    }
+})
+
+// для input time
+let timeContainer = document.querySelector('.booking__time__container')
+let placeholderTime = document.querySelector('.booking__time__placeholder')
+let inputTime = document.querySelector('.booking__time')
+timeContainer.addEventListener('focus', () => {
+    placeholderTime.style.display = 'none'
+    inputTime.hidden = false
+})
+inputTime.addEventListener('blur', () => {
+    if (!inputTime.value) {
+        placeholderTime.style.display = ''
+        inputTime.hidden = true
+    }
+})
+
+// для формы
+let ticketsBuyButton = document.querySelector('.tickets__buy')
+let ticketsForm = document.querySelector('.booking__tickets')
+let closeFormButton = document.querySelector('.booking__close')
+ticketsBuyButton.addEventListener('click', () => {
+    ticketsForm.style.right = '0'
+})
+closeFormButton.addEventListener('click', () => {
+    ticketsForm.style.right = '-100%'
+})
