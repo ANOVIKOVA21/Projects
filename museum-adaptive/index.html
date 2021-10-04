@@ -19,7 +19,7 @@
                 <div class="header__img"></div>
                 <h1 class="header__text">Louvre</h1>
             </div>
-            <nav class="header__nav">
+            <nav class="header__nav" hidden>
                 <ul class="header__menu">
                     <li><a href="#visiting">Visiting</a></li>
                     <li><a href="#explore">Explore</a></li>
@@ -29,6 +29,7 @@
                     <li><a href="#contacts">Contacts</a></li>
                 </ul>
             </nav>
+            <button type="button" data-is-open="false" class="header__burger"></button>
         </div>
     </header>
     <main>
@@ -110,7 +111,10 @@
                         <p class="explore__text">It was cleaned in 1984 to remove a <span>"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
                         <p class="explore__text">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
                     </div>
+                    <!-- <div class="explore__pic"></div>-->
                     <img src="assets/img/before.jpg" alt="Picture" class="explore__img">
+
+
                 </div>
             </section>
             <section class="video" id="video">
@@ -175,7 +179,13 @@
             <section class="tickets" id="tickets">
                 <div class="tickets__container">
                     <h2 class="tickets__title title">Buy Tickets</h2>
-                    <img src="assets/img/tickets1.jpg" alt="picture">
+                    <div class="tickets__img">
+                        <!-- <img src="" alt="picture"> -->
+                        <img srcset="assets/img/tickets1-380px.jpg, 380w, assets/img/tickets1-444px.jpg, 444w, assets/img/tickets1-700px.jpg, 700w,
+             assets/img/tickets1.jpg 720w" sizes="(max-width: 1023px) 444px, (max-width: 1024px) 700px,
+            720px" src="assets/img/tickets1.jpg" alt="picture">
+                    </div>
+
                     <div class="tickets__type">
                         <p class="tickets__subtitle">Ticket Type</p>
                         <input type="radio" name="exhibition" value="permanent" id="permanent_type" checked>
@@ -201,14 +211,14 @@
                             <button type="button" onclick="this.previousElementSibling.stepUp()" class="more">+</button>
                         </div>
 
-                        <p class="tickets__total">Total €200</p>
+                        <p class="tickets__total">Total €<span class="tickets__total-price">220</span></p>
                         <button type="button" class="tickets__buy">Buy Now</button>
 
 
                     </div>
                 </div>
                 <div class="tickets__parallax"></div>
-                <article class="booking__tickets">
+                <article class="booking__tickets" hidden>
                     <!-- hidden -->
                     <div class="booking__container">
                         <img src="assets/svg/Close.svg" alt="Close" class="booking__close">
