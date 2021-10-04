@@ -600,8 +600,8 @@
                   }
                   
                   .tickets__img {
-                      width: 720px;
-                      height: 550px;
+                      max-width: 720px;
+                      max-height: 550px;
                   }
                   
                   .tickets__img img {
@@ -1617,8 +1617,8 @@
                           column-gap: 80px;
                       }
                       .tickets__img {
-                          width: 700px;
-                          height: 440px;
+                          max-width: 700px;
+                          max-height: 440px;
                       }
                       .tickets__amount {
                           margin-left: 0;
@@ -1703,8 +1703,8 @@
                           padding: 65px 30px 40px 30px;
                       }
                       .tickets__img {
-                          width: 444px;
-                          height: 340px;
+                          max-width: 444px;
+                          max-height: 340px;
                       }
                       .tickets__amount {
                           margin-left: auto;
@@ -1898,9 +1898,11 @@
                           max-width: 190px;
                       }
                       .video__slider button {
-                          /* width: 10px;
-                          height: 10px; */
                           padding: 1px 5px;
+                      }
+                      .video__play__large {
+                          max-width: 80px;
+                          max-height: 80px;
                       }
                       .gallery {
                           padding: 40px 0 0 0;
