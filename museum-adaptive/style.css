@@ -600,8 +600,8 @@
                   }
                   
                   .tickets__img {
-                      max-width: 720px;
-                      max-height: 550px;
+                      width: 720px;
+                      height: 550px;
                   }
                   
                   .tickets__img img {
@@ -1617,8 +1617,8 @@
                           column-gap: 80px;
                       }
                       .tickets__img {
-                          max-width: 700px;
-                          max-height: 440px;
+                          width: 700px;
+                          height: 440px;
                       }
                       .tickets__amount {
                           margin-left: 0;
@@ -1703,8 +1703,8 @@
                           padding: 65px 30px 40px 30px;
                       }
                       .tickets__img {
-                          max-width: 444px;
-                          max-height: 340px;
+                          width: 444px;
+                          height: 340px;
                       }
                       .tickets__amount {
                           margin-left: auto;
