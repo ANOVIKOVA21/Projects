@@ -70,8 +70,41 @@ let ticketsBuyButton = document.querySelector('.tickets__buy')
 let ticketsForm = document.querySelector('.booking__tickets')
 let closeFormButton = document.querySelector('.booking__close')
 ticketsBuyButton.addEventListener('click', () => {
-    ticketsForm.style.right = '0'
+    ticketsForm.hidden = false
+    setTimeout(() => {
+        ticketsForm.style.right = '0'
+    }, 500)
 })
 closeFormButton.addEventListener('click', () => {
     ticketsForm.style.right = '-100%'
+    setTimeout(() => {
+        ticketsForm.hidden = true
+    }, 1000)
+})
+
+// для меню
+let menuButton = document.querySelector('.header__burger')
+let menu = document.querySelector('.header__nav')
+let welcomeContent = document.querySelector('.welcome__content')
+
+menuButton.addEventListener('click', () => {
+    if (menuButton.dataset.isOpen === 'true') {
+        menuButton.dataset.isOpen = false;
+        menu.style.left = '100%'
+        menuButton.style.background = 'url(assets/svg/burger.svg) no-repeat right transparent'
+
+        setTimeout(() => {
+            menu.hidden = true
+            welcomeContent.style.opacity = '1'
+        }, 500)
+    } else {
+        menuButton.dataset.isOpen = true;
+        menu.hidden = false
+        menuButton.style.background = 'url(assets/svg/close-white.svg) no-repeat right transparent'
+
+        setTimeout(() => {
+            menu.style.left = '0'
+            welcomeContent.style.opacity = '0'
+        }, 1000)
+    }
 })
