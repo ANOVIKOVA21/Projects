@@ -1898,9 +1898,11 @@
                           max-width: 190px;
                       }
                       .video__slider button {
-                          /* width: 10px;
-                          height: 10px; */
                           padding: 1px 5px;
+                      }
+                      .video__play__large {
+                          max-width: 80px;
+                          max-height: 80px;
                       }
                       .gallery {
                           padding: 40px 0 0 0;
