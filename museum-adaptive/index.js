@@ -90,7 +90,7 @@ let welcomeContent = document.querySelector('.welcome__content')
 menuButton.addEventListener('click', () => {
     if (menuButton.dataset.isOpen === 'true') {
         menuButton.dataset.isOpen = false;
-        menu.style.left = '100%'
+        menu.style.transform = 'translateX(400%)'
         menuButton.style.background = 'url(assets/svg/burger.svg) no-repeat right transparent'
 
         setTimeout(() => {
@@ -103,7 +103,7 @@ menuButton.addEventListener('click', () => {
         menuButton.style.background = 'url(assets/svg/close-white.svg) no-repeat right transparent'
 
         setTimeout(() => {
-            menu.style.left = '0'
+            menu.style.transform = 'translateX(0)'
             welcomeContent.style.opacity = '0'
         }, 1000)
     }
