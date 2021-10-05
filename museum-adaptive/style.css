@@ -746,10 +746,10 @@
                       width: 100%;
                       height: 400px;
                       background-image: url("assets/img/parallax.jpg");
-                      /* background-size: cover; */
-                      background-size: contain;
+                      background-size: cover;
+                      /* background-size: contain; */
                       background-attachment: fixed;
-                      background-position: left bottom;
+                      background-position: center bottom;
                   }
                   
                   .booking__tickets {
@@ -1801,6 +1801,15 @@
                   }
                   
                   @media (max-width: 768px) {
+                      .header__nav {
+                          width: 100%;
+                          height: 100%;
+                          max-height: 100%;
+                      }
+                      .header__nav .header__menu li {
+                          max-width: 122px;
+                          background: url(assets/svg/menu-arrow.svg) no-repeat right;
+                      }
                       .welcome__img {
                           margin: 0 20px;
                       }
@@ -1901,8 +1910,9 @@
                           padding: 1px 5px;
                       }
                       .video__play__large {
-                          max-width: 80px;
-                          max-height: 80px;
+                          max-width: 90px;
+                          max-height: 90px;
+                          bottom: 300%;
                       }
                       .gallery {
                           padding: 40px 0 0 0;
@@ -1932,9 +1942,50 @@
                       .contacts__subtitle {
                           font-size: 20px;
                           line-height: 23px;
+                          padding: 0;
+                          max-width: 155px;
+                          margin-bottom: 40px;
                       }
                       .contacts__contacts {
                           font-size: 18px;
                           line-height: 21px;
+                      }
+                      .contacts__container iframe {
+                          max-width: 728px;
+                          max-height: 476px;
+                      }
+                      .contacts__contacts {
+                          margin-bottom: 40px;
+                      }
+                      .contacts {
+                          padding-bottom: 65px;
+                      }
+                      .footer {
+                          padding: 48px 0 40px 0;
+                      }
+                      .footer__container {
+                          column-gap: 99px;
+                      }
+                      .footer__nav {
+                          margin-bottom: 0;
+                      }
+                      .footer__menu {
+                          width: 355px;
+                          column-gap: 0;
+                          align-content: space-between;
+                      }
+                      .footer__menu li {
+                          font-size: 18px;
+                          line-height: 21px;
+                      }
+                      .footer__network {
+                          margin: auto 90px 35px auto;
+                          padding-top: 28px;
+                      }
+                      .footer__footer {
+                          border-top: 1px solid #666666;
+                      }
+                      .footer__info {
+                          padding: 40px 20px 0 20px;
                       }
                   }
