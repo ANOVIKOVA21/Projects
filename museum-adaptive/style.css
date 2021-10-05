@@ -1471,8 +1471,8 @@
                           z-index: 2;
                           margin: 0;
                           top: 130px;
-                          left: 100%;
                           transition: 1s;
+                          transform: translateX(400%);
                       }
                       .header__menu {
                           flex-direction: column;
