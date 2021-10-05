@@ -90,7 +90,7 @@ let welcomeContent = document.querySelector('.welcome__content')
 menuButton.addEventListener('click', () => {
     if (menuButton.dataset.isOpen === 'true') {
         menuButton.dataset.isOpen = false;
-        menu.style.transform = 'translateX(400%)'
+        menu.style.transform = 'translateX(-100%)'
         menuButton.style.background = 'url(assets/svg/burger.svg) no-repeat right transparent'
 
         setTimeout(() => {

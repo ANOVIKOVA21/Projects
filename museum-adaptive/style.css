@@ -1472,7 +1472,7 @@
                           margin: 0;
                           top: 130px;
                           transition: 1s;
-                          transform: translateX(400%);
+                          transform: translateX(-100%);
                       }
                       .header__menu {
                           flex-direction: column;
