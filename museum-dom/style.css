@@ -196,7 +196,23 @@
                       background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url("assets/img/1.jpg");
                       background-position: top right;
                       background-repeat: no-repeat;
+                      transition: 1s;
+                      /*  */
+                      /* overflow: hidden; */
                   }
+                  /* @-webkit-keyframes picture {
+                      from {
+                          background-position: -1000px 100%, 120% 30%, 120% 15%, 0 0;
+                      }
+                      to {
+                          background-position: 0 100%, -200% 10%, -50% 15%, 0 0;
+                      }
+                  } */
+                  /* .welcome__img img {
+                      transition: 1s;
+                      transition: left 5s cubic-bezier(0, 0, 1, 1);
+                      background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%);
+                  } */
                   
                   .welcome__slider {
                       max-width: 600px;
@@ -229,6 +245,7 @@
                       height: 16px;
                       background-color: #FFFFFF;
                       margin: 52px 25px 52px 0;
+                      transition: 0.5s;
                   }
                   
                   .sq1 {
@@ -389,11 +406,29 @@
            
         } */
                   
-                  .explore__img {
-                      width: 100%;
-                      max-width: 720px;
-                      max-height: 700px;
+                  .explore__img-container {
+                      position: relative;
+                      width: 720px;
+                      height: 700px;
                       margin-top: 15px;
+                  }
+                  
+                  .explore__img {
+                      position: absolute;
+                      width: auto;
+                      height: auto;
+                      overflow: hidden;
+                  }
+                  
+                  .explore__img img {
+                      display: block;
+                      vertical-align: middle;
+                  }
+                  
+                  .explore__img-slider {
+                      position: absolute;
+                      z-index: 4;
+                      cursor: ew-resize;
                   }
                   /*Explore styles end */
                   /*Video styles start */
@@ -445,9 +480,14 @@
                   }
                   
                   .video__controls button {
+                      cursor: pointer;
                       border: 0;
                       background: transparent;
                       padding: 5px;
+                  }
+                  
+                  .video__controls button:hover {
+                      opacity: 0.5;
                   }
                   
                   .video__controls button img {
@@ -455,6 +495,7 @@
                   }
                   
                   .video__controls input {
+                      cursor: pointer;
                       appearance: none;
                       outline: none;
                       background: linear-gradient(to right, #710707 0%, #710707 40%, #C4C4C4 40%, #C4C4C4 100%);
@@ -484,11 +525,20 @@
                   }
                   
                   .video__play__large {
+                      cursor: pointer;
                       position: absolute;
                       bottom: 338%;
                   }
                   
-                  .video__container iframe {
+                  .video__iframes {
+                      display: flex;
+                      justify-content: space-between;
+                      width: 100%;
+                      column-gap: 42px;
+                      overflow: hidden;
+                  }
+                  
+                  .video__iframes iframe {
                       border: none;
                   }
                   
@@ -560,9 +610,16 @@
                   }
                   
                   .gallery__img img {
-                      /* flex-grow: 0; */
+                      transform: translate(0, 30%);
+                      opacity: 0;
+                      transition: all 0.7s;
                       max-width: 456px;
                       width: 100%
+                  }
+                  
+                  .gallery__img ._active-img {
+                      transform: translate(0, 0);
+                      opacity: 1;
                   }
                   
                   .gallery__img img:nth-child(1) {
@@ -1575,7 +1632,7 @@
                       .explore__text:last-child {
                           display: none;
                       }
-                      .explore__img {
+                      .explore__img-container {
                           margin-top: 62px;
                       }
                       .video__video {
@@ -1702,6 +1759,16 @@
                           max-width: 590px;
                           padding: 65px 30px 40px 30px;
                       }
+                      .video__iframes {
+                          column-gap: 20px;
+                      }
+                      .video__iframes iframe:nth-child(3) {
+                          display: none;
+                      }
+                      .video__iframes iframe {
+                          max-height: 199px;
+                          max-width: 354px;
+                      }
                       .tickets__img {
                           max-width: 444px;
                           max-height: 340px;
@@ -1778,13 +1845,6 @@
                       .visiting__cards {
                           column-gap: 56px;
                           row-gap: 40px;
-                      }
-                      .video__container iframe:last-child {
-                          display: none;
-                      }
-                      .video__container iframe {
-                          max-height: 199px;
-                          max-width: 354px;
                       }
                       .gallery__img img {
                           max-width: 360px;
@@ -1863,7 +1923,7 @@
                       .explore__title {
                           width: 100%;
                       }
-                      .explore__img {
+                      .explore__img-container {
                           margin: 0;
                           max-width: 728px;
                           max-height: 705px;

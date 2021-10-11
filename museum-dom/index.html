@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
 </head>
 
 <body>
@@ -44,7 +45,6 @@
                     </div>
 
                     <div class="welcome__img">
-
                     </div>
                     <div class="welcome__slider">
                         <p class="num">01</p>
@@ -111,8 +111,15 @@
                         <p class="explore__text">It was cleaned in 1984 to remove a <span>"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
                         <p class="explore__text">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
                     </div>
+                    <div class="explore__img-container">
+                        <div class="explore__img">
+                            <img src="assets/img/after.jpg" alt="Picture" width="720" height="700">
+                        </div>
+                        <div class="explore__img img-overlay">
+                            <img src="assets/img/before.jpg" alt="Picture" width="720" height="700">
+                        </div>
+                    </div>
 
-                    <img src="assets/img/before.jpg" alt="Picture" class="explore__img">
 
 
                 </div>
@@ -125,8 +132,8 @@
                         <video src="assets/video/video0.mp4" poster="assets/video/poster0.jpg" class="video__video"></video>
                         <!-- controls -->
                         <div class="video__controls">
-                            <button class="video__play" type="button"><img src="assets/svg/play_small.svg"
-                                    alt="play"></button>
+                            <button class="video__play" data-is-play="false" type="button"><img
+                                    src="assets/svg/play_small.svg" alt="play"></button>
                             <input type="range" value="40" min="0" max="100" class="video__progress">
                             <button class="video__volume" type="button"><img src="assets/svg/volume.svg"
                                     alt="volume"></button>
@@ -137,9 +144,16 @@
                                     alt="play"></button>
                         </div>
                     </figure>
-                    <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video__iframes">
+                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/aWmJ5DgyWPI?enablejsapi=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/Vi5D6FKhRmo?enablejsapi=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/NOhDysLnTvY?enablejsapi=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/zp1BXPX8jcU?enablejsapi=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                            hidden></iframe>
+                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/2OR0OCr6uRE?enablejsapi=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                            hidden></iframe>
+                    </div>
+
 
                 </div>
                 <div class="video__slider">
@@ -157,21 +171,21 @@
                     <h2 class="gallery__title title">Art Gallery</h2>
                     <div class="gallery__img__container">
                         <div class="gallery__img">
-                            <img src="assets/img/galery2.jpg" alt="picture">
-                            <img src="assets/img/galery9.jpg" alt="picture">
-                            <img src="assets/img/galery4.jpg" alt="picture">
-                            <img src="assets/img/galery6.jpg" alt="picture">
-                            <img src="assets/img/galery14.jpg" alt="picture">
-                            <img src="assets/img/galery1.jpg" alt="picture">
-                            <img src="assets/img/galery8.jpg" alt="picture">
-                            <img src="assets/img/galery3.jpg" alt="picture">
-                            <img src="assets/img/galery5.jpg" alt="picture">
-                            <img src="assets/img/galery11.jpg" alt="picture">
-                            <img src="assets/img/galery7.jpg" alt="picture">
-                            <img src="assets/img/galery10.jpg" alt="picture">
-                            <img src="assets/img/galery15.jpg" alt="picture">
-                            <img src="assets/img/galery12.jpg" alt="picture">
-                            <img src="assets/img/galery13.jpg" alt="picture">
+                            <img src="assets/img/galery2.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery9.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery4.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery6.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery14.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery1.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery8.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery3.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery5.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery11.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery7.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery10.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery15.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery12.jpg" alt="picture" class="_anim-items">
+                            <img src="assets/img/galery13.jpg" alt="picture" class="_anim-items">
                         </div>
                     </div>
                 </div>
@@ -395,6 +409,9 @@
         </div>
     </footer>
     <script src="index.js"></script>
+    <script>
+        initComparisons();
+    </script>
 </body>
 
 </html>
