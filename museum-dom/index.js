@@ -310,20 +310,10 @@ controls.addEventListener('click', (event) => {
         volumeIsMute()
         video.volume = volumeProgress.value / 100;
     }
+
     if (event.target.closest('.video__fullscreen')) {
-        if (btnFullscreen.dataset.isFullscreen === 'false') {
-            btnFullscreen.dataset.isFullscreen = 'true'
-            btnFullscreenImg.src = 'assets/svg/fullscreen_exit.svg'
-            wrapVideo.requestFullscreen()
-        } else {
-            btnFullscreen.dataset.isFullscreen = 'false'
-            btnFullscreenImg.src = 'assets/svg/fullscreen.svg'
-            document.exitFullscreen()
-        }
+        fullscreen()
     }
-    // if (event.target.closest('.video__fullscreen')) {
-    //     fullscreen()
-    // }
 
 });
 video.addEventListener('click', videoPlayPause)
@@ -376,18 +366,16 @@ function volumeIsMute() {
 function fullscreen() {
     if (btnFullscreen.dataset.isFullscreen === 'false') {
         btnFullscreen.dataset.isFullscreen = 'true'
-        document.querySelector('body').style.overflow = 'hidden'
+        btnFullscreenImg.src = 'assets/svg/fullscreen_exit.svg'
         video.classList.add('fullscreen')
         controls.classList.add('controls_fullscreen')
-        btnFullscreenImg.src = 'assets/svg/fullscreen_exit.svg'
-
+        wrapVideo.requestFullscreen()
     } else {
         btnFullscreen.dataset.isFullscreen = 'false'
-        document.querySelector('body').style.overflow = ''
+        btnFullscreenImg.src = 'assets/svg/fullscreen.svg'
         video.classList.remove('fullscreen')
         controls.classList.remove('controls_fullscreen')
-        btnFullscreenImg.src = 'assets/svg/fullscreen.svg'
-
+        document.exitFullscreen()
     }
 
 }
