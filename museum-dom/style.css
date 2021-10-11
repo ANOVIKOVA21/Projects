@@ -422,7 +422,7 @@
                   
                   .explore__img img {
                       display: block;
-                      vertical-align: middle;
+                      /* vertical-align: middle; */
                   }
                   
                   .explore__img-slider {
@@ -559,6 +559,23 @@
                   
                   .video__slider .active {
                       background: #333333;
+                  }
+                  
+                  .fullscreen {
+                      position: fixed;
+                      bottom: 0;
+                      left: 0;
+                      width: 100vw;
+                      min-height: 100vh;
+                      z-index: 10;
+                  }
+                  
+                  .controls_fullscreen {
+                      left: 0;
+                      position: fixed;
+                      bottom: 0;
+                      width: 100%;
+                      z-index: 10;
                   }
                   /*Video styles end */
                   /* Gallery styles start */
