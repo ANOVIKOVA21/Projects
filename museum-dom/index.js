@@ -271,17 +271,17 @@ controls.addEventListener('input', function(event) {
 })
 
 // для видеоплеера
-let wrapVideo = document.querySelector(".video__main");
-let video = document.querySelector(".video__video");
-let videoTrack = document.querySelector(".video__progress");
-let btnPlay = document.querySelector(".video__play");
-let btnPlayImg = document.querySelector(".video__play img");
-let btnPlayLarge = document.querySelector(".video__play__large");
-let volumeProgress = document.querySelector(".video__volume__progress");
-let btnVolume = document.querySelector(".video__volume");
-let btnVolumeImg = document.querySelector(".video__volume img");
-let btnFullscreen = document.querySelector(".video__fullscreen");
-let btnFullscreenImg = document.querySelector(".video__fullscreen img");
+let wrapVideo = document.querySelector('.video__main');
+let video = document.querySelector('.video__video');
+let videoTrack = document.querySelector('.video__progress');
+let btnPlay = document.querySelector('.video__play');
+let btnPlayImg = document.querySelector('.video__play img');
+let btnPlayLarge = document.querySelector('.video__play__large');
+let volumeProgress = document.querySelector('.video__volume__progress');
+let btnVolume = document.querySelector('.video__volume');
+let btnVolumeImg = document.querySelector('.video__volume img');
+let btnFullscreen = document.querySelector('.video__fullscreen');
+let btnFullscreenImg = document.querySelector('.video__fullscreen img');
 
 controls.addEventListener('click', (event) => {
     if (event.target.closest('.video__play') || event.target.closest('.video__play__large')) videoPlayPause()
@@ -379,6 +379,58 @@ function fullscreen() {
     }
 
 }
+
+//подсчет стоимости билетов
+
+const ticketsType = document.querySelector('.tickets__type');
+const typesOfTicket = document.querySelectorAll('.tickets__type label');
+let ticketBasic = document.querySelector('#basic');
+let ticketSenior = document.querySelector('#senior');
+let sumOfTicket = document.querySelector('.tickets__total-price');
+let prices = [20, 25, 40]
+let typeOfTicket = 0
+
+ticketsType.addEventListener('click', (event) => {
+    debugger
+    // console.log(getValue(event.target))
+    if (!(event.target.tagName === 'LABEL' || event.target.tagName === 'INPUT')) return
+    getType(event.target)
+    countSumOfTicket()
+})
+ticketBasic.addEventListener('input', () => {
+    countSumOfTicket()
+})
+ticketSenior.addEventListener('input', () => {
+    countSumOfTicket()
+})
+
+function getValue(element) {
+    return element.value
+}
+
+function getType(element) {
+    for (let i = 0; i < typesOfTicket.length; i++) {
+        if (typesOfTicket[i] === element) {
+            typeOfTicket = i
+            return typeOfTicket
+        }
+    }
+}
+
+function countSumOfTicket() {
+    let sum = getValue(ticketBasic) * prices[typeOfTicket] + getValue(ticketSenior) * prices[typeOfTicket] / 2
+    sumOfTicket.innerHTML = `${sum}`
+}
+
+function less(element) {
+    element.value == 0 ? element.value = 0 : element.value--
+        element.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+function more(element) {
+    element.value == 20 ? element.value = 20 : element.value++
+        element.dispatchEvent(new Event('input', { bubbles: true }));
+}
 console.log('оценка - 73 балла')
 console.log('Частично выполненные пункты:')
 console.log('1) если видео с YouTube проигрывается, клик по кнопке Pause останавливает его проигрывание. Также проигрывание видео останавливается, если кликнуть по другому слайду или кнопке Play в центре другого слайда. В указанной ситуации другое видео должно запуститься, а текущее остановиться. Невозможно проигрывание нескольких YouTube видео одновременно')
@@ -412,7 +464,3 @@ console.log('25) при прокрутке страницы вниз появл�
 console.log('26) если прокрутить страницу вверх и затем снова прокручивать вниз, анимация появления картин повторяется')
 console.log('27) при обновлении страницы, если она к тому моменту была прокручена до секции Galery, анимация картин повторяется')
 console.log('28) в секции Contacts добавлена интерактивная карта')
-console.log('')
-console.log('')
-console.log('')
-console.log('')
