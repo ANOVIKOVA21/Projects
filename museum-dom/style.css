@@ -707,6 +707,7 @@
                   }
                   
                   .tickets__type input+label {
+                      cursor: pointer;
                       display: inline-flex;
                       align-items: center;
                       user-select: none;
@@ -772,6 +773,7 @@
                   
                   .less,
                   .more {
+                      cursor: pointer;
                       border: 0;
                       background-color: white;
                       margin: 0;
