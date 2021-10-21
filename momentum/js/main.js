@@ -15,7 +15,14 @@ const city = document.querySelector('.city');
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
 const btnChangeQuote = document.querySelector('.change-quote');
+const audio = document.querySelector('audio');
+const btnPlay = document.querySelector('.play');
+const btnPlayPrev = document.querySelector('.play-prev');
+const btnPlayNext = document.querySelector('.play-next');
+const playListContainer = document.querySelector('.play-list');
 
+let isPlay = false;
+let playNum = 0;
 let randomNum;
 
 function showTime() {
@@ -108,10 +115,9 @@ async function getWeather() {
         weatherIcon.classList.add(`owf-${data.weather[0].id}`);
         temperature.textContent = `${Math.round(data.main.temp)}°C`;
         weatherDescription.textContent = data.weather[0].description;
-        wind.textContent = `${Math.round(data.wind.speed)} m/s`
-        humidity.textContent = `${data.main.humidity}%`
+        wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`
+        humidity.textContent = `Humidity: ${data.main.humidity}%`
         weatherError.textContent = ''
-            // console.log(data);
     } catch (er) {
         er = 'Please enter correct data'
         weatherError.textContent = er
@@ -120,6 +126,7 @@ async function getWeather() {
 getWeather()
 city.addEventListener('change', getWeather)
 
+//Quotes
 async function getQuotes() {
     const quotes = 'js/quotes.json';
     const res = await fetch(quotes);
@@ -133,3 +140,70 @@ async function getQuotes() {
 }
 getQuotes();
 btnChangeQuote.addEventListener('click', getQuotes)
+
+//audio
+const playList = [{
+        title: 'Aqua Caelestis',
+        src: '../assets/sounds/Aqua Caelestis.mp3',
+        duration: '00:39'
+    },
+    {
+        title: 'Ennio Morricone',
+        src: '../assets/sounds/Ennio Morricone.mp3',
+        duration: '01:37'
+    },
+    {
+        title: 'River Flows In You',
+        src: '../assets/sounds/River Flows In You.mp3',
+        duration: '01:37'
+    },
+    {
+        title: 'Summer Wind',
+        src: '../assets/sounds/Summer Wind.mp3',
+        duration: '01:50'
+    }
+]
+playList.forEach(el => {
+    const li = document.createElement('li');
+    li.classList.add('play-item')
+    li.textContent = el.title
+    playListContainer.append(li)
+})
+const tracks = document.querySelectorAll('.play-item')
+
+btnPlay.addEventListener('click', playPauseAudio)
+
+function playPauseAudio() {
+    if (!isPlay) {
+        isPlay = true;
+        btnPlay.classList.add('pause');
+        tracks[playNum].classList.add('item-active');
+        audio.src = playList[playNum].src;
+        audio.currentTime = 0;
+        audio.play();
+    } else {
+        isPlay = false;
+        btnPlay.classList.remove('pause');
+        audio.pause();
+    }
+}
+btnPlayNext.addEventListener('click', playNext)
+btnPlayPrev.addEventListener('click', playPrev)
+
+function playNext() {
+    isPlay = false
+    tracks[playNum].classList.remove('item-active');
+    playNum === playList.length - 1 ? playNum = 0 : playNum++
+        playPauseAudio()
+}
+
+function playPrev() {
+    isPlay = false
+    tracks[playNum].classList.remove('item-active');
+    playNum === 0 ? playNum = playList.length - 1 : playNum--
+        playPauseAudio()
+}
+// if (audio.currentTime == playList[playNum].duration) {
+//     playNum++
+//     playPauseAudio()
+// }
