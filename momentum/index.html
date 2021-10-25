@@ -13,10 +13,22 @@
 <body>
     <header class="header">
         <div class="player">
+            <h3 class="track-name"></h3>
             <div class="player-controls">
-                <button class="play-prev player-icon"></button>
-                <button class="play player-icon"></button>
-                <button class="play-next player-icon"></button>
+                <div class="player-buttons">
+                    <button class="play-prev player-icon"></button>
+                    <button class="play player-icon"></button>
+                    <button class="play-next player-icon"></button>
+                </div>
+                <input type="range" value="0" min="0" max="100" class="player-progress">
+                <div class="audio-time">
+                    <div class="player-timer">00:00</div>
+                    <div class="player-duration"></div>
+                </div>
+                <div class="volume">
+                    <button class="player-volume player-icon" type="button"></button>
+                    <input type="range" value="40" min="0" max="100" class="player-volume-progress">
+                </div>
             </div>
             <audio src="/assets/sounds/Aqua Caelestis.mp3"></audio>
             <ul class="play-list"></ul>
@@ -46,6 +58,21 @@
         </div>
     </main>
     <footer class="footer">
+        <button type="button" class="settings-btn"></button>
+        <div class="settings">
+            <select class="languages">
+                <option value="en" selected>English</option>
+                <option value="ru">Русский</option>
+            </select>
+            <select class="background">
+                <option value="gitHub" selected>GitHub</option>
+                <option value="unsplash">Unsplash API</option>
+                <option value="flickr">Flickr API</option>
+            </select>
+            <p class="settings-text">Theme selection:</p>
+            <button type="button" class="btn-theme">Default theme</button>
+            <input type="text" placeholder="enter tag theme" class="tag-theme">
+        </div>
         <button class="change-quote"></button>
         <div>
             <div class="quote"></div>

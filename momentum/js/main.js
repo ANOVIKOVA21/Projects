@@ -20,10 +20,25 @@ const btnPlay = document.querySelector('.play');
 const btnPlayPrev = document.querySelector('.play-prev');
 const btnPlayNext = document.querySelector('.play-next');
 const playListContainer = document.querySelector('.play-list');
+const audioProgress = document.querySelector('.player-progress');
+const btnVolume = document.querySelector('.player-volume');
+const volumeProgress = document.querySelector('.player-volume-progress');
+const audioTimer = document.querySelector('.player-timer');
+const audioDuration = document.querySelector('.player-duration');
+const trackName = document.querySelector('.track-name');
+const languageSelection = document.querySelector('.languages');
+const backgroundSelection = document.querySelector('.background');
+const btnTheme = document.querySelector('.btn-theme');
+const tagTheme = document.querySelector('.tag-theme');
+const btnSettings = document.querySelector('.settings-btn');
+const settings = document.querySelector('.settings ');
 
+let randomNum = getRandomNum(1, 20);
 let isPlay = false;
 let playNum = 0;
-let randomNum;
+let isMute = false;
+let isSettingsClose = true;
+
 
 function showTime() {
     const date = new Date();
@@ -75,9 +90,10 @@ function getLocalStorage() {
 function getRandomNum(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+
 }
-getRandomNum(1, 20)
+// getRandomNum(1, 20)
 
 function setBg() {
     const timeOfDay = getTimeOfDay()
@@ -93,13 +109,24 @@ function setBg() {
 setBg()
 
 function getSlideNext() {
-    randomNum === 20 ? randomNum = 1 : randomNum++
-        setBg()
+    let value = backgroundSelection.value
+    if (value === 'gitHub') {
+        randomNum === 20 ? randomNum = 1 : randomNum++
+            setBg()
+    } else {
+        changeBackground()
+    }
+
 }
 
 function getSlidePrev() {
-    randomNum === 1 ? randomNum = 20 : randomNum--
-        setBg()
+    let value = backgroundSelection.value
+    if (value === 'gitHub') {
+        randomNum === 1 ? randomNum = 20 : randomNum--
+            setBg()
+    } else {
+        changeBackground()
+    }
 }
 btnNext.addEventListener('click', getSlideNext)
 btnPrev.addEventListener('click', getSlidePrev)
@@ -131,10 +158,12 @@ async function getQuotes() {
     const quotes = 'js/quotes.json';
     const res = await fetch(quotes);
     const data = await res.json();
-    // console.log(data[5].text)
-    getRandomNum(0, data.length - 1)
-    const randomNumOfQuote = randomNum;
-    console.log(randomNum + ' quote')
+
+    // getRandomNum(0, data.length - 1)
+    // const randomNumOfQuote = randomNum;
+
+    const randomNumOfQuote = getRandomNum(0, data.length - 1);
+    console.log(randomNumOfQuote + ' quote')
     quote.textContent = data[randomNumOfQuote].text
     author.textContent = data[randomNumOfQuote].author
 }
@@ -163,30 +192,74 @@ const playList = [{
         duration: '01:50'
     }
 ]
-playList.forEach(el => {
+playList.forEach((el, index) => {
     const li = document.createElement('li');
     li.classList.add('play-item')
     li.textContent = el.title
     playListContainer.append(li)
+
 })
 const tracks = document.querySelectorAll('.play-item')
 
+tracks.forEach((track, index) => {
+    // let prevTrack = []
+    track.addEventListener('click', () => {
+        playNum = index;
+        // track.classList.add('track-active');
+        playPauseAudio();
+        // if (prevTrack.length > 0) {
+        //     // tracks[prevTrack[0]].classList.remove('track-active')
+        //     tracks[prevTrack[0]].classList.remove('item-active')
+        //     prevTrack = []
+        // }
+        // prevTrack.push(index)
+    })
+})
 btnPlay.addEventListener('click', playPauseAudio)
 
 function playPauseAudio() {
+    let audioPlay
     if (!isPlay) {
         isPlay = true;
         btnPlay.classList.add('pause');
         tracks[playNum].classList.add('item-active');
+        trackName.textContent = playList[playNum].title;
         audio.src = playList[playNum].src;
-        audio.currentTime = 0;
+        audioProgress.value = 0;
+        audioDuration.textContent = playList[playNum].duration
         audio.play();
+        audioPlay = setInterval(function() {
+            if (audioProgress.value !== '100') {
+                let currentTime = Math.round(audio.currentTime)
+                audioTimer.textContent = formatTime(Math.floor(audio.currentTime))
+                audioLength = Math.round(audio.duration)
+                audioProgress.value = ((currentTime * 100) / audioLength) + '';
+                audioProgress.style.background = `linear-gradient(to right, #28d5ec 0%, #28d5ec ${audioProgress.value}%, #C4C4C4 ${audioProgress.value}%, #C4C4C4 100%)`
+            } else if (audioProgress.value === '100') {
+                tracks[playNum].classList.remove('item-active');
+                playNum === playList.length - 1 ? playNum = 0 : playNum++;
+                audio.currentTime = 0;
+                audioProgress.value = 0;
+                isPlay = false;
+                playPauseAudio()
+            }
+        }, 10)
     } else {
         isPlay = false;
+        clearInterval(audioPlay)
         btnPlay.classList.remove('pause');
         audio.pause();
     }
 }
+
+function formatTime(seconds) {
+    let min = Math.floor((seconds / 60));
+    let sec = Math.floor(seconds - (min * 60));
+    if (sec < 10) {
+        sec = `0${sec}`;
+    };
+    return `0${min}:${sec}`;
+};
 btnPlayNext.addEventListener('click', playNext)
 btnPlayPrev.addEventListener('click', playPrev)
 
@@ -203,7 +276,111 @@ function playPrev() {
     playNum === 0 ? playNum = playList.length - 1 : playNum--
         playPauseAudio()
 }
-// if (audio.currentTime == playList[playNum].duration) {
-//     playNum++
-//     playPauseAudio()
-// }
+audioProgress.addEventListener('click', rewindAudio)
+
+function rewindAudio(event) {
+    let inputWidth = audioProgress.offsetWidth
+    let eventPosition = event.offsetX;
+    audioProgress.value = 100 * eventPosition / inputWidth
+    audio.currentTime = audio.duration * (eventPosition / inputWidth)
+}
+
+btnVolume.addEventListener('click', clickOnBtnVolume)
+
+function volumeIsMute() {
+    if (isMute) {
+        volumeProgress.value = 0;
+        btnVolume.classList.add('mute')
+    } else {
+        btnVolume.classList.remove('mute')
+    }
+    audio.volume = volumeProgress.value / 100;
+    volumeProgress.style.background = `linear-gradient(to right, #28d5ec 0%, #28d5ec ${volumeProgress.value}%, #C4C4C4 ${volumeProgress.value}%, #C4C4C4 100%)`
+}
+
+function clickOnBtnVolume() {
+    if (!isMute) {
+        isMute = true;
+    } else {
+        isMute = false;
+        volumeProgress.value = 50;
+    }
+    volumeIsMute()
+}
+volumeProgress.addEventListener('click', () => {
+    if (volumeProgress.value === '0') isMute = true
+    else isMute = false
+    volumeIsMute()
+})
+
+// api
+
+let href = {
+    // theme: setThemeTag(),https://api.unsplash.com/photos/random?orientation=landscape&query=flowers&client_id=QQ1kw0Nf1K0mDfDhAEFWZr5ga6y8P0kQuf9A68r7Zsk
+    gitHub: function() { setBg() },
+    unsplash: `https://api.unsplash.com/photos/random?orientation=landscape&query=${setThemeTag()}&client_id=QQ1kw0Nf1K0mDfDhAEFWZr5ga6y8P0kQuf9A68r7Zsk`,
+    flickr: `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=737d9f703e8d737bc689b12e7038f65a&tags=${setThemeTag()}&extras=url_l&format=json&nojsoncallback=1`
+}
+
+
+function setThemeTag() {
+    debugger
+    let theme;
+    if (tagTheme.value) {
+        return theme = tagTheme.value
+    } else {
+        return theme = getTimeOfDay()
+    }
+
+}
+
+function updateTagValue() {
+    debugger
+    href.unsplash = `https://api.unsplash.com/photos/random?orientation=landscape&query=${setThemeTag()}&client_id=QQ1kw0Nf1K0mDfDhAEFWZr5ga6y8P0kQuf9A68r7Zsk`;
+    href.flickr = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=737d9f703e8d737bc689b12e7038f65a&tags=${setThemeTag()}&extras=url_l&format=json&nojsoncallback=1`;
+}
+async function getLinkToImage(url) {
+
+    const res = await fetch(url);
+    const data = await res.json();
+    return data
+}
+backgroundSelection.addEventListener('change', changeBackground)
+
+async function changeBackground() {
+    debugger
+    let value = backgroundSelection.value
+    if (value === 'gitHub') return href.gitHub()
+    let data = await getLinkToImage(href[value])
+
+    if (value === 'unsplash') {
+        body.style.backgroundImage = `url('${data.urls.regular}')`
+    } else {
+        const randomImg = getRandomNum(0, 99)
+        body.style.backgroundImage = `url('${data.photos.photo[randomImg].url_l}')`
+    }
+
+}
+tagTheme.addEventListener('change', () => {
+    setThemeTag()
+    updateTagValue()
+    backgroundSelection.dispatchEvent(new Event('change'))
+})
+btnTheme.addEventListener('click', () => {
+    debugger
+    tagTheme.value = ''
+    setThemeTag()
+    updateTagValue()
+    backgroundSelection.dispatchEvent(new Event('change'))
+})
+btnSettings.addEventListener('click', openSettings)
+
+function openSettings() {
+    if (isSettingsClose) {
+        isSettingsClose = false
+        settings.style.transform = 'translate(0)'
+    } else {
+        isSettingsClose = true
+        settings.style.transform = 'translate(-210px)'
+    }
+}
