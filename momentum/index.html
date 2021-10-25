@@ -15,25 +15,25 @@
         <div class="player">
             <h3 class="track-name"></h3>
             <div class="player-controls">
-                <div class="player-buttons">
+                <div class="player-buttons hide-btns">
                     <button class="play-prev player-icon"></button>
                     <button class="play player-icon"></button>
                     <button class="play-next player-icon"></button>
                 </div>
-                <input type="range" value="0" min="0" max="100" class="player-progress">
-                <div class="audio-time">
+                <input type="range" value="0" min="0" max="100" class="player-progress hide-progress">
+                <div class="audio-time hide-track-time">
                     <div class="player-timer">00:00</div>
                     <div class="player-duration"></div>
                 </div>
-                <div class="volume">
+                <div class="volume hide-vol">
                     <button class="player-volume player-icon" type="button"></button>
                     <input type="range" value="40" min="0" max="100" class="player-volume-progress">
                 </div>
             </div>
             <audio src="/assets/sounds/Aqua Caelestis.mp3"></audio>
-            <ul class="play-list"></ul>
+            <ul class="play-list hide-playlist"></ul>
         </div>
-        <div class="weather">
+        <div class="weather hide-weather">
             <input type="text" class="city" value="Minsk" />
             <i class="weather-icon owf"></i>
             <div class="weather-error"></div>
@@ -50,14 +50,21 @@
             <button class="slide-prev slider-icon"></button>
             <button class="slide-next slider-icon"></button>
         </div>
-        <time class="time"></time>
-        <date class="date"></date>
-        <div class="greeting-container">
+        <time class="time hide-clock"></time>
+        <date class="date hide-date"></date>
+        <div class="greeting-container hide-greeting">
             <span class="greeting"></span>
             <input type="text" class="name" placeholder="[Enter name]" />
         </div>
     </main>
     <footer class="footer">
+        <div class="hide-quote">
+            <button class="change-quote"></button>
+            <div>
+                <div class="quote"></div>
+                <div class="author"></div>
+            </div>
+        </div>
         <button type="button" class="settings-btn"></button>
         <div class="settings">
             <select class="languages">
@@ -72,11 +79,19 @@
             <p class="settings-text">Theme selection:</p>
             <button type="button" class="btn-theme">Default theme</button>
             <input type="text" placeholder="enter tag theme" class="tag-theme">
-        </div>
-        <button class="change-quote"></button>
-        <div>
-            <div class="quote"></div>
-            <div class="author"></div>
+            <p class="settings-text">Select the item from the list below that you want to hide:</p>
+            <ul class="hide-list">
+                <li class="hide-btns">Player buttons</li>
+                <li class="hide-progress">Track progress</li>
+                <li class="hide-track-time">Track time</li>
+                <li class="hide-vol">Volume</li>
+                <li class="hide-playlist">Playlist</li>
+                <li class="hide-weather">Weather</li>
+                <li class="hide-clock">Clock</li>
+                <li class="hide-date">Date</li>
+                <li class="hide-greeting">Greeting</li>
+                <li class="hide-quote">Quote</li>
+            </ul>
         </div>
     </footer>
     <script src="js/main.js"></script>

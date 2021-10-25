@@ -31,7 +31,9 @@ const backgroundSelection = document.querySelector('.background');
 const btnTheme = document.querySelector('.btn-theme');
 const tagTheme = document.querySelector('.tag-theme');
 const btnSettings = document.querySelector('.settings-btn');
-const settings = document.querySelector('.settings ');
+const settings = document.querySelector('.settings');
+const hideList = document.querySelector('.hide-list');
+const hideListElements = document.querySelectorAll('.hide-list li');
 
 let randomNum = getRandomNum(1, 20);
 let isPlay = false;
@@ -76,6 +78,9 @@ window.addEventListener('load', getLocalStorage)
 function setLocalStorage() {
     localStorage.setItem('name', nameInput.value);
     localStorage.setItem('city', city.value);
+    // document.querySelectorAll('body *').forEach((el, i) => {
+    //     localStorage.setItem(`${i}`, el.classList);
+    // })
 }
 
 function getLocalStorage() {
@@ -85,6 +90,10 @@ function getLocalStorage() {
     if (localStorage.getItem('city')) {
         city.value = localStorage.getItem('city');
     }
+    // document.querySelectorAll('body *').forEach((el, i) => {
+    //     // console.log(el.classList)
+    //     el.classList = localStorage.getItem(`${i}`);
+    // })
 }
 
 function getRandomNum(min, max) {
@@ -316,7 +325,6 @@ volumeProgress.addEventListener('click', () => {
 // api
 
 let href = {
-    // theme: setThemeTag(),https://api.unsplash.com/photos/random?orientation=landscape&query=flowers&client_id=QQ1kw0Nf1K0mDfDhAEFWZr5ga6y8P0kQuf9A68r7Zsk
     gitHub: function() { setBg() },
     unsplash: `https://api.unsplash.com/photos/random?orientation=landscape&query=${setThemeTag()}&client_id=QQ1kw0Nf1K0mDfDhAEFWZr5ga6y8P0kQuf9A68r7Zsk`,
     flickr: `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=737d9f703e8d737bc689b12e7038f65a&tags=${setThemeTag()}&extras=url_l&format=json&nojsoncallback=1`
@@ -324,7 +332,6 @@ let href = {
 
 
 function setThemeTag() {
-    debugger
     let theme;
     if (tagTheme.value) {
         return theme = tagTheme.value
@@ -335,12 +342,10 @@ function setThemeTag() {
 }
 
 function updateTagValue() {
-    debugger
     href.unsplash = `https://api.unsplash.com/photos/random?orientation=landscape&query=${setThemeTag()}&client_id=QQ1kw0Nf1K0mDfDhAEFWZr5ga6y8P0kQuf9A68r7Zsk`;
     href.flickr = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=737d9f703e8d737bc689b12e7038f65a&tags=${setThemeTag()}&extras=url_l&format=json&nojsoncallback=1`;
 }
 async function getLinkToImage(url) {
-
     const res = await fetch(url);
     const data = await res.json();
     return data
@@ -348,7 +353,6 @@ async function getLinkToImage(url) {
 backgroundSelection.addEventListener('change', changeBackground)
 
 async function changeBackground() {
-    debugger
     let value = backgroundSelection.value
     if (value === 'gitHub') return href.gitHub()
     let data = await getLinkToImage(href[value])
@@ -367,7 +371,6 @@ tagTheme.addEventListener('change', () => {
     backgroundSelection.dispatchEvent(new Event('change'))
 })
 btnTheme.addEventListener('click', () => {
-    debugger
     tagTheme.value = ''
     setThemeTag()
     updateTagValue()
@@ -381,6 +384,21 @@ function openSettings() {
         settings.style.transform = 'translate(0)'
     } else {
         isSettingsClose = true
-        settings.style.transform = 'translate(-210px)'
+        settings.style.transform = 'translate(-260px)'
     }
+}
+
+//hide el
+hideList.addEventListener('click', hideElement)
+
+function hideElement(event) {
+    let target = event.target
+    hideListElements.forEach(el => {
+        if (el === target) {
+            el.classList.toggle('hidden')
+            const className = el.classList[0]
+            const needHide = document.querySelector(`.${className}`)
+            needHide.classList.toggle('hide')
+        }
+    })
 }

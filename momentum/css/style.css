@@ -344,13 +344,14 @@ body {
     position: absolute;
     background-color: white;
     left: 60px;
-    width: 150px;
-    height: 200px;
+    width: 200px;
+    max-height: 350px;
     padding: 10px 5px;
     border-radius: 5px;
     border: 3px solid #cdc3c3;
-    transform: translate(-210px);
+    transform: translate(-260px);
     transition: 1s;
+    overflow-y: scroll;
 }
 
 .languages,
@@ -400,6 +401,31 @@ body {
 
 .author {
     min-height: 20px;
+}
+
+.hide-list {
+    color: #19232a;
+    text-align: left;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.hide-list li {
+    padding: 5px;
+    border-bottom: 2px solid gray;
+    cursor: pointer;
+}
+
+.hide {
+    opacity: 0;
+    transition: 1s;
+}
+
+.hidden::after {
+    content: "\2713";
+    padding: 5px;
+    font-weight: 900;
+    color: green;
 }
 
 @media (max-width: 950px) {
