@@ -78,6 +78,18 @@ window.addEventListener('load', getLocalStorage)
 function setLocalStorage() {
     localStorage.setItem('name', nameInput.value);
     localStorage.setItem('city', city.value);
+    let hiddenElements = [];
+
+    document.querySelectorAll('.hide').forEach(el => {
+        el.classList.forEach(c => {
+            if (c.startsWith('hide-')) {
+                hiddenElements.push(c);
+            }
+        });
+    });
+
+    localStorage.setItem('hiddenElements', JSON.stringify(hiddenElements));
+
     // document.querySelectorAll('body *').forEach((el, i) => {
     //     localStorage.setItem(`${i}`, el.classList);
     // })
@@ -90,6 +102,17 @@ function getLocalStorage() {
     if (localStorage.getItem('city')) {
         city.value = localStorage.getItem('city');
     }
+
+    let hiddenElementsJson = localStorage.getItem('hiddenElements');
+    let hiddenElements = JSON.parse(hiddenElementsJson);
+
+    hiddenElements.forEach(x => {
+        document.querySelectorAll('.' + x).forEach(el => {
+            let classToAdd = el.tagName == 'LI' ? 'hidden' : 'hide';
+            el.classList.add(classToAdd);
+        });
+    });
+
     // document.querySelectorAll('body *').forEach((el, i) => {
     //     // console.log(el.classList)
     //     el.classList = localStorage.getItem(`${i}`);
