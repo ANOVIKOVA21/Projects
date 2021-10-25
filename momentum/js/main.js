@@ -78,6 +78,8 @@ window.addEventListener('load', getLocalStorage)
 function setLocalStorage() {
     localStorage.setItem('name', nameInput.value);
     localStorage.setItem('city', city.value);
+    localStorage.setItem('languageSelection', languageSelection.value);
+    localStorage.setItem('backgroundSelection', backgroundSelection.value);
     let hiddenElements = [];
 
     document.querySelectorAll('.hide').forEach(el => {
@@ -90,9 +92,6 @@ function setLocalStorage() {
 
     localStorage.setItem('hiddenElements', JSON.stringify(hiddenElements));
 
-    // document.querySelectorAll('body *').forEach((el, i) => {
-    //     localStorage.setItem(`${i}`, el.classList);
-    // })
 }
 
 function getLocalStorage() {
@@ -102,21 +101,25 @@ function getLocalStorage() {
     if (localStorage.getItem('city')) {
         city.value = localStorage.getItem('city');
     }
+    if (localStorage.getItem('languageSelection')) {
+        languageSelection.value = localStorage.getItem('languageSelection');
+    }
+    if (localStorage.getItem('backgroundSelection')) {
+        backgroundSelection.value = localStorage.getItem('backgroundSelection');
+    }
 
-    let hiddenElementsJson = localStorage.getItem('hiddenElements');
-    let hiddenElements = JSON.parse(hiddenElementsJson);
+    if (localStorage.getItem('hiddenElements')) {
+        let hiddenElementsJson = localStorage.getItem('hiddenElements');
+        let hiddenElements = JSON.parse(hiddenElementsJson);
 
-    hiddenElements.forEach(x => {
-        document.querySelectorAll('.' + x).forEach(el => {
-            let classToAdd = el.tagName == 'LI' ? 'hidden' : 'hide';
-            el.classList.add(classToAdd);
+        hiddenElements.forEach(x => {
+            document.querySelectorAll('.' + x).forEach(el => {
+                let classToAdd = el.tagName == 'LI' ? 'hidden' : 'hide';
+                el.classList.add(classToAdd);
+            });
         });
-    });
+    }
 
-    // document.querySelectorAll('body *').forEach((el, i) => {
-    //     // console.log(el.classList)
-    //     el.classList = localStorage.getItem(`${i}`);
-    // })
 }
 
 function getRandomNum(min, max) {
@@ -135,7 +138,6 @@ function setBg() {
     img.src = `https://raw.githubusercontent.com/ANOVIKOVA21/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`
     img.onload = () => {
         body.style.backgroundImage = `url('${img.src}')`
-        console.log(randomNum)
     }
 }
 setBg()
@@ -193,9 +195,7 @@ async function getQuotes() {
 
     // getRandomNum(0, data.length - 1)
     // const randomNumOfQuote = randomNum;
-
     const randomNumOfQuote = getRandomNum(0, data.length - 1);
-    console.log(randomNumOfQuote + ' quote')
     quote.textContent = data[randomNumOfQuote].text
     author.textContent = data[randomNumOfQuote].author
 }
@@ -425,3 +425,7 @@ function hideElement(event) {
         }
     })
 }
+console.log('оценка 135 баллов')
+console.log('не засчитанные пункты:')
+console.log('Перевод приложения на два языка')
+console.log('Дополнительный функционал на выбор')
