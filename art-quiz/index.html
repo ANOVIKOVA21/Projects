@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/owfont-regular.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="main.js" />
     <title>Art Quiz</title>
 </head>
 
@@ -30,7 +29,7 @@
             </div>
             <div class="settings"></div>
         </section>
-        <article class="settings-page">
+        <article class="settings-page hide">
             <div class="wrap">
                 <span class="back">Back</span>
                 <h2 class="title">Settings</h2>
@@ -47,13 +46,13 @@
                 </div>
                 <p>Time to answer</p>
                 <div>
-                    <button type="button" onclick="less(ticketBasic)" class="less">–</button>
+                    <button type="button" onclick="less(time)" class="less">–</button>
                     <input type="number" min="5" max="30" value="20" step="5" class="time">
-                    <button type="button" onclick="more(ticketBasic)" class="more">+</button>
+                    <button type="button" onclick="more(time)" class="more">+</button>
                 </div>
             </div>
         </article>
-        <section class="categories-page">
+        <section class="categories-page hide">
             <div class="wrap">
                 <header class="categories-header">
                     <div class="categories-logo">
@@ -70,6 +69,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -77,6 +77,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -84,6 +85,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -91,6 +93,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -98,6 +101,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -105,6 +109,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -112,6 +117,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -119,6 +125,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -126,6 +133,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -133,6 +141,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -140,6 +149,7 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                     <div class="category">
                         <div class="category-title">
@@ -147,17 +157,18 @@
                             <p class="category-result"><span class="true-answers">0</span>/10</p>
                         </div>
                         <div class="category-img"></div>
+                        <div class="category-score">Score</div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="game-page">
+        <section class="game-page hide">
             <header class="game-header">
                 <p class="question">Who is the author of this picture?</p>
                 <span class="timer">0:20</span>
             </header>
             <div class="game-content">
-                <div class="quiz-author">
+                <div class="quiz-author hide">
                     <div class="img">
                         <ul class="question-slider">
                             <li></li>
@@ -179,7 +190,7 @@
                         <button type="button" class="answer-button"></button>
                     </div>
                 </div>
-                <div class="quiz-picture">
+                <div class="quiz-picture hide">
                     <div class="option-picture"></div>
                     <div class="option-picture"></div>
                     <div class="option-picture"></div>
@@ -187,7 +198,7 @@
                 </div>
             </div>
         </section>
-        <section class="response-page">
+        <section class="response-page hide">
             <div class="response-result">
                 <div class="result-picture">
                     <div class="mark"></div>
@@ -197,7 +208,7 @@
                 <button type="button" class="button-next">Next</button>
             </div>
         </section>
-        <section class="result-page">
+        <section class="result-page hide">
             <div class="result-window">
                 <div class="result-img"></div>
                 <p>Congratulations!</p>
@@ -209,7 +220,7 @@
 
             </div>
         </section>
-        <section class="score-page"></section>
+        <section class="score-page hide"></section>
     </main>
     <footer>
         <ul class="info">
@@ -220,6 +231,7 @@
             </li>
         </ul>
     </footer>
+    <script src="scripts/main.js"></script>
 </body>
 
 </html>
