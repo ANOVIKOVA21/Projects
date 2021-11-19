@@ -344,7 +344,8 @@ input:checked+.slider:before {
 
 .category-score {
     width: 100%;
-    position: relative;
+    position: absolute;
+    bottom: 0;
     text-align: center;
     color: white;
     font-size: 32px;
@@ -379,9 +380,12 @@ input:checked+.slider:before {
 }
 
 .category-img {
+    position: relative;
     border-radius: 0 0 25px 25px;
     align-self: stretch;
     height: 100%;
+    background-position: center;
+    background-size: cover;
     /* background: url('../assets/img/picture.jpg') no-repeat center/cover; */
 }
 

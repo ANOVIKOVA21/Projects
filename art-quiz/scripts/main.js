@@ -43,6 +43,10 @@ choice.addEventListener('click', (event) => {
         hideElement(home)
         hideElement(header)
         showElement(categoriesPage)
+        if (target === authorChoice) main('authors')
+        else main('pictures')
+        console.log(target)
+        console.log(target === authorChoice)
     }
 })
 settingsImg.addEventListener('click', () => {
@@ -86,7 +90,7 @@ async function getObject() {
     const data = await fetch('scripts/engData.json');
     return await data.json()
 }
-async function smy() {
+async function main(typeGame) {
     const infoImgs = await getObject()
     const length = infoImgs.length / 2
     const authors = infoImgs.slice(0, length)
@@ -95,27 +99,18 @@ async function smy() {
     const picturesOpt = getCategories(pictures)
     const authorsImgsNums = getNumFirstCategory(authorsOpt)
     const picturesImgsNums = getNumFirstCategory(picturesOpt)
-    setBgCategory(authorsImgsNums)
-    setBgCategory(picturesImgsNums)
-    console.log(authorsOpt)
-    console.log(picturesOpt)
-        // console.log(infoImgs[2].author)
-    console.log(authorsImgsNums)
-    console.log(picturesImgsNums)
+    if (typeGame === 'authors') {
+        setBgCategory(authorsImgsNums)
+    } else {
+        setBgCategory(picturesImgsNums)
+    }
+    // console.log(authorsOpt)
+    // console.log(picturesOpt)
+    // console.log(infoImgs[2].author)
+    // console.log(authorsImgsNums)
+    // console.log(picturesImgsNums)
 }
 
-function setBgCategory(nums) {
-    nums.forEach(num => {
-        const img = new Image();
-        img.src = `https://github.com/ANOVIKOVA21/image-data/tree/master/img/${num}.jpg`
-        img.onload = () => {
-            categoryImgs.forEach(img => {
-                img.style.backgroundImage = `url('${img.src}')`
-            })
-        }
-    })
-    return console.log('Done')
-}
 
 function getCategories(arr) {
     const chunk = 10;
@@ -136,4 +131,19 @@ function getNumFirstCategory(arr) {
 
     }
     return result
+}
+
+function setBgCategory(nums) {
+    nums.forEach((num, index) => {
+        const img = new Image();
+        img.src = `https://raw.githubusercontent.com/ANOVIKOVA21/image-data/master/img/${num}.jpg`
+        img.onload = () => {
+            categoryImgs.forEach((categoryImg, indexImg) => {
+                if (index === indexImg) {
+                    categoryImg.style.backgroundImage = `url('${img.src}')`
+                }
+            })
+        }
+    })
+    return console.log('Done')
 }
