@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/owfont-regular.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Art Quiz</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/svg/logo1.webp" alt="logo">
+        </div>
+    </header>
+    <main>
+        <section class="home-page">
+            <div class="choice">
+                <div class="painter game-type">
+                    <h3 class="game-type-text">ARTISTS QUIZ</h2>
+                </div>
+                <div class="picture game-type">
+                    <h3 class="game-type-text">PICTURES QUIZ</h2>
+                </div>
+            </div>
+            <div class="settings"></div>
+        </section>
+        <article class="settings-page hide">
+            <div class="wrap">
+                <span class="back">Back</span>
+                <h2 class="title">Settings</h2>
+                <!-- <label for="volume">Volume</label> -->
+                <p>Volume</p>
+                <input type="range" value="50" min="0" max="100" class="volume" id="volume">
+                <p>Time game</p>
+                <div class="switcher">
+                    <span class="swith-text">On</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <p>Time to answer</p>
+                <div>
+                    <button type="button" onclick="less(time)" class="less">–</button>
+                    <input type="number" min="5" max="30" value="20" step="5" class="time">
+                    <button type="button" onclick="more(time)" class="more">+</button>
+                </div>
+            </div>
+        </article>
+        <section class="categories-page hide">
+            <div class="wrap">
+                <header class="categories-header">
+                    <div class="categories-logo">
+                        <img src="assets/svg/logo1.webp" alt="logo">
+                    </div>
+                    <p>Home</p>
+                    <div class="settings"></div>
+                </header>
+                <h2 class="title">Categories</h2>
+                <div class="categories">
+                    <div class="category" data-category-num="1">
+                        <div class="category-title">
+                            <h3 class="category-num">1</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="2">
+                        <div class="category-title">
+                            <h3 class="category-num">2</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="3">
+                        <div class="category-title">
+                            <h3 class="category-num">3</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="4">
+                        <div class="category-title">
+                            <h3 class="category-num">4</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="5">
+                        <div class="category-title">
+                            <h3 class="category-num">5</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="6">
+                        <div class="category-title">
+                            <h3 class="category-num">6</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="7">
+                        <div class="category-title">
+                            <h3 class="category-num">7</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="8">
+                        <div class="category-title">
+                            <h3 class="category-num">8</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="9">
+                        <div class="category-title">
+                            <h3 class="category-num">9</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="10">
+                        <div class="category-title">
+                            <h3 class="category-num">10</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="11">
+                        <div class="category-title">
+                            <h3 class="category-num">11</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                    <div class="category" data-category-num="12">
+                        <div class="category-title">
+                            <h3 class="category-num">12</h3>
+                            <p class="category-result"><span class="true-answers">0</span>/10</p>
+                        </div>
+                        <div class="category-img">
+                            <div class="category-score">Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="game-page hide">
+            <header class="game-header">
+                <p class="question"></p>
+                <span class="timer">0:20</span>
+            </header>
+            <div class="game-content">
+                <div class="quiz-author hide">
+                    <div class="img">
+                        <ul class="question-slider">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="option-buttons">
+                        <button type="button" class="answer-button"></button>
+                        <button type="button" class="answer-button"></button>
+                        <button type="button" class="answer-button"></button>
+                        <button type="button" class="answer-button"></button>
+                    </div>
+                </div>
+                <div class="quiz-picture hide">
+                    <div class="option-picture"></div>
+                    <div class="option-picture"></div>
+                    <div class="option-picture"></div>
+                    <div class="option-picture"></div>
+                </div>
+            </div>
+        </section>
+        <section class="response-page hide">
+            <div class="response-result">
+                <div class="result-picture">
+                    <div class="mark"></div>
+                </div>
+                <h4 class="picture-name"></h4>
+                <p class="info-picture"></p>
+                <button type="button" class="button-next">Next</button>
+            </div>
+        </section>
+        <section class="result-page hide">
+            <div class="result-window">
+                <div class="result-img"></div>
+                <p>Congratulations!</p>
+                <p class="category-result"><span class="true-answers">0</span>/10</p>
+                <div class="result-buttons">
+                    <button type="button" class="home-next">Home</button>
+                    <button type="button" class="quiz-next">Next Quiz</button>
+                </div>
+            </div>
+        </section>
+        <section class="score-page hide"></section>
+    </main>
+    <footer>
+        <ul class="info">
+            <li><a href="https://github.com/ANOVIKOVA21">ANNA NOVIKOVA</a></li>
+            <li>2021</li>
+            <li>
+                <a href="https://rs.school/js/"><img src="assets/svg/rs_school.svg" alt="logo rs school"></a>
+            </li>
+        </ul>
+    </footer>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
