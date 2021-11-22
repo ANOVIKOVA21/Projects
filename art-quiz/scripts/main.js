@@ -13,16 +13,20 @@ async function run() {
     const settingsImg = home.querySelector('.settings');
     const backFromSettings = settingsPage.querySelector('.back');
     const time = settingsPage.querySelector('.time');
+    const slider = settingsPage.querySelector('.slider');
+    const switchText = settingsPage.querySelector('.switch-text');
+    const timeButtons = settingsPage.querySelector('.time-buttons');
     const backFromCategories = categoriesPage.querySelector('.categories-header p');
     const categoriesSettings = categoriesPage.querySelector('.categories-page .settings');
     const categoriesContainer = categoriesPage.querySelector('.categories');
-    const arrCategories = categoriesPage.querySelector('.category');
+    // const arrCategories = categoriesPage.querySelector('.category');
     const categoryImgs = categoriesPage.querySelectorAll('.category-img');
     const trueAnswersCategory = categoriesPage.querySelectorAll('.category .true-answers');
     const scoreBtns = scorePage.querySelectorAll('.category-score');
     const quizAuthor = gamePage.querySelector('.quiz-author');
     const quizPicture = gamePage.querySelector('.quiz-picture');
     const question = gamePage.querySelector('.question');
+    const timer = gamePage.querySelector('.timer');
     const quizAuthorImg = quizAuthor.querySelector('.img');
     const containerAnswerButtons = quizAuthor.querySelector('.option-buttons');
     const answerButtons = containerAnswerButtons.querySelectorAll('.answer-button');
@@ -55,7 +59,6 @@ async function run() {
                 hideElement(home),
                 hideElement(header)
             ]);
-            console.log(quizAuthor)
             showElement(categoriesPage)
             if (target === authorChoice) {
                 typeGame = 'authors'
@@ -82,8 +85,23 @@ async function run() {
         showElement(header)
         showElement(home)
     });
-
-    // categories
+    slider.addEventListener('click', () => {
+        if (switchText.textContent === 'Off') {
+            switchText.textContent = 'On'
+            timer.style.display = 'inline-block'
+        } else {
+            switchText.textContent = 'Off'
+            timer.style.display = 'none'
+        }
+    })
+    timeButtons.addEventListener('click', (ev) => {
+            const targetBtn = ev.target
+            if (!targetBtn.closest('button')) return
+            if (targetBtn.closest('.less')) less(time)
+            else if (targetBtn.closest('.more')) more(time)
+            timer.textContent = `0:${time.value}`
+        })
+        // categories
     backFromCategories.addEventListener('click', async() => {
         await Promise.all([hideElement(categoriesPage)])
         showElement(header)
@@ -118,14 +136,13 @@ async function run() {
         const targetBtn = ev.target.closest('.answer-button')
         if (!targetBtn) return
         showElement(responsePage)
-        console.log(authorGame)
         authorGame.setPicture(authorGame.currentQuestion.imageNum, responsePageImg)
         pictureName.textContent = authorGame.currentQuestion.name
         infoPicture.textContent = authorGame.currentQuestion.author + ', ' + authorGame.currentQuestion.year
         if (targetBtn.textContent === authorGame.rightAnswer) {
-            markImg.style.backgroundImage = 'url(../assets/svg/right-answer.svg)';
+            markImg.style.backgroundImage = 'url(./assets/svg/right-answer.svg)';
             rightAnswers++
-        } else markImg.style.backgroundImage = 'url(../assets/svg/wrong-answer.svg)';
+        } else markImg.style.backgroundImage = 'url(./assets/svg/wrong-answer.svg)';
     })
     quizPicture.addEventListener('click', (ev) => {
             const targetOpt = ev.target.closest('.option-picture')
@@ -142,7 +159,6 @@ async function run() {
         })
         //response-page
     nextQuestionBtn.addEventListener('click', async() => {
-            console.log('questionNum', questionNum)
             if (questionNum === 9) {
                 showElement(resultPage)
                 trueAnswersCategory[numCategory - 1].textContent = rightAnswers
@@ -232,7 +248,6 @@ class Game {
                 })
             }
         })
-        return console.log('Done')
     }
     setPicture(num, element) {
         const img = new Image();

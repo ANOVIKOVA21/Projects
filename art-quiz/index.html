@@ -33,22 +33,21 @@
             <div class="wrap">
                 <span class="back">Back</span>
                 <h2 class="title">Settings</h2>
-                <!-- <label for="volume">Volume</label> -->
                 <p>Volume</p>
                 <input type="range" value="50" min="0" max="100" class="volume" id="volume">
                 <p>Time game</p>
                 <div class="switcher">
-                    <span class="swith-text">On</span>
+                    <span class="switch-text">Off</span>
                     <label class="switch">
                         <input type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
                 <p>Time to answer</p>
-                <div>
-                    <button type="button" onclick="less(time)" class="less">–</button>
+                <div class="time-buttons">
+                    <button type="button" class="less">–</button>
                     <input type="number" min="5" max="30" value="20" step="5" class="time">
-                    <button type="button" onclick="more(time)" class="more">+</button>
+                    <button type="button" class="more">+</button>
                 </div>
             </div>
         </article>
