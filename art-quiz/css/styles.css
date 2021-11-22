@@ -251,7 +251,7 @@
                     transform: translateX(25px);
                 }
                 
-                .swith-text {
+                .switch-text {
                     display: inline-block;
                 }
                 
@@ -282,6 +282,10 @@
                 
                 .time::-webkit-inner-spin-button {
                     appearance: none;
+                }
+                
+                .timer {
+                    display: none;
                 }
                 
                 .categories-page {
