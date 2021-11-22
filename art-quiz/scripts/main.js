@@ -123,9 +123,9 @@ async function run() {
         pictureName.textContent = authorGame.currentQuestion.name
         infoPicture.textContent = authorGame.currentQuestion.author + ', ' + authorGame.currentQuestion.year
         if (targetBtn.textContent === authorGame.rightAnswer) {
-            markImg.style.background = 'url(../assets/svg/right-answer.svg) no-repeat';
+            markImg.style.backgroundImage = 'url(../assets/svg/right-answer.svg)';
             rightAnswers++
-        } else markImg.style.background = 'url(../assets/svg/wrong-answer.svg) no-repeat';
+        } else markImg.style.backgroundImage = 'url(../assets/svg/wrong-answer.svg)';
     })
     quizPicture.addEventListener('click', (ev) => {
             const targetOpt = ev.target.closest('.option-picture')
