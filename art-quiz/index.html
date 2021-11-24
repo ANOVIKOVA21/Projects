@@ -34,7 +34,7 @@
                 <span class="back">Back</span>
                 <h2 class="title">Settings</h2>
                 <p>Volume</p>
-                <input type="range" value="50" min="0" max="100" class="volume" id="volume">
+                <input type="range" value="40" min="0" max="100" class="volume" id="volume">
                 <p>Time game</p>
                 <div class="switcher">
                     <span class="switch-text">Off</span>
@@ -46,7 +46,7 @@
                 <p>Time to answer</p>
                 <div class="time-buttons">
                     <button type="button" class="less">–</button>
-                    <input type="number" min="5" max="30" value="20" step="5" class="time">
+                    <input type="number" min="5" max="30" value="20" step="5" class="time" readonly>
                     <button type="button" class="more">+</button>
                 </div>
             </div>
@@ -241,6 +241,9 @@
             </li>
         </ul>
     </footer>
+    <audio src="assets/sounds/right.mp3" class="sound" id="right-sound"></audio>
+    <audio src="assets/sounds/wrong.mp3" class="sound" id="wrong-sound"></audio>
+    <audio src="assets/sounds/completed.mp3" class="sound" id="completed-sound"></audio>
     <script src="scripts/main.js"></script>
 </body>
 

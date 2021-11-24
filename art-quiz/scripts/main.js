@@ -12,10 +12,11 @@ async function run() {
     const picChoice = choice.querySelector('.picture');
     const settingsImg = home.querySelector('.settings');
     const backFromSettings = settingsPage.querySelector('.back');
-    const time = settingsPage.querySelector('.time');
+    const timeEl = settingsPage.querySelector('.time');
     const slider = settingsPage.querySelector('.slider');
     const switchText = settingsPage.querySelector('.switch-text');
     const timeButtons = settingsPage.querySelector('.time-buttons');
+    const volumeProgress = settingsPage.querySelector('.volume');
     const backFromCategories = categoriesPage.querySelector('.categories-header p');
     const categoriesSettings = categoriesPage.querySelector('.categories-page .settings');
     const categoriesContainer = categoriesPage.querySelector('.categories');
@@ -39,7 +40,10 @@ async function run() {
     const nextQuestionBtn = responsePage.querySelector('.button-next');
     const trueAnswersResult = resultPage.querySelector('.result-page .true-answers');
     const resultButtons = resultPage.querySelector('.result-buttons');
-
+    const sounds = document.querySelectorAll('.sound')
+    const rightSound = document.querySelector('#right-sound')
+    const wrongSound = document.querySelector('#wrong-sound')
+    const completedSound = document.querySelector('#completed-sound')
 
     const data = new Data();
     await data.getObject();
@@ -50,6 +54,8 @@ async function run() {
     let numCategory;
     let questionNum = 0;
     let rightAnswers = 0;
+    let time = timeEl.value;
+    let interval;
 
     // home
     choice.addEventListener('click', async(event) => {
@@ -95,11 +101,51 @@ async function run() {
         }
     })
     timeButtons.addEventListener('click', (ev) => {
-            const targetBtn = ev.target
-            if (!targetBtn.closest('button')) return
-            if (targetBtn.closest('.less')) less(time)
-            else if (targetBtn.closest('.more')) more(time)
-            timer.textContent = `0:${time.value}`
+        const targetBtn = ev.target
+        if (!targetBtn.closest('button')) return
+        if (targetBtn.closest('.less')) less(timeEl)
+        else if (targetBtn.closest('.more')) more(timeEl)
+        updateTime()
+    })
+
+    function setTime(value) {
+        timer.textContent = `00:${value}`
+        if (value < 10) timer.textContent = `00:0${value}`
+
+    }
+
+    function updateTime() {
+        time = timeEl.value
+        setTime(time)
+    }
+
+    function decreaseTime() {
+        if (time === 0) {
+            clearInterval(interval)
+            finishQuestion()
+        } else {
+            let current = --time
+            setTime(current)
+        }
+    }
+
+    function finishQuestion() {
+        showElement(responsePage)
+        if (typeGame === 'authors') {
+            authorGame.setPicture(authorGame.currentQuestion.imageNum, responsePageImg)
+            pictureName.textContent = authorGame.currentQuestion.name
+            infoPicture.textContent = authorGame.currentQuestion.author + ', ' + authorGame.currentQuestion.year
+        } else {
+            pictureGame.setPicture(pictureGame.currentQuestion.imageNum, responsePageImg)
+            pictureName.textContent = pictureGame.currentQuestion.name
+            infoPicture.textContent = pictureGame.currentQuestion.author + ', ' + pictureGame.currentQuestion.year
+        }
+        markImg.style.backgroundImage = 'url(assets/svg/wrong-answer.svg)';
+        wrongSound.play();
+    }
+    volumeProgress.addEventListener('click', () => {
+            volumeProgress.style.background = `linear-gradient(to right, #FFBCA2 0%, #FFBCA2 ${volumeProgress.value}%, #C4C4C4 ${volumeProgress.value}%, #C4C4C4 100%)`
+            sounds.forEach(sound => sound.volume = volumeProgress.value / 100)
         })
         // categories
     backFromCategories.addEventListener('click', async() => {
@@ -115,6 +161,10 @@ async function run() {
         const targetCategory = ev.target.closest('.category')
         if (!targetCategory) return
         numCategory = +targetCategory.dataset.categoryNum
+        if (switchText.textContent === 'On') {
+            updateTime()
+            interval = setInterval(decreaseTime, 1000)
+        }
         if (typeGame === 'authors') {
             const allAuthorsNames = authorGame.createArrUniqueAuthors(authorGame.infoImgs)
             authorGame.setGameContentAuthorQuiz(numCategory, questionNum, allAuthorsNames, quizAuthorImg, answerButtons)
@@ -136,31 +186,47 @@ async function run() {
         const targetBtn = ev.target.closest('.answer-button')
         if (!targetBtn) return
         showElement(responsePage)
+        if (switchText.textContent === 'On') {
+            clearInterval(interval)
+        }
         authorGame.setPicture(authorGame.currentQuestion.imageNum, responsePageImg)
         pictureName.textContent = authorGame.currentQuestion.name
         infoPicture.textContent = authorGame.currentQuestion.author + ', ' + authorGame.currentQuestion.year
         if (targetBtn.textContent === authorGame.rightAnswer) {
             markImg.style.backgroundImage = 'url(assets/svg/right-answer.svg)';
             rightAnswers++
-        } else markImg.style.backgroundImage = 'url(assets/svg/wrong-answer.svg)';
+            rightSound.play();
+        } else {
+            markImg.style.backgroundImage = 'url(assets/svg/wrong-answer.svg)';
+            wrongSound.play();
+        }
     })
     quizPicture.addEventListener('click', (ev) => {
             const targetOpt = ev.target.closest('.option-picture')
             if (!targetOpt) return
             const pressedImg = pictureGame.getNumPressedImg(targetOpt)
             showElement(responsePage)
+            if (switchText.textContent === 'On') {
+                clearInterval(interval)
+            }
             pictureGame.setPicture(pictureGame.currentQuestion.imageNum, responsePageImg)
             pictureName.textContent = pictureGame.currentQuestion.name
             infoPicture.textContent = pictureGame.currentQuestion.author + ', ' + pictureGame.currentQuestion.year
             if (pressedImg === pictureGame.rightAnswer) {
-                markImg.style.background = 'url(../assets/svg/right-answer.svg) no-repeat';
-                rightAnswers++
-            } else markImg.style.background = 'url(../assets/svg/wrong-answer.svg) no-repeat';
+                markImg.style.background = 'url(assets/svg/right-answer.svg)';
+                rightAnswers++;
+                rightSound.play();
+            } else {
+                markImg.style.background = 'url(assets/svg/wrong-answer.svg)';
+                wrongSound.play();
+            }
         })
         //response-page
     nextQuestionBtn.addEventListener('click', async() => {
             if (questionNum === 9) {
                 showElement(resultPage)
+                completedSound.play()
+                clearInterval(interval)
                 trueAnswersCategory[numCategory - 1].textContent = rightAnswers
                 trueAnswersResult.textContent = rightAnswers
                 rightAnswers = 0
@@ -173,6 +239,10 @@ async function run() {
                     hideElement(responsePage),
                     hideElement(gamePage)
                 ]);
+                if (switchText.textContent === 'On') {
+                    updateTime()
+                    interval = setInterval(decreaseTime, 1000)
+                }
                 if (typeGame === 'authors') {
                     const allAuthorsNames = authorGame.createArrUniqueAuthors(authorGame.infoImgs)
                     authorGame.setGameContentAuthorQuiz(numCategory, questionNum, allAuthorsNames, quizAuthorImg, answerButtons)
@@ -350,7 +420,7 @@ function hideElement(elem) {
 
 function showElement(elem) {
     elem.classList.remove('hide');
-    setTimeout(() => { elem.style.transform = 'translate(0)'; }, 1000);
+    setTimeout(() => { elem.style.transform = 'translate(0)'; }, 0);
 }
 
 function less(element) {
