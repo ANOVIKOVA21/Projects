@@ -68,14 +68,20 @@ main {
     border: 1px solid #278D9F;
     color: white;
     background-color: rgba(31, 112, 127, 0.3);
+    background-image: url("assets/svg/search.svg");
+    background-repeat: no-repeat;
+    background-position: right 10px top 10px;
+    background-size: 20px;
 }
 
-.header__search::after {
-    content: "";
-    display: block;
-    height: 10px;
-    width: 15px;
-    background: url("assets/svg/search.svg") no-repeat;
+.header__search:focus-visible {
+    border: 3px solid #278D9F;
+    background-color: rgba(31, 112, 127, 0.5);
+    outline: none;
+}
+
+.header__search::-webkit-search-cancel-button {
+    opacity: 0;
 }
 
 .header__selected-balls {
