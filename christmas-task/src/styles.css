@@ -3,8 +3,8 @@
 }
 
 body {
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-family: "Arimo", Arial, Helvetica, sans-serif;
+    font-size: 16px;
     color: white;
     margin: 0;
 }
@@ -102,6 +102,9 @@ main {
     font-size: 1.5em;
 }
 
+
+/* Start-page start */
+
 .start-page__tittle {
     max-width: 600px;
     padding: 66px 85px;
@@ -117,24 +120,181 @@ main {
     margin-bottom: 116px;
 }
 
-.start-page__btn {
+.button {
     display: block;
     color: white;
-    padding: 13px 119px;
-    font-size: 2em;
     background-color: rgba(31, 112, 127, .3);
     backdrop-filter: blur(4px);
     border: 3px solid #278D9F;
     border-radius: 30px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.start-page__btn {
+    font-size: 2em;
+    padding: 13px 119px;
     margin: 0 auto 155px auto;
 }
 
 .start-page__btn:hover {
-    cursor: pointer;
     backdrop-filter: blur(10px);
 }
 
+
+/* Start-page end */
+
+
+/* Toys-page start */
+
+.toys-page {
+    display: flex;
+}
+
+.toys-page__filters {
+    padding: 0 10px 10px 10px;
+    border-radius: 30px;
+    background-color: rgba(31, 112, 127, .3);
+    backdrop-filter: blur(4px);
+}
+
+.filters-by-values__forms,
+.filters-by-values__colors,
+.filters-by-values__sizes,
+.filters-by-values__favorite {
+    list-style: none;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    padding: 0;
+}
+
+.toys-page__title {
+    font-size: 1.5em;
+    font-family: "Neucha", Arial, Helvetica, sans-serif;
+}
+
+.filters-by-values__form {
+    max-width: 40px;
+    max-height: 40px;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+.filters-by-values__form img {
+    width: 100%;
+    height: 40px;
+}
+
+.filters-by-values__form:hover,
+.filters-by-values__size-big:hover,
+.filters-by-values__size-medium:hover,
+.filters-by-values__size-small:hover {
+    filter: invert(27%) sepia(11%) saturate(2212%) hue-rotate(1deg) brightness(86%) contrast(97%);
+    transition: 0.7s;
+}
+
+.checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.checkbox+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+.checkbox+label::before {
+    content: '';
+    display: inline-block;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 70% 70%;
+    background-color: rgb(11 139 157);
+    cursor: pointer;
+}
+
+.checkbox:checked+label::before {
+    background-image: url("assets/svg/mark.svg");
+}
+
+.checkbox:not(:disabled):not(:checked)+label:hover::before {
+    border: 1px solid #b3d7ff;
+    transition: 0.7s;
+}
+
+.filters-by-values__color-white+label::before {
+    background-color: white;
+}
+
+.filters-by-values__color-yellow+label::before {
+    background-color: yellow;
+}
+
+.filters-by-values__color-red+label::before {
+    background-color: red;
+}
+
+.filters-by-values__color-blue+label::before {
+    background-color: blue;
+}
+
+.filters-by-values__color-green+label::before {
+    background-color: green;
+}
+
+.filters-by-values__size-big img,
+.filters-by-values__size-medium img,
+.filters-by-values__size-small img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.filters-by-values__size-big {
+    max-width: 50px;
+}
+
+.filters-by-values__size-medium {
+    max-width: 40px;
+}
+
+.filters-by-values__size-small {
+    max-width: 30px;
+}
+
+.sort__list {
+    padding: 10px;
+    border: 2px solid #278D9F;
+    background-color: rgb(41 100 108);
+    color: white;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.toys-page__reset {
+    margin-top: 30px;
+    font-size: 1em;
+    padding: 5px 15px;
+}
+
+.toys-page__reset:hover {
+    background-color: rgb(41 100 108);
+}
+
+
+/* Toys-page end */
+
 .footer {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
     padding: 10px;
     background-color: #121C1E;
 }

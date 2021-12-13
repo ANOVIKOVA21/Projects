@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christmas-task</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Neucha&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&family=Neucha&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="assets/favicon.ico">
+    <link href="nouislider.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,9 +31,74 @@
     <main>
         <section class="start-page">
             <h1 class="start-page__tittle">Новогодняя игра «Наряди ёлку»</h1>
-            <button class="start-page__btn">Начать</button>
+            <button class="start-page__btn button">Начать</button>
             <div class="start-page__ball-img"></div>
             <div class="start-page__ball-img"></div>
+        </section>
+        <section class="toys-page">
+            <div class="toys-page__filters">
+                <div class="filters-by-values">
+                    <h3 class="toys-page__title">ФИЛЬТРЫ ПО ЗНАЧЕНИЮ</h3>
+                    <ul class="filters-by-values__forms"> Форма:
+                        <li class="filters-by-values__form"><img src="assets/svg/ball.svg" alt="ball"></li>
+                        <li class="filters-by-values__form"><img src="assets/svg/bell.svg" alt="bell"></li>
+                        <li class="filters-by-values__form"><img src="assets/svg/cone.svg" alt="cone"></li>
+                        <li class="filters-by-values__form"><img src="assets/svg/snowflake.svg" alt="snowflake"></li>
+                        <li class="filters-by-values__form"><img src="assets/svg/figurine.svg" alt="figurine"></li>
+                    </ul>
+                    <ul class="filters-by-values__colors"> Цвет:
+                        <li>
+                            <input type="checkbox" id="white" class="filters-by-values__color-white checkbox">
+                            <label for="white"></label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="yellow" class="filters-by-values__color-yellow checkbox">
+                            <label for="yellow"></label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="red" class="filters-by-values__color-red checkbox">
+                            <label for="red"></label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="blue" class="filters-by-values__color-blue checkbox">
+                            <label for="blue"></label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="green" class="filters-by-values__color-green checkbox">
+                            <label for="green"></label>
+                        </li>
+                    </ul>
+                    <ul class="filters-by-values__sizes"> Размер:
+                        <li class="filters-by-values__size-big"><img src="assets/svg/ball.svg" alt="ball big"></li>
+                        <li class="filters-by-values__size-medium"><img src="assets/svg/ball.svg" alt="ball medium"></li>
+                        <li class="filters-by-values__size-small"><img src="assets/svg/ball.svg" alt="ball small"></li>
+                    </ul>
+                    <ul class="filters-by-values__favorite">Только любимые:
+                        <li>
+                            <input type="checkbox" id="favorite" class="checkbox">
+                            <label for="favorite"></label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="filters-by-range">
+                    <h3 class="toys-page__title">ФИЛЬТРЫ ПО ДИАПАЗОНУ</h3>
+                    <p>Количество экземпляров:</p>
+                    <div class="filters-by-range__quantity"></div>
+                    <p>Год приобретения:</p>
+                    <div class="filters-by-range__year"></div>
+                </div>
+                <div class="sort">
+                    <h3 class="toys-page__title">СОРТИРОВАТЬ</h3>
+                    <select class="sort__list" name="sort-list" id="">
+                        <option value="">По названию от «А» до «Я»</option>
+                        <option value="">По названию от «Я» до «А»</option>
+                        <option value="">По количеству по возрастанию</option>
+                        <option value="">По количеству по убыванию</option>
+                    </select>
+                    <button class="toys-page__reset button">Сброс фильтров</button>
+                </div>
+            </div>
+            <div class="toys-page__cards"></div>
         </section>
     </main>
     <footer class="footer">
@@ -44,7 +110,8 @@
             </li>
         </ul>
     </footer>
-    <script src="./index.js"></script>
+    <script src="index.js"></script>
+    <script src="nouislider.js"></script>
 </body>
 
 </html>
