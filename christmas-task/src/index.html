@@ -8,7 +8,7 @@
     <title>Christmas-task</title>
     <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&family=Neucha&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="assets/favicon.ico">
-    <link href="nouislider.css" rel="stylesheet">
+    <!-- <link href="nouislider.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -83,9 +83,19 @@
                 <div class="filters-by-range">
                     <h3 class="toys-page__title">ФИЛЬТРЫ ПО ДИАПАЗОНУ</h3>
                     <p>Количество экземпляров:</p>
-                    <div class="filters-by-range__quantity"></div>
+                    <div class="filters-by-range__container">
+                        <span class="filters-by-range__quantity-value">1</span>
+                        <div class="filters-by-range__quantity"></div>
+                        <span class="filters-by-range__quantity-value">12</span>
+                    </div>
+
                     <p>Год приобретения:</p>
-                    <div class="filters-by-range__year"></div>
+                    <div class="filters-by-range__container">
+                        <span class="filters-by-range__year-value">1940</span>
+                        <div class="filters-by-range__year"></div>
+                        <span class="filters-by-range__year-value">2020</span>
+                    </div>
+
                 </div>
                 <div class="sort">
                     <h3 class="toys-page__title">СОРТИРОВАТЬ</h3>
@@ -111,7 +121,7 @@
             </li>
         </ul>
     </footer>
-    <script src="nouislider.js"></script>
+    <!-- <script src="nouislider.js"></script> -->
 </body>
 
 </html>

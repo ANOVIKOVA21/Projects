@@ -180,6 +180,30 @@ main {
     left: 50%;
 } */
 
+.filters-by-range__container {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.filters-by-range__quantity,
+.filters-by-range__year {
+    width: 100%
+}
+
+.filters-by-range__quantity-value,
+.filters-by-range__year-value {
+    border-radius: 30px;
+    border: 1px solid #278D9F;
+    background-color: rgb(41 100 108);
+    padding: 5px;
+}
+
+.filters-by-range__quantity-value {
+    min-width: 30px;
+    text-align: center;
+}
+
 
 /* Start-page end */
 
