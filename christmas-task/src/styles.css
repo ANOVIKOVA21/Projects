@@ -3,8 +3,9 @@
 }
 
 body {
-    font-family: "Arimo", Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-family: "Balsamiq Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.3px;
     color: white;
     margin: 0;
 }
@@ -21,6 +22,33 @@ main {
 .hide {
     display: none;
     opacity: 0;
+}
+
+.warning {
+    position: fixed;
+    top: 10px;
+    z-index: 5;
+    text-align: center;
+    background-color: rgba(100, 149, 237, 0.8);
+    border: 2px solid wheat;
+    border-radius: 10px;
+    padding: 10px 40px 10px 10px;
+}
+
+.warning::after {
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 1);
+    margin-top: -18px;
+    top: 55%;
+    right: 5px;
+    width: 25px;
+    content: '!';
+    font-size: 20px;
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    height: 25px;
+    line-height: 30px;
+    border-radius: 50%;
 }
 
 .header {
@@ -102,7 +130,7 @@ main {
     height: 43px;
     margin: 11px 0 0 3px;
     border-radius: 50px;
-    padding: 6px 10px 6px 11px;
+    padding: 6px 10px 6px 8px;
     background-color: #278D9F;
     font-size: 1.5em;
 }
@@ -200,7 +228,7 @@ main {
 }
 
 .filters-by-range__quantity-value {
-    min-width: 30px;
+    min-width: 33px;
     text-align: center;
 }
 
@@ -212,6 +240,7 @@ main {
 
 .toys-page {
     display: flex;
+    column-gap: 30px;
 }
 
 .toys-page__filters {
@@ -232,8 +261,9 @@ main {
     padding: 0;
 }
 
-.toys-page__title {
-    font-size: 1.5em;
+.toys-page__title,
+.card__title {
+    font-size: 1.3em;
     font-family: "Neucha", Arial, Helvetica, sans-serif;
 }
 
@@ -351,6 +381,56 @@ main {
 
 .toys-page__reset:hover {
     background-color: rgb(41 100 108);
+}
+
+.toys-page__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    transition: 0.7s;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    max-width: 222px;
+    width: 100%;
+    padding: 10px;
+    background: radial-gradient(109.56% 109.56% at 0% -2.94%, rgb(197 191 191 / 50%) 0%, rgb(154 201 207 / 50%) 100%);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+.card:hover,
+.card-active {
+    background: radial-gradient(109.56% 109.56% at 0% -2.94%, rgb(93 151 134 / 50%) 0%, rgb(14 133 127 / 50%) 100%);
+    backdrop-filter: blur(6px);
+}
+
+.card__title {
+    margin: 0;
+    text-align: center;
+}
+
+.card__img {
+    display: block;
+    max-width: 110px;
+    margin: 0 auto 10px auto;
+}
+
+.card__list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+
+.card__list-item {
+    margin-bottom: 5px;
+    line-height: 20px;
 }
 
 
