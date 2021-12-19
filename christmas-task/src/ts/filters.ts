@@ -51,10 +51,10 @@ function sortToys(toysArr: GetBallOptions[]) {
     toysArr.sort((a, b) => b.name.localeCompare(a.name));
   }
   if (filters.sortValue === 'increase') {
-    toysArr.sort((a, b) => a.count - b.count);
+    toysArr.sort((a, b) => a.year - b.year);
   }
   if (filters.sortValue === 'decrease') {
-    toysArr.sort((a, b) => b.count - a.count);
+    toysArr.sort((a, b) => b.year - a.year);
   }
   console.log(toysArr);
   return toysArr;
@@ -62,10 +62,13 @@ function sortToys(toysArr: GetBallOptions[]) {
 function updateToysCards() {
   const cardsContainer = document.querySelector('.toys-page__cards') as HTMLDivElement;
   cardsContainer.innerHTML = '';
-  sortToys(filterToys(data)).forEach((filterToy) => {
-    const filterCard = createCard(filterToy);
-    cardsContainer.appendChild(filterCard);
-  });
+  const sortAndFilterToys = sortToys(filterToys(data));
+  if (sortAndFilterToys.length !== 0) {
+    sortAndFilterToys.forEach((filterToy) => {
+      const filterCard = createCard(filterToy);
+      cardsContainer.appendChild(filterCard);
+    });
+  } else cardsContainer.innerHTML = '<p class="message">Извините, совпадений не обнаружено</p>';
 }
 const filterForm = document.querySelector('.filters-by-values__forms') as HTMLUListElement;
 
