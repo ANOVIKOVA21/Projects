@@ -1,8 +1,8 @@
 interface GetBallOptions {
   num: string;
   name: string;
-  count: string;
-  year: string;
+  count: number;
+  year: number;
   shape: string;
   color: string;
   size: string;
