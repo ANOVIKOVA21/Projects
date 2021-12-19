@@ -282,7 +282,9 @@ main {
 .filters-by-values__form:hover,
 .filters-by-values__size-big:hover,
 .filters-by-values__size-medium:hover,
-.filters-by-values__size-small:hover {
+.filters-by-values__size-small:hover,
+.form-active,
+.size-active {
     filter: invert(27%) sepia(11%) saturate(2212%) hue-rotate(1deg) brightness(86%) contrast(97%);
     transition: 0.7s;
 }
@@ -384,6 +386,7 @@ main {
 }
 
 .toys-page__cards {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -396,6 +399,7 @@ main {
     justify-content: space-between;
     gap: 10px;
     max-width: 222px;
+    max-height: 360px;
     width: 100%;
     padding: 10px;
     background: radial-gradient(109.56% 109.56% at 0% -2.94%, rgb(197 191 191 / 50%) 0%, rgb(154 201 207 / 50%) 100%);
