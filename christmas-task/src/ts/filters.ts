@@ -156,12 +156,12 @@ resetSettingsBtn.addEventListener('click', () => {
 });
 window.addEventListener('beforeunload', () => {
   localStorage.clear();
-  localStorage.setItem('filters', JSON.stringify(filters));
+  localStorage.setItem('thisFilters', JSON.stringify(filters));
 });
 
 function getLocalStorage() {
-  if (localStorage.getItem('filters')) {
-    const filtersJson = localStorage.getItem('filters');
+  if (localStorage.getItem('thisFilters')) {
+    const filtersJson = localStorage.getItem('thisFilters');
     filters = JSON.parse(filtersJson as string);
     const selectedShapes = document.querySelectorAll('.filters-by-values__form');
     const selectedColors = document.querySelectorAll('.filters-by-values__color');
