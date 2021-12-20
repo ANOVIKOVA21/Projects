@@ -47,6 +47,7 @@ resetBtn.addEventListener('click', () => {
   const colors: NodeListOf<HTMLElement> = document.querySelectorAll('.filters-by-values__color');
   const sizes: NodeListOf<HTMLElement> = document.querySelectorAll('.filters-by-values__size');
   const favorite = document.getElementById('favorite') as HTMLInputElement;
+  const search = document.querySelector('.header__search') as HTMLInputElement;
   forms.forEach((el) => {
     if (el.classList.contains('form-active')) el.click();
   });
@@ -59,6 +60,7 @@ resetBtn.addEventListener('click', () => {
   if (favorite.classList.contains('favorite-active')) favorite.click();
   sliderQuantity.noUiSlider.set([1, 12]);
   sliderYear.noUiSlider.set([1940, 2020]);
+  search.value = '';
 
   updateToysCards();
 });

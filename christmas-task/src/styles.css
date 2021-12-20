@@ -101,13 +101,15 @@ main {
     border-radius: 40px;
     width: 380px;
     height: 40px;
-    padding: 5px 25px;
+    padding: 5px 25px 5px 40px;
     border: 1px solid #278D9F;
     color: white;
     background-color: rgba(31, 112, 127, 0.3);
+    font-size: 1em;
+    font-family: inherit;
     background-image: url("assets/svg/search.svg");
     background-repeat: no-repeat;
-    background-position: right 10px top 10px;
+    background-position: left 10px top 10px;
     background-size: 20px;
 }
 
@@ -118,7 +120,7 @@ main {
 }
 
 .header__search::-webkit-search-cancel-button {
-    opacity: 0;
+    cursor: pointer;
 }
 
 .header__selected-balls {
@@ -377,6 +379,10 @@ main {
     font-family: inherit;
     font-size: 1em;
     cursor: pointer;
+}
+
+.sort__list:focus-visible {
+    outline: none;
 }
 
 .toys-page__reset {

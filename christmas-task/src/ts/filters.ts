@@ -9,6 +9,7 @@ interface GetFilters {
   quantity: number[];
   years: number[];
   sortValue: string;
+  searchValue?: string;
 }
 
 const filters: GetFilters = {
@@ -59,13 +60,34 @@ function sortToys(toysArr: GetBallOptions[]) {
   console.log(toysArr);
   return toysArr;
 }
+function searchCards(toysArr: GetBallOptions[]) {
+  const searchValue = (filters.searchValue as string).toLowerCase().trim();
+  toysArr = toysArr.filter((toy) => toy.name.toLocaleLowerCase().indexOf(searchValue) !== -1);
+  return toysArr;
+}
 function updateToysCards() {
   const cardsContainer = document.querySelector('.toys-page__cards') as HTMLDivElement;
+  const cards = document.querySelectorAll('.card');
+  const activeCardsNums: string[] = [];
+  cards.forEach((card) => {
+    if (card.getAttribute('isActive') === 'true') {
+      const atr = card.getAttribute('cardNum') as string;
+      activeCardsNums.push(atr);
+    }
+  });
+
   cardsContainer.innerHTML = '';
-  const sortAndFilterToys = sortToys(filterToys(data));
+  let sortAndFilterToys = sortToys(filterToys(data));
+  if (filters.searchValue !== undefined) {
+    sortAndFilterToys = searchCards(sortAndFilterToys);
+  }
   if (sortAndFilterToys.length !== 0) {
     sortAndFilterToys.forEach((filterToy) => {
       const filterCard = createCard(filterToy);
+      if (activeCardsNums.length !== 0 && activeCardsNums.includes(filterToy.num)) {
+        filterCard.setAttribute('isActive', 'true');
+        filterCard.classList.add('card-active');
+      }
       cardsContainer.appendChild(filterCard);
     });
   } else cardsContainer.innerHTML = '<p class="message">Извините, совпадений не обнаружено</p>';
@@ -123,4 +145,9 @@ selectSort.addEventListener('click', () => {
   updateToysCards();
 });
 
+const search = document.querySelector('.header__search') as HTMLInputElement;
+search.addEventListener('input', () => {
+  filters.searchValue = search.value;
+  updateToysCards();
+});
 export { filters, updateToysCards, sortToys };
