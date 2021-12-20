@@ -9,6 +9,7 @@ interface GetFilters {
   quantity: number[];
   years: number[];
   sortValue: string;
+  activeCardsNums: string[];
   searchValue?: string;
 }
 
@@ -20,6 +21,7 @@ const filters: GetFilters = {
   quantity: [],
   years: [],
   sortValue: 'abc',
+  activeCardsNums: [],
 };
 
 function filterToys(toysArr: GetBallOptions[]) {
@@ -68,12 +70,13 @@ function searchCards(toysArr: GetBallOptions[]) {
 function updateToysCards() {
   const cardsContainer = document.querySelector('.toys-page__cards') as HTMLDivElement;
   const cards = document.querySelectorAll('.card');
-  const activeCardsNums: string[] = [];
+
   cards.forEach((card) => {
-    if (card.getAttribute('isActive') === 'true') {
-      const atr = card.getAttribute('cardNum') as string;
-      activeCardsNums.push(atr);
+    const atr = card.getAttribute('data-card-num') as string;
+    if (card.getAttribute('data-is-active') === 'true') {
+      filters.activeCardsNums.push(atr);
     }
+    (card as HTMLElement).style.opacity = '0';
   });
 
   cardsContainer.innerHTML = '';
@@ -84,11 +87,14 @@ function updateToysCards() {
   if (sortAndFilterToys.length !== 0) {
     sortAndFilterToys.forEach((filterToy) => {
       const filterCard = createCard(filterToy);
-      if (activeCardsNums.length !== 0 && activeCardsNums.includes(filterToy.num)) {
-        filterCard.setAttribute('isActive', 'true');
+      if (filters.activeCardsNums.length !== 0 && filters.activeCardsNums.includes(filterToy.num)) {
+        filterCard.setAttribute('data-is-active', 'true');
         filterCard.classList.add('card-active');
       }
       cardsContainer.appendChild(filterCard);
+      setTimeout(() => {
+        filterCard.style.opacity = '1';
+      }, 500);
     });
   } else cardsContainer.innerHTML = '<p class="message">Извините, совпадений не обнаружено</p>';
 }

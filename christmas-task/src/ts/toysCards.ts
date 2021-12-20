@@ -25,6 +25,8 @@ function createCard(toyObj: GetBallOptions) {
   cardImg.classList.add('card__img');
   cardList.classList.add('card__list');
 
+  card.setAttribute('data-card-num', toyObj.num);
+  card.setAttribute('data-is-active', 'false');
   cardImg.src = `./toys/${toyObj.num}.png`;
   cardImg.alt = 'Christmas toy';
   cardTitle.textContent = toyObj.name;

@@ -31,7 +31,7 @@ noUiSlider.create(sliderYear, {
     min: 1940,
     max: 2020,
   },
-  step: 1,
+  step: 10,
 });
 
 sliderYear.noUiSlider.on('update', function (values, handle) {
