@@ -13,7 +13,7 @@ interface GetFilters {
   searchValue?: string;
 }
 
-const filters: GetFilters = {
+let filters: GetFilters = {
   shape: [],
   color: [],
   size: [],
@@ -149,4 +149,45 @@ search.addEventListener('input', () => {
   filters.searchValue = search.value;
   updateToysCards();
 });
+const resetSettingsBtn = document.querySelector('.toys-page__reset-settings') as HTMLButtonElement;
+resetSettingsBtn.addEventListener('click', () => {
+  document.location.reload();
+  window.localStorage.clear();
+});
+window.addEventListener('beforeunload', () => {
+  localStorage.clear();
+  localStorage.setItem('filters', JSON.stringify(filters));
+});
+
+function getLocalStorage() {
+  if (localStorage.getItem('filters')) {
+    const filtersJson = localStorage.getItem('filters');
+    filters = JSON.parse(filtersJson as string);
+    const selectedShapes = document.querySelectorAll('.filters-by-values__form');
+    const selectedColors = document.querySelectorAll('.filters-by-values__color');
+    const selectedSizes = document.querySelectorAll('.filters-by-values__size');
+
+    selectedShapes.forEach((element) => {
+      if (filters.shape.includes(element.getAttribute('data-shape') as string)) {
+        element.classList.add('form-active');
+      }
+    });
+    selectedColors.forEach((element) => {
+      if (filters.color.includes(element.getAttribute('data-color') as string)) {
+        (element as HTMLElement).click();
+      }
+    });
+    selectedSizes.forEach((element) => {
+      if (filters.size.includes(element.getAttribute('data-size') as string)) {
+        element.classList.add('size-active');
+      }
+    });
+    if (filters.favorite === true) {
+      filterFavorite.click();
+    }
+    selectSort.value = filters.sortValue;
+  }
+  updateToysCards();
+}
+window.addEventListener('load', getLocalStorage);
 export { filters, updateToysCards, sortToys };

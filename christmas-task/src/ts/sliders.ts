@@ -39,8 +39,8 @@ sliderYear.noUiSlider.on('update', function (values, handle) {
   updateToysCards();
 });
 
-const resetBtn = document.querySelector('.toys-page__reset') as HTMLButtonElement;
-resetBtn.addEventListener('click', () => {
+const resetFiltersBtn = document.querySelector('.toys-page__reset-filters') as HTMLButtonElement;
+resetFiltersBtn.addEventListener('click', () => {
   const forms: NodeListOf<HTMLElement> = document.querySelectorAll('.filters-by-values__form');
   const colors: NodeListOf<HTMLElement> = document.querySelectorAll('.filters-by-values__color');
   const sizes: NodeListOf<HTMLElement> = document.querySelectorAll('.filters-by-values__size');

@@ -386,13 +386,15 @@ main {
     outline: none;
 }
 
-.toys-page__reset {
+.toys-page__reset-filters,
+.toys-page__reset-settings {
     margin-top: 30px;
     font-size: 1em;
     padding: 5px 15px;
 }
 
-.toys-page__reset:hover {
+.toys-page__reset-filters:hover,
+.toys-page__reset-settings:hover {
     background-color: rgb(41 100 108);
 }
 

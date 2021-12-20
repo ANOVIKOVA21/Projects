@@ -48,3 +48,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+console.log('оценка 200 баллов');
