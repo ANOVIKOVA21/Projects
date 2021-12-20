@@ -18,7 +18,6 @@ function showWarning(parent: HTMLDivElement) {
 document.addEventListener('DOMContentLoaded', function () {
   const cardsContainer = document.querySelector('.toys-page__cards') as HTMLDivElement;
   const sortData = sortToys(data);
-  console.log(sortData);
   sortData.forEach((toy) => {
     const card = createCard(toy);
     cardsContainer.appendChild(card);

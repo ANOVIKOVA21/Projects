@@ -18,7 +18,6 @@ noUiSlider.create(sliderQuantity, {
 sliderQuantity.noUiSlider.on('update', function (values, handle) {
   sliderQuantityValues[handle].innerHTML = parseInt(values[handle] as string).toString();
   filters.quantity[handle] = parseInt(values[handle] as string);
-  console.log(filters);
   updateToysCards();
 });
 
@@ -37,7 +36,6 @@ noUiSlider.create(sliderYear, {
 sliderYear.noUiSlider.on('update', function (values, handle) {
   sliderYearValues[handle].innerHTML = parseInt(values[handle] as string).toString();
   filters.years[handle] = parseInt(values[handle] as string);
-  console.log(filters);
   updateToysCards();
 });
 

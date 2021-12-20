@@ -43,7 +43,6 @@ function filterToys(toysArr: GetBallOptions[]) {
   if (filters.years[0] !== 1940 || filters.years[1] !== 2020) {
     toysArr = toysArr.filter((toy) => toy.year >= filters.years[0] && toy.year <= filters.years[1]);
   }
-  console.log(toysArr);
   return toysArr;
 }
 function sortToys(toysArr: GetBallOptions[]) {
@@ -59,7 +58,6 @@ function sortToys(toysArr: GetBallOptions[]) {
   if (filters.sortValue === 'decrease') {
     toysArr.sort((a, b) => b.year - a.year);
   }
-  console.log(toysArr);
   return toysArr;
 }
 function searchCards(toysArr: GetBallOptions[]) {
@@ -106,7 +104,6 @@ filterForm.addEventListener('click', (ev: Event) => {
   shapeToy.classList.toggle('form-active');
   if (shapeToy.classList.contains('form-active')) filters.shape.push(shapeToy.getAttribute('data-shape') as string);
   else filters.shape = filters.shape.filter((str) => str !== (shapeToy.getAttribute('data-shape') as string));
-  console.log(filters);
   updateToysCards();
 });
 
@@ -118,7 +115,6 @@ filterColor.addEventListener('click', (ev: Event) => {
   colorToy.classList.toggle('color-active');
   if (colorToy.classList.contains('color-active')) filters.color.push(colorToy.getAttribute('data-color') as string);
   else filters.color = filters.color.filter((str) => str !== (colorToy.getAttribute('data-color') as string));
-  console.log(filters);
   updateToysCards();
 });
 
@@ -130,7 +126,6 @@ filterSize.addEventListener('click', (ev: Event) => {
   sizeToy.classList.toggle('size-active');
   if (sizeToy.classList.contains('size-active')) filters.size.push(sizeToy.getAttribute('data-size') as string);
   else filters.size = filters.size.filter((str) => str !== (sizeToy.getAttribute('data-size') as string));
-  console.log(filters);
   updateToysCards();
 });
 
@@ -140,13 +135,11 @@ filterFavorite.addEventListener('click', () => {
   filterFavorite.classList.toggle('favorite-active');
   if (filterFavorite.classList.contains('favorite-active')) filters.favorite = true;
   else filters.favorite = false;
-  console.log(filters);
   updateToysCards();
 });
 
 const selectSort = document.querySelector('.sort__list') as HTMLSelectElement;
 selectSort.addEventListener('click', () => {
-  console.log(selectSort.value);
   filters.sortValue = selectSort.value;
   updateToysCards();
 });
