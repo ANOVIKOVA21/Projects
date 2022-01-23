@@ -61,7 +61,7 @@ export async function switchToDriveMode(id: number) {
   else return { success: false };
 }
 export interface WinnerData {
-  id: number;
+  id?: number;
   wins: number;
   time: number;
 }
@@ -78,5 +78,29 @@ export async function getWinners(page: number, sort = 'time', order = 'ASC'): Pr
 }
 export async function getWinner(id: number) {
   const result = await fetch(`${urlWinners}/${id}`);
+  return result.json();
+}
+export async function createWinner(newWinner: WinnerData) {
+  const result = await fetch(`${urlWinners}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newWinner),
+  });
+  return result.json();
+}
+export async function deleteWinner(id: number) {
+  const result = await fetch(`${urlWinners}/${id}`, { method: 'DELETE' });
+  return result.json();
+}
+export async function updateWinner(id: number, newWinner: WinnerData) {
+  const result = await fetch(`${urlWinners}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newWinner),
+  });
   return result.json();
 }
