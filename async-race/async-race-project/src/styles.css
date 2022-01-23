@@ -72,6 +72,15 @@ h2 {
     background: rgba(0, 0, 0, 0.5);
     padding: 10px 10px 0 10px;
     margin-bottom: 10px;
+    position: relative;
+}
+
+.car-card::after {
+    content: 'FINISH';
+    position: absolute;
+    bottom: 0;
+    right: 83px;
+    color: white;
 }
 
 .car-card__name {
@@ -83,13 +92,27 @@ h2 {
 
 .car-img {
     display: block;
+    position: relative;
+    left: 0;
 }
 
 .table-head {
     font-size: 1.5em;
     line-height: 1em;
+    background: rgba(248, 245, 245, 0.7);
 }
 
 .table-head th {
     padding: 0 5px;
+}
+
+#table-body {
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.selected {
+    background: rgb(88, 81, 81, 0.5);
 }
