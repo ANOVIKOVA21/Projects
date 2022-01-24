@@ -116,3 +116,13 @@ h2 {
 .selected {
     background: rgb(88, 81, 81, 0.5);
 }
+
+.message {
+    position: fixed;
+    font-size: 2em;
+    font-weight: bold;
+    color: rgb(251 246 246);
+    top: 50%;
+    left: 40%;
+    text-shadow: 0px 0px 15px #f5efef;
+}
