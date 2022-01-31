@@ -69,7 +69,6 @@ export async function addListeners() {
   const resetBtn: HTMLButtonElement | null = document.querySelector('.reset-btn');
   const inputCarName = document.querySelectorAll<HTMLInputElement>('.cars-settings__input');
   const inputColor = document.querySelectorAll<HTMLInputElement>('.cars-settings__color-selection');
-  const carCardsAll = document.querySelectorAll<HTMLElement>('.car-card');
   const cardsContainer: HTMLDivElement | null = document.querySelector('.cars-cards');
   const btnsContainer: HTMLDivElement | null = document.querySelector('.container-pages-btns');
   let selectedCarId: number;
@@ -101,7 +100,7 @@ export async function addListeners() {
     const promises: Promise<GetSuccessCars | void>[] = [];
     carsData.cars.forEach((car) => {
       const carCard = document.getElementById(`${car.id}`) as HTMLDivElement;
-      promises.push(startAnimation(car.id as number, carCard, carCardsAll));
+      promises.push(startAnimation(car.id as number, carCard));
     });
 
     const successCars = (await Promise.all(promises)).filter((carInfo) => carInfo !== undefined) as GetSuccessCars[];
@@ -132,7 +131,7 @@ export async function addListeners() {
       updateBtnsBehavior('clickStop', document.getElementById(`${car.id}`) as HTMLElement);
     });
     updateBtnsBehavior('activeWinnersBtn', resetBtn);
-    if (!checkAnimation(carCardsAll)) resetRace = true;
+    if (!checkAnimation()) resetRace = true;
   });
   cardsContainer?.addEventListener('click', async (ev) => {
     const target = ev.target as HTMLElement;
@@ -162,12 +161,12 @@ export async function addListeners() {
       } else (updateBtn as HTMLButtonElement).disabled = true;
     }
     if (target === target.closest('.start-btn')) {
-      startAnimation(idCard, carCard, carCardsAll);
+      startAnimation(idCard, carCard);
     }
     if (target === target.closest('.stop-btn')) {
       stopAnimation(idCard);
       updateBtnsBehavior('clickStop', target);
-      checkAnimation(carCardsAll);
+      checkAnimation();
     }
   });
   cardsContainer?.addEventListener('transitionstart', (ev) => {
@@ -194,7 +193,6 @@ export async function addListeners() {
     rememberOptions.inputNewName = inputCarName[1].value;
   });
   inputColor[0].addEventListener('input', () => {
-    console.log('color');
     rememberOptions.inputColor = inputColor[0].value;
   });
   inputColor[1].addEventListener('input', () => {

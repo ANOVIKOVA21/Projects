@@ -1,18 +1,9 @@
 import { startCarEngine, stopCarEngine, switchToDriveMode } from './request';
 import { updateBtnsBehavior } from './listeners';
 
-export function checkAnimation(carCards: NodeListOf<HTMLElement>) {
-  console.log('check', carCards[0].getAttribute('data-anim-is-run'));
+export function checkAnimation() {
+  const carCards = Array.from(document.querySelectorAll<HTMLElement>('.car-card'));
   const animIsNotRun = Array.from(carCards).every((card) => card.dataset.animIsRun == 'false');
-  //   let animIsNotRun = false;
-  //   for (const card of carCards) {
-  //     if (card.getAttribute('data-anim-is-run') == 'true') {
-  //       animIsNotRun = false;
-  //       break;
-  //     } else animIsNotRun = true;
-  //   }
-  //   const animIsNotRun = cardsArr.every((card) => card.getAttribute('data-anim-is-run') == 'false');
-  console.log('animIsNotRun', animIsNotRun);
   if (animIsNotRun) updateBtnsBehavior('activeWinnersBtn');
   return animIsNotRun;
 }
@@ -25,11 +16,7 @@ export interface GetSuccessCars {
   name: string;
   time: number;
 }
-export async function startAnimation(
-  id: number,
-  carCard: HTMLDivElement | null,
-  carCards: NodeListOf<HTMLElement>
-): Promise<GetSuccessCars | void> {
+export async function startAnimation(id: number, carCard: HTMLDivElement | null): Promise<GetSuccessCars | void> {
   const physicsParameters: GetPhysicsParameters = await startCarEngine(id);
   const timeMs = physicsParameters.distance / physicsParameters.velocity;
   const carImg: HTMLElement | null = document.querySelector(`[data-car-num='${id}']`);
@@ -42,7 +29,7 @@ export async function startAnimation(
   carCard && (carCard.dataset.animIsRun = 'true');
   const res = await switchToDriveMode(id);
   carCard && (carCard.dataset.animIsRun = 'false');
-  checkAnimation(carCards);
+  checkAnimation();
   if (res.success) {
     const timeSec = Number((timeMs / 1000).toFixed(2));
     console.log(timeSec);
