@@ -47,16 +47,16 @@
                     <div class="welcome__img">
                     </div>
                     <div class="welcome__slider">
-                        <p class="num">01</p>
-                        <p class="num">|</p>
-                        <p class="num">05</p>
-                        <div class="square sq1"></div>
-                        <div class="square"></div>
-                        <div class="square"></div>
-                        <div class="square"></div>
-                        <div class="square"></div>
-                        <div class="arrow arw1"><img src="assets/svg/arrow1.svg" alt="arrow left"></div>
-                        <div class="arrow arw2"><img src="assets/svg/arrow2.svg" alt="arrow right"></div>
+                        <p class="welcome__num">01</p>
+                        <p class="welcome__num">|</p>
+                        <p class="welcome__num">05</p>
+                        <div class="welcome__square sq1 sq-active"></div>
+                        <div class="welcome__square"></div>
+                        <div class="welcome__square"></div>
+                        <div class="welcome__square"></div>
+                        <div class="welcome__square"></div>
+                        <div class="welcome__arrow arw1">&#8592;</div>
+                        <div class="welcome__arrow arw2">&#8594;</div>
                     </div>
                 </div>
             </section>
@@ -157,13 +157,13 @@
 
                 </div>
                 <div class="video__slider">
-                    <img src="assets/svg/arrow_left.svg" alt="arrow left" class="video__slider__button">
+                    <button type="button" class="video__slider__arrow">&#171;</button>
                     <button type="button" class="video__slider__button active"></button>
                     <button type="button" class="video__slider__button"></button>
                     <button type="button" class="video__slider__button"></button>
                     <button type="button" class="video__slider__button"></button>
                     <button type="button" class="video__slider__button"></button>
-                    <img src="assets/svg/arrow_right.svg" alt="arrow_right">
+                    <button type="button" class="video__slider__arrow">&#187;</button>
                 </div>
             </section>
             <section class="gallery dark" id="gallery">
@@ -193,12 +193,15 @@
             <section class="tickets" id="tickets">
                 <div class="tickets__container">
                     <h2 class="tickets__title title">Buy Tickets</h2>
-                    <div class="tickets__img">
-
-                        <img srcset="assets/img/tickets1-380px.jpg 380w, assets/img/tickets1-444px.jpg 444w, assets/img/tickets1-700px.jpg 700w,
-             assets/img/tickets1.jpg 720w" sizes="(max-width:420px) 380px, (max-width: 1023px) 444px, (max-width: 1024px) 700px,
+                    <!-- <div class="tickets__img"> -->
+                    <img class="tickets__img" srcset="assets/img/tickets1-380px.jpg 380w, 
+                        assets/img/tickets1-444px.jpg 444w, 
+                        assets/img/tickets1-700px.jpg 700w,
+             assets/img/tickets1.jpg 720w" sizes="(max-width:420px) 380px, 
+             (max-width: 768px) 444px, 
+             (max-width: 1024px) 700px,
             720px" src="assets/img/tickets1.jpg" alt="picture">
-                    </div>
+                    <!-- </div> -->
 
                     <div class="tickets__type">
                         <p class="tickets__subtitle">Ticket Type</p>
