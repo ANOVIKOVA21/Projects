@@ -3,20 +3,19 @@ let images = ['assets/img/1.jpg', 'assets/img/2.jpg', 'assets/img/3.jpg', 'asset
     // let images = document.querySelectorAll('.welcome__img img')
 let container = document.querySelector('.welcome__img')
 let slider = document.querySelector('.welcome__slider')
-let numOfImg = document.querySelector('.num')
-let squares = document.querySelectorAll('.square')
-let arrows = document.querySelectorAll('.arrow')
+let numOfImg = document.querySelector('.welcome__num')
+let squares = document.querySelectorAll('.welcome__square')
+let arrows = document.querySelectorAll('.welcome__arrow')
 let indexCurImg = 0
 let currentImg = images[indexCurImg]
-
 
 slider.addEventListener('click', (event) => {
 
     let target = event.target
-    if (!target.closest('.arrow') && !target.closest('.square')) return
-    let targetArrow = target.closest('.arrow')
-    let targetSquare = target.closest('.square')
-    squares[indexCurImg].style.backgroundColor = '#FFFFFF'
+    if (!target.closest('.welcome__arrow') && !target.closest('.welcome__square')) return
+    let targetArrow = target.closest('.welcome__arrow')
+    let targetSquare = target.closest('.welcome__square')
+    squares[indexCurImg].classList.remove('sq-active')
     container.style.opacity = '0'
     if (targetArrow) {
         if (targetArrow === arrows[0]) {
@@ -38,7 +37,7 @@ slider.addEventListener('click', (event) => {
     }
 
     numOfImg.innerHTML = `0${indexCurImg + 1}`
-    squares[indexCurImg].style.backgroundColor = '#D2B183'
+    squares[indexCurImg].classList.add('sq-active')
     currentImg = images[indexCurImg]
     setTimeout(() => {
         container.style.opacity = '1'
