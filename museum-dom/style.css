@@ -225,7 +225,7 @@
                       background-color: #030303;
                   }
                   
-                  .num {
+                  .welcome__num {
                       padding: 5px;
                       margin: 35px 0;
                       font-family: 'Roboto';
@@ -234,11 +234,11 @@
                       align-self: center;
                   }
                   
-                  .num:first-child {
+                  .welcome__num:first-child {
                       margin-left: 69px;
                   }
                   
-                  .square {
+                  .welcome__square {
                       cursor: pointer;
                       align-self: center;
                       width: 16px;
@@ -248,16 +248,30 @@
                       transition: 0.5s;
                   }
                   
-                  .sq1 {
-                      margin-left: 50px;
-                      background: #D2B183;
+                  .welcome__square:hover {
+                      background-color: #9D8665;
                   }
                   
-                  .arrow {
+                  .sq-active {
+                      background-color: #D2B183;
+                  }
+                  
+                  .sq1 {
+                      margin-left: 50px;
+                  }
+                  
+                  .welcome__arrow {
                       cursor: pointer;
                       align-self: center;
                       padding: 0 10px;
-                      margin: 52px 0;
+                      /* margin: 52px 0; */
+                      margin: 34px 0;
+                      font-size: 30px;
+                      transition: 0.5s;
+                  }
+                  
+                  .welcome__arrow:hover {
+                      color: #9D8665;
                   }
                   
                   .arw1 {
@@ -266,10 +280,6 @@
                   
                   .arw2 {
                       margin-right: 65px;
-                  }
-                  
-                  .arrow:first-child {
-                      padding: 30px;
                   }
                   /* Welcome styles end */
                   /* Visiting styles start */
@@ -434,7 +444,7 @@
                   /*Video styles start */
                   
                   .video {
-                      padding: 75px 0;
+                      padding: 75px 0 65px;
                   }
                   
                   .video__container {
@@ -545,20 +555,42 @@
                   .video__slider {
                       display: flex;
                       justify-content: space-between;
+                      align-items: center;
                       max-width: 200px;
-                      margin: 40px auto 0 auto;
+                      margin: 26px auto 0 auto;
                   }
                   
-                  .video__slider button {
+                  .video__slider__button {
+                      cursor: pointer;
                       border: 0;
                       width: 12px;
                       height: 12px;
                       border-radius: 50px;
                       background: #999999;
+                      transition: 0.5s;
+                  }
+                  
+                  .video__slider__button:hover {
+                      background-color: #710707;
                   }
                   
                   .video__slider .active {
                       background: #333333;
+                  }
+                  
+                  .video__slider__arrow {
+                      cursor: pointer;
+                      font-family: inherit;
+                      font-size: 30px;
+                      color: #999999;
+                      padding: 0;
+                      background-color: transparent;
+                      border: none;
+                      transition: 0.5s;
+                  }
+                  
+                  .video__slider__arrow:hover {
+                      color: #710707;
                   }
                   
                   .fullscreen {
@@ -674,13 +706,8 @@
                   }
                   
                   .tickets__img {
-                      max-width: 720px;
-                      max-height: 550px;
-                  }
-                  
-                  .tickets__img img {
-                      width: 100%;
-                      height: 100%;
+                      max-width: 100%;
+                      height: auto;
                   }
                   
                   .tickets__subtitle {
@@ -728,7 +755,7 @@
                   }
                   
                   .tickets__type input:checked+label::before {
-                      background: url("assets/svg/circle.svg") no-repeat center;
+                      background: url("assets/svg/circle.svg") no-repeat 45% 50%;
                   }
                   
                   .tickets__amount {
@@ -854,10 +881,11 @@
                   }
                   
                   .booking__close {
+                      height: 25px;
                       cursor: pointer;
                       position: absolute;
                       right: 2%;
-                      top: 5%;
+                      top: 4%;
                   }
                   
                   .booking__form {
@@ -1225,6 +1253,7 @@
                       background: #710707;
                       opacity: 0.9;
                       font-size: 22px;
+                      line-height: 26px;
                       font-weight: 300;
                       color: #FFFFFF;
                       padding: 11px 85px 10px;
@@ -1400,7 +1429,7 @@
                       align-items: center;
                   }
                   
-                  .footer__network li:hover {
+                  .footer__network li img:hover {
                       background: #9D8665;
                       cursor: pointer;
                       transition: 1s;
@@ -1584,20 +1613,20 @@
                           width: 700px;
                           justify-content: normal;
                       }
-                      .num {
+                      .welcome__num {
                           font-size: 20px;
                       }
-                      .num:first-child {
+                      .welcome__num:first-child {
                           margin-left: 200px;
                       }
-                      .square {
+                      .welcome__square {
                           width: 12px;
                           height: 12px;
                       }
                       .sq1 {
                           margin-left: 40px;
                       }
-                      .arrow {
+                      .welcome__arrow {
                           margin: 49px 0;
                           padding-bottom: 5px;
                       }
@@ -1692,10 +1721,6 @@
                       .tickets__container {
                           column-gap: 80px;
                       }
-                      .tickets__img {
-                          max-width: 700px;
-                          max-height: 440px;
-                      }
                       .tickets__amount {
                           margin-left: 0;
                       }
@@ -1788,10 +1813,6 @@
                           max-height: 199px;
                           max-width: 354px;
                       }
-                      .tickets__img {
-                          max-width: 444px;
-                          max-height: 340px;
-                      }
                       .tickets__amount {
                           margin-left: auto;
                       }
@@ -1836,20 +1857,20 @@
                           max-width: 100%;
                           justify-content: center;
                       }
-                      .num:first-child {
+                      .welcome__num:first-child {
                           margin-left: 0;
                           padding-left: 0;
                       }
-                      .num {
+                      .welcome__num {
                           margin: 25px 0;
                       }
-                      .square {
+                      .welcome__square {
                           margin: 44px 25px 44px 0;
                       }
                       .sq1 {
                           margin-left: 40px;
                       }
-                      .arrow {
+                      .welcome__arrow {
                           margin: 38px 0;
                       }
                       .arw1 {
