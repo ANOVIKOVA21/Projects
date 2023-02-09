@@ -924,33 +924,80 @@
                       margin: 0 0 10px 0;
                   }
                   
-                  .booking__date,
-                  .booking__time {
-                      border: none;
-                      max-width: 190px;
-                      width: 100%;
-                  }
-                  
                   .booking__date__container,
                   .booking__time__container {
+                      display: flex;
+                      align-items: center;
                       max-width: 190px;
+                      max-height: 47px;
                       border: 1px solid #030303;
                       padding: 10px 15px 12px 15px;
+                      width: 100%;
+                      height: 100%;
+                      position: relative;
                   }
                   
-                  .booking__date__placeholder,
-                  .booking__time__placeholder {
-                      display: flex;
-                      column-gap: 15px;
-                      background-color: #FFFFFF;
+                  .booking__time__container {
+                      background: url("assets/svg/arrow_down.svg") no-repeat right 15px center, white;
+                      cursor: pointer;
                   }
                   
-                  .booking__date__placeholder p {
-                      margin: 0 60px 0 0;
+                  .booking__date__container::before,
+                  .booking__time__container::before {
+                      content: "";
+                      display: inline-block;
+                      width: 15px;
+                      height: 15px;
+                      background-image: url("assets/svg/date.svg");
+                      margin-right: 15px;
                   }
                   
-                  .booking__time__placeholder p {
-                      margin: 0 58px 0 0;
+                  .booking__time__container::before {
+                      background-image: url("assets/svg/time.svg");
+                  }
+                  
+                  .booking__date {
+                      margin-left: auto;
+                      background: url("assets/svg/arrow_down.svg") no-repeat center;
+                      width: 17px;
+                      border: none;
+                      max-width: 190px;
+                      cursor: pointer;
+                  }
+                  
+                  .booking__time {
+                      display: none;
+                      max-width: 190px;
+                      width: 102%;
+                      /* background: url("assets/svg/time.svg") no-repeat left 15px center, url("assets/svg/arrow_down.svg") no-repeat right 15px center, white; */
+                      position: absolute;
+                      top: 100%;
+                      right: -1px;
+                      border: 1px solid black;
+                  }
+                  
+                  .booking__date::-webkit-datetime-edit {
+                      display: none;
+                  }
+                  
+                  .booking__date::-webkit-calendar-picker-indicator {
+                      opacity: 0;
+                      cursor: pointer;
+                  }
+                  
+                  .booking__date:focus-visible,
+                  .booking__time:focus-visible {
+                      outline: 0;
+                  }
+                  
+                  .booking__time option {
+                      color: #030303;
+                      background-color: white;
+                      padding: 12px 0 12px 45px;
+                  }
+                  
+                  .booking__time option:hover {
+                      background-color: #E7E7E7;
                   }
                   
                   .booking__user {
@@ -997,6 +1044,10 @@
                       padding: 9px 15px 15px 15px;
                       border: 1px solid #030303;
                       width: 100%;
+                  }
+                  
+                  .arrow-open {
+                      background: url("assets/svg/arrow_top.svg") no-repeat right 15px center, white;
                   }
                   
                   h4 {
