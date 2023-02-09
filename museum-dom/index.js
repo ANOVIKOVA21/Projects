@@ -65,34 +65,59 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
 
 // для input date
-let dateContainer = document.querySelector('.booking__date__container')
-let placeholderDate = document.querySelector('.booking__date__placeholder')
-let inputDate = document.querySelector('.booking__date')
-dateContainer.addEventListener('focus', () => {
-    placeholderDate.style.display = 'none'
-    inputDate.hidden = false
+const dateText = document.querySelector('.booking__date__text');
+const inputDate = document.querySelector('.booking__date');
+
+function getDateString(date) {
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    if (month < 10) month = `0${month}`;
+    let dayOfMonth = date.getDate();
+    if (dayOfMonth < 10) dayOfMonth = `0${dayOfMonth}`;
+    const dateString = `${year}-${month}-${dayOfMonth}`;
+    return dateString;
+}
+
+function updateMinAndMaxDate() {
+    let date = new Date();
+    inputDate.setAttribute('min', getDateString(date));
+    date.setDate(date.getDate() + 30);
+    inputDate.setAttribute('max', getDateString(date));
+}
+updateMinAndMaxDate()
+
+inputDate.addEventListener('input', () => {
+    if (!inputDate.value) return dateText.textContent = 'Date';
+    dateText.textContent = new Date(inputDate.value).toLocaleDateString();
+    inputDate.style.background = 'url(assets/svg/arrow_down.svg) no-repeat center';
+})
+inputDate.addEventListener('click', () => {
+    inputDate.style.background = 'url(assets/svg/arrow_top.svg) no-repeat center';
 })
 inputDate.addEventListener('blur', () => {
-    if (!inputDate.value) {
-        placeholderDate.style.display = ''
-        inputDate.hidden = true
-    }
-})
+        inputDate.style.background = 'url(assets/svg/arrow_down.svg) no-repeat center';
+    })
+    // для input time
 
-// для input time
-let timeContainer = document.querySelector('.booking__time__container')
-let placeholderTime = document.querySelector('.booking__time__placeholder')
-let inputTime = document.querySelector('.booking__time')
-timeContainer.addEventListener('focus', () => {
-    placeholderTime.style.display = 'none'
-    inputTime.hidden = false
+const timeContainer = document.querySelector('.booking__time__container');
+const select = document.querySelector('.booking__time');
+
+select.addEventListener('blur', () => {
+    if (!timeContainer.classList.contains('arrow-open')) return
+    select.style.display = 'none'
+    timeContainer.classList.remove('arrow-open')
 })
-inputTime.addEventListener('blur', () => {
-    if (!inputTime.value) {
-        placeholderTime.style.display = ''
-        inputTime.hidden = true
+select.addEventListener('click', (ev) => {
+    let target = ev.target;
+    let timeText = document.querySelector('.booking__time__text');
+    timeContainer.classList.add('arrow-open');
+    select.style.display = 'block';
+    select.focus();
+    if (target.closest('option')) {
+        timeText.textContent = target.textContent;
+        select.style.display = 'none';
     }
-})
+});
 
 // для формы
 let ticketsBuyButton = document.querySelector('.tickets__buy')
@@ -430,36 +455,3 @@ function more(element) {
     element.value == 20 ? element.value = 20 : element.value++
         element.dispatchEvent(new Event('input', { bubbles: true }));
 }
-console.log('оценка - 73 балла')
-console.log('Частично выполненные пункты:')
-console.log('1) если видео с YouTube проигрывается, клик по кнопке Pause останавливает его проигрывание. Также проигрывание видео останавливается, если кликнуть по другому слайду или кнопке Play в центре другого слайда. В указанной ситуации другое видео должно запуститься, а текущее остановиться. Невозможно проигрывание нескольких YouTube видео одновременно')
-console.log('2) валидация e-mail должна пропукать только адреса вида username@example.com, где: username - имя пользователя, должно содержать от 3 до 15 символов (буквы, цифры, знак подчёркивания, дефис), не должно содержать пробелов; @ - символ собачки; example - домен первого уровня состоит минимум из 4 латинских букв; com - домен верхнего уровня, отделяется от домена первого уровня точкой и состоит минимум из 2 латинских букв')
-console.log('Выполненные пункты:')
-console.log('1) есть возможность перелистывания слайдов влево и вправо кликами по стрелкам')
-console.log('2) есть возможность перелистывания слайдов кликами по буллетам (квадратики внизу слайдера)')
-console.log('3) слайды перелистываются плавно с анимацией смещения вправо или влево')
-console.log('4) перелистывание слайдов бесконечное (зацикленное)')
-console.log('5) при перелистывании слайдов буллет активного слайда подсвечивается (выделяется стилем)')
-console.log('6) при перелистывании слайдов кликами или свайпами меняется номер активного слайда')
-console.log('7) даже при частых кликах или свайпах нет ситуации, когда слайд после перелистывания находится не по центру, нет ситуации, когда видны одновременно два слайда')
-console.log('8) при клике по самому слайду или кнопке Play в центре слайда, внутри слайда проигрывается видео с YouTube. Никакие изменения с основным видео при этом не происходят')
-console.log('9) при клике по кнопке "Play" слева внизу на панели видео начинается проигрывание видео, иконка кнопки при этом меняется на "Pause", большая кнопка "Play" по центру видео исчезает. Повторный клик на кнопку останавливает проигрывание видео, иконка меняется на первоначальную, большая кнопка "Play" по центру видео снова отображается')
-console.log('10) при клике по большой кнопке "Play" по центру видео, или при клике по самому видео, начинается проигрывание видео, иконка кнопки "Play" слева внизу на панели видео меняется на "Pause", большая кнопка "Play" по центру видео исчезает. Клик на видео, которое проигрывается, останавливает проигрывание видео, иконка кнопки "Play" слева внизу на панели видео меняется на первоначальную, большая кнопка "Play" по центру видео снова отображается')
-console.log('11) прогресс-бар отображает прогресс проигрывания видео')
-console.log('12) перетягивание ползунка прогресс-бара позволяет изменить время с которого проигрывается видео')
-console.log('13) если прогресс-бар перетянуть до конца, видео останавливается, соответственно, меняется внешний вид кнопок "Play"')
-console.log('14) при клике на иконку динамика происходит toggle звука и самой иконки (звук включается или выключается, соответственно изменяется иконка)')
-console.log('15) при перемещении ползунка громкости звука изменяется громкость видео')
-console.log('16) если ползунок громкости звука перетянуть до 0, звук выключается, иконка динамика становится зачеркнутой')
-console.log('17) если при выключенном динамике перетянуть ползунок громкости звука от 0, звук включается, иконка громкости перестаёт быть зачёркнутой')
-console.log('18) при нажатии на кнопку fullscreen видео переходит в полноэкранный режим, при этом видео и панель управления разворачиваются во весь экран. При нажатии на кнопку fullscreen повторно видео выходит из полноэкранного режима. Нажатие на клавишу для выхода из полноэкранного режима Esc не проверяем и не оцениваем')
-console.log('19) панель управления в полноэкранном режиме визуально выглядит так же, как на макете - кнопки равномерно распределены по всей ширине страницы, относительные размеры между кнопками и ползунками, а также относительные размеры самих кнопок остались прежними')
-console.log('20) ползунок можно перетягивать мышкой по горизонтали')
-console.log('21) ползунок никогда не выходит за границы картины')
-console.log('22) при перемещении ползунка справа налево плавно появляется нижняя картина')
-console.log('23) при перемещении ползунка слева направо плавно появляется верхняя картина')
-console.log('24) при обновлении страницы ползунок возвращается в исходное положение')
-console.log('25) при прокрутке страницы вниз появление картин секции Galery сопровождается анимацией: изображения плавно поднимаются снизу вверх, увеличиваясь и создавая эффект выплывания. В качестве образца анимации используйте анимацию на сайте Лувра https://www.louvre.fr/')
-console.log('26) если прокрутить страницу вверх и затем снова прокручивать вниз, анимация появления картин повторяется')
-console.log('27) при обновлении страницы, если она к тому моменту была прокручена до секции Galery, анимация картин повторяется')
-console.log('28) в секции Contacts добавлена интерактивная карта')
