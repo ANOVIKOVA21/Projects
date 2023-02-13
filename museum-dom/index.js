@@ -95,30 +95,46 @@ inputDate.addEventListener('click', () => {
     inputDate.style.background = 'url(assets/svg/arrow_top.svg) no-repeat center';
 })
 inputDate.addEventListener('blur', () => {
-        inputDate.style.background = 'url(assets/svg/arrow_down.svg) no-repeat center';
-    })
-    // для input time
-
-const timeContainer = document.querySelector('.booking__time__container');
-const select = document.querySelector('.booking__time');
-
-select.addEventListener('blur', () => {
-    if (!timeContainer.classList.contains('arrow-open')) return
-    select.style.display = 'none'
-    timeContainer.classList.remove('arrow-open')
+    inputDate.style.background = 'url(assets/svg/arrow_down.svg) no-repeat center';
 })
-select.addEventListener('click', (ev) => {
-    let target = ev.target;
-    let timeText = document.querySelector('.booking__time__text');
-    timeContainer.classList.add('arrow-open');
+
+// для select
+const timeContainer = document.querySelector('.booking__time__container');
+const selectTime = document.querySelector('.booking__time');
+const ticketTypeContainer = document.querySelector('.booking__type__container');
+const selectType = document.querySelector('.booking__ticket-type');
+
+function hideOptions(container, select) {
+    if (!container.classList.contains('arrow-open')) return;
+    select.style.display = 'none';
+    container.classList.remove('arrow-open');
+}
+
+function showOptions(target, select, container, textEl) {
+    container.classList.add('arrow-open');
     select.style.display = 'block';
     select.focus();
     if (target.closest('option')) {
-        timeText.textContent = target.textContent;
+        textEl.textContent = target.textContent;
         select.style.display = 'none';
     }
+}
+selectTime.addEventListener('blur', () => {
+    hideOptions(timeContainer, selectTime);
+})
+selectType.addEventListener('blur', () => {
+    hideOptions(ticketTypeContainer, selectType);
+})
+selectTime.addEventListener('click', (ev) => {
+    const target = ev.target;
+    const timeText = document.querySelector('.booking__time__text');
+    showOptions(target, selectTime, timeContainer, timeText);
 });
-
+selectType.addEventListener('click', (ev) => {
+    const target = ev.target;
+    const typeText = document.querySelector('.booking__type__text');
+    showOptions(target, selectType, ticketTypeContainer, typeText);
+});
 // для формы
 let ticketsBuyButton = document.querySelector('.tickets__buy')
 let ticketsForm = document.querySelector('.booking__tickets')
