@@ -285,11 +285,14 @@
                             <input type="text" name="name" placeholder="Name" class="booking__user" required>
                             <input type="email" name="email" placeholder="E-mail" class="booking__user" required>
                             <input type="tel" name="phone" placeholder="Phone" class="booking__user" required>
-                            <select id="type-of-ticket" class="booking__user">
-                                <option value="Permanent exhibition">Permanent exhibition</option>
-                                <option value="Temporary exhibition">Temporary exhibition</option>
-                                <option value="Combined Admission">Combined Admission</option>
-                            </select>
+                            <label class="booking__type__container booking__user" tabindex="0"><span
+                                    class="booking__type__text">Ticket Type</span>
+                                <select name="type-of-ticket" class="booking__ticket-type" multiple size="3" required>
+                                    <option value="Permanent exhibition">Permanent exhibition</option>
+                                    <option value="Temporary exhibition">Temporary exhibition</option>
+                                    <option value="Combined Admission">Combined Admission</option>
+                                </select>
+                            </label>
                             <div class="booking__entry">
                                 <h4>Entry ticket</h4>
                                 <div class="booking__entry__basic">
@@ -355,7 +358,7 @@
                                         <option value="12"></option>
                                     </datalist>
 
-                                    <input type="number" min="2021" max="2026" name="year" value="2024" id="year"
+                                    <input type="number" min="2023" max="2028" name="year" value="2024" id="year"
                                         class="year" required>
                                     <label for="CardholderName">Cardholder name</label>
                                     <input type="text" name="CardholderName" id="CardholderName" class="cardholder-name"

@@ -934,16 +934,11 @@
                       padding: 10px 15px 12px 15px;
                       width: 100%;
                       height: 100%;
-                      position: relative;
-                  }
-                  
-                  .booking__time__container {
-                      background: url("assets/svg/arrow_down.svg") no-repeat right 15px center, white;
-                      cursor: pointer;
                   }
                   
                   .booking__date__container::before,
-                  .booking__time__container::before {
+                  .booking__time__container::before,
+                  .booking__type__container::before {
                       content: "";
                       display: inline-block;
                       width: 15px;
@@ -954,6 +949,10 @@
                   
                   .booking__time__container::before {
                       background-image: url("assets/svg/time.svg");
+                  }
+                  
+                  .booking__type__container::before {
+                      background-image: url("assets/svg/ballot.svg");
                   }
                   
                   .booking__date {
@@ -986,17 +985,21 @@
                   }
                   
                   .booking__date:focus-visible,
-                  .booking__time:focus-visible {
+                  .booking__time:focus-visible,
+                  .booking__ticket-type:focus-visible {
                       outline: 0;
                   }
                   
-                  .booking__time option {
+                  .booking__time option,
+                  .booking__ticket-type option {
                       color: #030303;
                       background-color: white;
                       padding: 12px 0 12px 45px;
+                      cursor: pointer;
                   }
                   
-                  .booking__time option:hover {
+                  .booking__time option:hover,
+                  .booking__ticket-type option:hover {
                       background-color: #E7E7E7;
                   }
                   
@@ -1010,9 +1013,18 @@
                       color: #030303;
                   }
                   
+                  .booking__time__container,
+                  .booking__type__container {
+                      position: relative;
+                      padding-left: 15px;
+                      background: url("assets/svg/arrow_down.svg") no-repeat right 15px center, white;
+                      cursor: pointer;
+                  }
+                  
                   .booking__date,
                   .booking__time,
-                  .booking__user {
+                  .booking__user,
+                  .booking__ticket-type {
                       font-family: 'Roboto';
                       font-style: normal;
                       font-weight: normal;
@@ -1031,23 +1043,31 @@
                   .booking__form input[type="tel"] {
                       background: url(assets/svg/tel.svg) no-repeat left 15px center;
                   }
-                  
-                  .booking__form input[name="type"] {
+                  /* .booking__type__container {
+                      position: relative;
                       background: url(assets/svg/ballot.svg) no-repeat left 15px center, url(assets/svg/arrow_down.svg) no-repeat right 15px center;
+                      cursor: pointer;
+                  } */
+                  
+                  .booking__ticket-type {
+                      display: none;
+                      max-width: 400px;
+                      position: absolute;
+                      width: 101%;
+                      left: -1px;
+                      top: 100%;
+                      border: 1px solid black;
+                      overflow-y: auto;
                   }
                   
-                  .booking__form input[name="type"]::-webkit-calendar-picker-indicator {
-                      opacity: 0;
+                  .arrow-open {
+                      background: url("assets/svg/arrow_top.svg") no-repeat right 15px center, white;
                   }
                   
                   .booking__entry {
                       padding: 9px 15px 15px 15px;
                       border: 1px solid #030303;
                       width: 100%;
-                  }
-                  
-                  .arrow-open {
-                      background: url("assets/svg/arrow_top.svg") no-repeat right 15px center, white;
                   }
                   
                   h4 {
