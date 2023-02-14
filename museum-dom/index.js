@@ -65,8 +65,10 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
 
 // для input date
+const dateContainer = document.querySelector('.booking__date__container');
 const dateText = document.querySelector('.booking__date__text');
 const inputDate = document.querySelector('.booking__date');
+
 
 function getDateString(date) {
     const year = date.getFullYear();
@@ -86,19 +88,20 @@ function updateMinAndMaxDate() {
 }
 updateMinAndMaxDate()
 
-inputDate.addEventListener('input', () => {
-    if (!inputDate.value) return dateText.textContent = 'Date';
-    dateText.textContent = new Date(inputDate.value).toLocaleDateString();
-    inputDate.style.background = 'url(assets/svg/arrow_down.svg) no-repeat center';
-})
 inputDate.addEventListener('click', () => {
-    inputDate.style.background = 'url(assets/svg/arrow_top.svg) no-repeat center';
+    inputDate.style.background = 'url(assets/svg/arrow_top.svg) no-repeat center right';
 })
 inputDate.addEventListener('blur', () => {
-    inputDate.style.background = 'url(assets/svg/arrow_down.svg) no-repeat center';
+    inputDate.style.background = 'url(assets/svg/arrow_down.svg) no-repeat center right';
 })
-
-// для select
+inputDate.addEventListener('change', () => {
+        if (inputDate.value !== '') inputDate.classList.add('has-value')
+        if (inputDate.value === '' && inputDate.classList.contains('has-value')) {
+            inputDate.classList.remove('has-value')
+        }
+        inputDate.style.background = 'url(assets/svg/arrow_down.svg) no-repeat center right';
+    })
+    // для select
 const timeContainer = document.querySelector('.booking__time__container');
 const selectTime = document.querySelector('.booking__time');
 const ticketTypeContainer = document.querySelector('.booking__type__container');
