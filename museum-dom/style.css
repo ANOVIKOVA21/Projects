@@ -941,7 +941,8 @@
                   .booking__type__container::before {
                       content: "";
                       display: inline-block;
-                      width: 15px;
+                      max-width: 15px;
+                      width: 100%;
                       height: 15px;
                       background-image: url("assets/svg/date.svg");
                       margin-right: 15px;
@@ -956,12 +957,10 @@
                   }
                   
                   .booking__date {
-                      margin-left: auto;
-                      background: url("assets/svg/arrow_down.svg") no-repeat center;
-                      width: 17px;
+                      position: relative;
+                      background: url("assets/svg/arrow_down.svg") no-repeat center right;
+                      width: 100%;
                       border: none;
-                      max-width: 190px;
-                      cursor: pointer;
                   }
                   
                   .booking__time {
@@ -975,13 +974,27 @@
                       border: 1px solid black;
                   }
                   
-                  .booking__date::-webkit-datetime-edit {
-                      display: none;
-                  }
-                  
                   .booking__date::-webkit-calendar-picker-indicator {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      width: auto;
+                      height: auto;
+                      color: transparent;
                       opacity: 0;
                       cursor: pointer;
+                  }
+                  
+                  .booking__date:not(.has-value):before {
+                      content: attr(placeholder);
+                      width: 100%;
+                  }
+                  
+                  .booking__date::-webkit-inner-spin-button,
+                  .booking__date::-webkit-clear-button {
+                      z-index: -1;
                   }
                   
                   .booking__date:focus-visible,
@@ -1043,11 +1056,6 @@
                   .booking__form input[type="tel"] {
                       background: url(assets/svg/tel.svg) no-repeat left 15px center;
                   }
-                  /* .booking__type__container {
-                      position: relative;
-                      background: url(assets/svg/ballot.svg) no-repeat left 15px center, url(assets/svg/arrow_down.svg) no-repeat right 15px center;
-                      cursor: pointer;
-                  } */
                   
                   .booking__ticket-type {
                       display: none;
