@@ -774,7 +774,8 @@
                       line-height: 26px;
                   }
                   
-                  .tickets__val {
+                  .tickets__val,
+                  .booking__val {
                       border: 3px solid #000000;
                       max-width: 150px;
                       display: flex;
@@ -783,7 +784,8 @@
                       margin: 0 0 15px 25px;
                   }
                   
-                  .tickets__num {
+                  .tickets__num,
+                  .booking__num {
                       width: 30px;
                       text-align: center;
                       border: none;
@@ -794,7 +796,9 @@
                   }
                   
                   .tickets__num::-webkit-outer-spin-button,
-                  .tickets__num::-webkit-inner-spin-button {
+                  .booking__num::-webkit-outer-spin-button,
+                  .tickets__num::-webkit-inner-spin-button,
+                  .booking__num::-webkit-inner-spin-button {
                       display: none;
                   }
                   
@@ -1037,7 +1041,8 @@
                   .booking__date,
                   .booking__time,
                   .booking__user,
-                  .booking__ticket-type {
+                  .booking__ticket-type,
+                  .booking__val {
                       font-family: 'Roboto';
                       font-style: normal;
                       font-weight: normal;
@@ -1115,6 +1120,7 @@
                   
                   .booking__less,
                   .booking__more {
+                      font-size: inherit;
                       border: 0;
                       background-color: #030303;
                       color: #FFFFFF;
@@ -1126,7 +1132,8 @@
                       border: 1px solid #030303;
                       width: 35px;
                       font-weight: 400;
-                      line-height: 23px;
+                      font-size: inherit;
+                      line-height: 22px;
                       max-height: 25px;
                   }
                   
@@ -1138,7 +1145,7 @@
                   
                   .overview__data {
                       background: url(assets/img/ticket_img.jpg) no-repeat top right;
-                      margin-bottom: 22px;
+                      margin-bottom: 25px;
                   }
                   
                   h5 {
@@ -1618,6 +1625,9 @@
                       }
                       .tickets__type {
                           display: none;
+                      }
+                      .booking__title {
+                          line-height: 55.2px;
                       }
                       .footer__container {
                           column-gap: 40px;
