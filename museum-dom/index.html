@@ -238,45 +238,46 @@
             <section class="tickets" id="tickets">
                 <div class="tickets__container">
                     <h2 class="tickets__title title">Buy Tickets</h2>
-                    <!-- <div class="tickets__img"> -->
-                    <img class="tickets__img" srcset="assets/img/tickets1-380px.jpg 380w, 
+                    <div class="tickets__content">
+                        <div class="tickets__img">
+                            <img srcset="assets/img/tickets1-380px.jpg 380w, 
                         assets/img/tickets1-444px.jpg 444w, 
                         assets/img/tickets1-700px.jpg 700w,
              assets/img/tickets1.jpg 720w" sizes="(max-width:420px) 380px, 
              (max-width: 768px) 444px, 
              (max-width: 1024px) 700px,
             720px" src="assets/img/tickets1.jpg" alt="picture">
-                    <!-- </div> -->
-
-                    <div class="tickets__type">
-                        <p class="tickets__subtitle">Ticket Type</p>
-                        <input type="radio" name="exhibition" value="permanent" id="permanent_type" checked>
-                        <label for="permanent_type">Permanent exhibition</label>
-                        <input type="radio" name="exhibition" value="temporary" id="temporary_type">
-                        <label for="temporary_type">Temporary exhibition</label>
-                        <input type="radio" name="exhibition" value="combined" id="combined_type">
-                        <label for="combined_type">Combined Admission</label>
-                    </div>
-                    <div class="tickets__amount">
-                        <p class="tickets__subtitle amount">Amount</p>
-                        <p class="tickets__age">Basic 18+</p>
-                        <div class="tickets__val">
-                            <button type="button" onclick="less(ticketBasic)" class="less">–</button>
-                            <input type="number" min="0" max="20" value="1" class="tickets__num" id="basic">
-                            <button type="button" onclick="more(ticketBasic)" class="more">+</button>
                         </div>
 
-                        <p class="tickets__age">Senior 65+</p>
-                        <div class="tickets__val">
-                            <button type="button" onclick="less(this.nextElementSibling)" class="less">–</button>
-                            <input type="number" min="0" max="20" value="1" class="tickets__num" id="senior">
-                            <button type="button" onclick="more(this.previousElementSibling)" class="more">+</button>
+                        <div class="tickets__type">
+                            <p class="tickets__subtitle">Ticket Type</p>
+                            <input type="radio" name="exhibition" value="permanent" id="permanent_type" checked>
+                            <label for="permanent_type">Permanent exhibition</label>
+                            <input type="radio" name="exhibition" value="temporary" id="temporary_type">
+                            <label for="temporary_type">Temporary exhibition</label>
+                            <input type="radio" name="exhibition" value="combined" id="combined_type">
+                            <label for="combined_type">Combined Admission</label>
                         </div>
+                        <div class="tickets__amount">
+                            <p class="tickets__subtitle amount">Amount</p>
+                            <p class="tickets__age">Basic 18+</p>
+                            <div class="tickets__val">
+                                <button type="button" onclick="less(ticketBasic)" class="less">–</button>
+                                <input type="number" min="0" max="20" value="1" class="tickets__num" id="basic">
+                                <button type="button" onclick="more(ticketBasic)" class="more">+</button>
+                            </div>
 
-                        <p class="tickets__total">Total €<span class="tickets__total-price">30</span></p>
-                        <button type="button" class="tickets__buy">Buy Now</button>
+                            <p class="tickets__age">Senior 65+</p>
+                            <div class="tickets__val">
+                                <button type="button" onclick="less(this.nextElementSibling)" class="less">–</button>
+                                <input type="number" min="0" max="20" value="1" class="tickets__num" id="senior">
+                                <button type="button" onclick="more(this.previousElementSibling)"
+                                    class="more">+</button>
+                            </div>
 
-
+                            <p class="tickets__total">Total €<span class="tickets__total-price">30</span></p>
+                            <button type="button" class="tickets__buy">Buy Now</button>
+                        </div>
                     </div>
                 </div>
                 <div class="tickets__parallax"></div>
