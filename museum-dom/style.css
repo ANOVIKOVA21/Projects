@@ -415,7 +415,8 @@
                   
                   .explore__img-container {
                       position: relative;
-                      width: 720px;
+                      max-width: 720px;
+                      width: 100%;
                       height: 700px;
                       margin-top: 15px;
                   }
@@ -429,7 +430,6 @@
                   
                   .explore__img img {
                       display: block;
-                      /* vertical-align: middle; */
                   }
                   
                   .explore__img-slider {
@@ -441,7 +441,7 @@
                   /*Video styles start */
                   
                   .video {
-                      padding: 75px 0 65px;
+                      padding: 75px 0;
                   }
                   
                   .video__container {
@@ -551,10 +551,9 @@
                   
                   .video__slider {
                       display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                      max-width: 200px;
-                      margin: 26px auto 0 auto;
+                      column-gap: 20px;
+                      justify-content: center;
+                      margin-top: 40px;
                   }
                   
                   .video__slider__button {
@@ -579,6 +578,8 @@
                       cursor: pointer;
                       font-family: inherit;
                       font-size: 30px;
+                      line-height: 12px;
+                      width: 10px;
                       color: #999999;
                       padding: 0;
                       background-color: transparent;
@@ -703,7 +704,7 @@
                   
                   .tickets__img {
                       max-width: 720px;
-                      height: auto;
+                      max-height: 550px;
                   }
                   
                   .tickets__img img {
@@ -771,7 +772,7 @@
                   }
                   
                   .tickets__age {
-                      margin: 0 0 13px 25px;
+                      margin: 0 0 14px 25px;
                       font-size: 22px;
                       line-height: 26px;
                   }
@@ -783,7 +784,7 @@
                       display: flex;
                       justify-content: space-between;
                       align-items: center;
-                      margin: 0 0 15px 25px;
+                      margin: 0 0 10px 25px;
                   }
                   
                   .tickets__num,
@@ -826,7 +827,7 @@
                       font-weight: 700;
                       font-size: 28px;
                       line-height: 33px;
-                      margin: 30px 0 60px 25px;
+                      margin: 40px 0 60px 25px;
                       letter-spacing: 1.65px;
                   }
                   
@@ -1541,7 +1542,7 @@
                   
                   .footer__info {
                       list-style-type: none;
-                      max-width: 1440px;
+                      max-width: 1460px;
                       margin: 0 auto;
                       display: flex;
                       flex-wrap: wrap;
@@ -1781,9 +1782,6 @@
                       .explore__img-container {
                           margin-top: 62px;
                       }
-                      .video {
-                          padding: 60px 0 50px 0;
-                      }
                       .video__video {
                           max-height: 444px;
                       }
@@ -1812,9 +1810,6 @@
                       .video__play__large {
                           max-width: 162px;
                           max-height: 162px;
-                      }
-                      .video__slider {
-                          max-height: 32px;
                       }
                       .gallery {
                           padding: 60px 0 0 0;
@@ -1891,8 +1886,8 @@
                           align-items: flex-start;
                       }
                       .footer__nav {
-                          margin-top: 8px;
-                          margin-bottom: 20px;
+                          margin-top: 5px;
+                          margin-bottom: 25px;
                       }
                       .footer__info {
                           padding: 50px 20px 0 20px;
@@ -2094,7 +2089,14 @@
                       .explore__img-container {
                           margin: 0;
                           max-width: 728px;
-                          max-height: 705px;
+                          height: 705px;
+                      }
+                      .explore__img img {
+                          width: 728px;
+                          height: 705px;
+                      }
+                      .explore__img-slider {
+                          height: 705px;
                       }
                       .explore__description {
                           max-width: 100%;
@@ -2132,10 +2134,14 @@
                       }
                       .video__slider {
                           margin-top: 21px;
-                          max-width: 190px;
                       }
-                      .video__slider button {
+                      .video__slider__button {
+                          width: 10px;
+                          height: 10px;
                           padding: 1px 5px;
+                      }
+                      .video__slider__arrow {
+                          font-size: 26px;
                       }
                       .video__play__large {
                           max-width: 90px;
@@ -2223,7 +2229,7 @@
                           column-gap: 99px;
                       }
                       .footer__nav {
-                          margin-bottom: 0;
+                          margin: 9px 0 0 0;
                       }
                       .footer__menu {
                           width: 355px;
@@ -2236,7 +2242,7 @@
                       }
                       .footer__network {
                           margin: auto 90px 35px auto;
-                          padding-top: 28px;
+                          padding-top: 25px;
                       }
                       .footer__footer {
                           border-top: 1px solid #666666;
