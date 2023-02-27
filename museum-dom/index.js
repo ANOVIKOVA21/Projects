@@ -154,8 +154,20 @@ closeFormButton.addEventListener('click', () => {
         ticketsForm.hidden = true
     }, 1000)
 })
+const inputMonth = document.getElementById('card-month');
+inputMonth.addEventListener('input', () => {
+    let value = inputMonth.value;
+    if (value < 10) inputMonth.value = `0${value}`;
+})
+const inputCardYear = document.querySelector('.overview__card-year')
 
-// для меню
+function updateMinAndMaxYear() {
+    let year = new Date().getFullYear();
+    inputCardYear.setAttribute('min', year);
+    inputCardYear.setAttribute('max', year + 5);
+}
+updateMinAndMaxYear()
+    // для меню
 let menuButton = document.querySelector('.header__burger')
 let menu = document.querySelector('.header__nav')
 let welcomeContent = document.querySelector('.welcome__content')

@@ -10,7 +10,6 @@
                   }
                   
                   body {
-                      /* max-width: 1920px; */
                       margin: 0;
                       font-family: 'Roboto';
                       font-weight: 300;
@@ -409,9 +408,6 @@
                   .explore__text span {
                       color: #9d8665;
                   }
-                  /* .explore__pic {
-           
-        } */
                   
                   .explore__img-container {
                       position: relative;
@@ -832,7 +828,6 @@
                   }
                   
                   .tickets__buy {
-                      /* max-width: 175px; */
                       font-family: 'Roboto';
                       font-weight: 200;
                       font-size: 22px;
@@ -857,7 +852,6 @@
                       height: 400px;
                       background-image: url("assets/img/parallax.jpg");
                       background-size: cover;
-                      /* background-size: contain; */
                       background-attachment: fixed;
                       background-position: center bottom;
                   }
@@ -865,7 +859,6 @@
                   .booking__tickets {
                       position: absolute;
                       width: 100%;
-                      height: 100%;
                       background: rgba(255, 245, 215, 0.5);
                       top: 30%;
                       transition: 1s;
@@ -936,7 +929,7 @@
                       display: flex;
                       align-items: center;
                       max-width: 190px;
-                      max-height: 47px;
+                      max-height: 45px;
                       border: 1px solid #030303;
                       padding: 10px 15px 12px 15px;
                       width: 100%;
@@ -1265,12 +1258,6 @@
                       margin-left: auto;
                   }
                   
-                  .overview__card-cvv input {
-                      height: 36px;
-                      background: #FFFFFF;
-                      border: 0.5px solid #A4A4A3;
-                  }
-                  
                   .overview__card-cvv label {
                       text-align: center;
                       padding-right: 4px;
@@ -1297,12 +1284,18 @@
                       background: url(assets/svg/Visa.svg) no-repeat top 18% right 7%, url(assets/svg/Mastercard.svg)no-repeat top 36% right 7%, #BCBCBC;
                   }
                   
-                  .overview__card-front input {
+                  .overview__card-front input,
+                  .overview__card-cvv input {
                       font-family: inherit;
                       font-size: inherit;
                       height: 35px;
                       border: 0.5px solid #A4A4A3;
                       margin-bottom: 5px;
+                      padding-left: 8px;
+                  }
+                  
+                  .overview__card-cvv input {
+                      margin: 0;
                   }
                   
                   .overview__card-front label {
@@ -1317,14 +1310,20 @@
                       display: none;
                   }
                   
-                  .month,
-                  .year {
+                  .overview__card-month,
+                  .overview__card-year {
                       width: 100px;
-                      padding-left: 8px;
+                      caret-color: transparent;
+                      cursor: default;
                   }
                   
-                  .month::-webkit-inner-spin-button,
-                  .year::-webkit-inner-spin-button {
+                  .overview__card-month:focus-visible,
+                  .overview__card-year:focus-visible {
+                      outline: none;
+                  }
+                  
+                  .overview__card-month::-webkit-inner-spin-button,
+                  .overview__card-year::-webkit-inner-spin-button {
                       opacity: 1;
                       -webkit-appearance: none;
                       background: #A4A4A3 url('assets/svg/Arrows.svg') no-repeat 50% 50%;
@@ -1332,9 +1331,10 @@
                       height: 23px;
                       padding: 4px;
                       border-left: 0.5px solid #A4A4A3;
+                      cursor: pointer;
                   }
                   
-                  .month::-webkit-calendar-picker-indicator {
+                  .overview__card-month::-webkit-calendar-picker-indicator {
                       opacity: 0;
                   }
                   
@@ -1789,7 +1789,7 @@
                           justify-content: space-evenly;
                       }
                       .video__play {
-                          margin-left: 5px;
+                          margin-left: 8px;
                       }
                       .video__progress {
                           margin: 27px 0 28px 0;
@@ -2124,7 +2124,7 @@
                           margin: 30px 2px 23px 2px;
                       }
                       .video__play {
-                          margin-left: 0;
+                          margin: 10px 0 0 0;
                       }
                       .video__fullscreen {
                           margin-right: 0;
@@ -2182,24 +2182,26 @@
                           gap: 51px;
                       }
                       .booking__logo {
-                          margin-bottom: 20px;
+                          margin-bottom: 18px;
                       }
                       .booking__title {
                           font-size: 50px;
                           line-height: 55.2px;
+                          margin-bottom: 15px;
                       }
                       .booking__overview {
                           padding: 25px 15px;
                       }
                       .overview__card-front {
-                          top: 53px;
+                          top: 51px;
                       }
                       .overview__card-back {
-                          margin: 44px 0 0 auto;
+                          margin: 42px 0 0 auto;
                       }
                       .overview__button {
                           font-size: 20px;
                           line-height: 23px;
+                          margin-top: 25px;
                       }
                       .contacts__subtitle {
                           font-size: 20px;
