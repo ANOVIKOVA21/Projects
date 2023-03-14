@@ -151,6 +151,7 @@
                         <div class="explore__img">
                             <img src="assets/img/after.jpg" alt="Picture" width="720" height="700">
                         </div>
+                        <img src="assets/svg/explore-slider.svg" alt="explore-slider" class="explore__img-slider">
                         <div class="explore__img img-overlay">
                             <img src="assets/img/before.jpg" alt="Picture" width="720" height="700">
                         </div>
@@ -165,6 +166,8 @@
                     <figure class="video__main">
                         <video src="assets/video/video0.mp4" poster="assets/video/poster0.jpg"
                             class="video__video"></video>
+                        <button class="video__play__large" type="button"><img src="assets/svg/play_large.svg"
+                                alt="play"></button>
                         <!-- controls -->
                         <div class="video__controls">
                             <button class="video__play" data-is-play="false" type="button"><img
@@ -175,34 +178,46 @@
                             <input type="range" value="40" min="0" max="100" class="video__volume__progress">
                             <button class="video__fullscreen" data-is-fullscreen="false" type="button"><img
                                     src="assets/svg/fullscreen.svg" alt="fullscreen"></button>
-                            <button class="video__play__large" type="button"><img src="assets/svg/play_large.svg"
-                                    alt="play"></button>
+
                         </div>
                     </figure>
                     <div class="video__iframes">
-                        <iframe width="452" height="254" loading="lazy"
-                            src="https://www.youtube.com/embed/aWmJ5DgyWPI?enablejsapi=1" title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                        <iframe width="452" height="254" loading="lazy"
-                            src="https://www.youtube.com/embed/Vi5D6FKhRmo?enablejsapi=1" title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                        <iframe width="452" height="254" loading="lazy"
-                            src="https://www.youtube.com/embed/NOhDysLnTvY?enablejsapi=1" title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                        <iframe width="452" height="254" loading="lazy"
-                            src="https://www.youtube.com/embed/zp1BXPX8jcU?enablejsapi=1" title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen hidden></iframe>
-                        <iframe width="452" height="254" loading="lazy"
-                            src="https://www.youtube.com/embed/2OR0OCr6uRE?enablejsapi=1" title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen hidden></iframe>
+                        <div class="video__iframe-container">
+                            <iframe width="452" height="254" loading="lazy"
+                                src="https://www.youtube.com/embed/aWmJ5DgyWPI?enablejsapi=1"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="video__iframe-container">
+                            <iframe width="452" height="254" loading="lazy"
+                                src="https://www.youtube.com/embed/Vi5D6FKhRmo?enablejsapi=1"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="video__iframe-container">
+                            <iframe width="452" height="254" loading="lazy"
+                                src="https://www.youtube.com/embed/NOhDysLnTvY?enablejsapi=1"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="video__iframe-container" hidden>
+                            <iframe width="452" height="254" loading="lazy"
+                                src="https://www.youtube.com/embed/zp1BXPX8jcU?enablejsapi=1"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="video__iframe-container" hidden>
+                            <iframe width="452" height="254" loading="lazy"
+                                src="https://www.youtube.com/embed/2OR0OCr6uRE?enablejsapi=1"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
-
-
                 </div>
                 <div class="video__slider">
                     <button type="button" class="video__slider__arrow">&#171;</button>
@@ -400,17 +415,22 @@
             <section class="contacts" id="contacts">
                 <div class="contacts__container">
                     <h2 class="contacts__title title">Contacts</h2>
-                    <div>
-                        <p class="contacts__subtitle">Palais Royal Musee du Louvre</p>
-                        <ul class="contacts__contacts">
-                            <li>address: 75001 Paris, France</li>
-                            <li>phone: <a href="tel:+33(0)140205050">+33(0) 1 40 20 50 50</a></li>
-                            <li>mail: <a href="mailto:info@louvre.fr">info@louvre.fr</a></li>
-                        </ul>
+                    <div class="contacts__content">
+                        <div class="contacts__info">
+                            <p class=" contacts__subtitle ">Palais Royal Musee du Louvre</p>
+                            <ul class=" contacts__contacts ">
+                                <li>address: 75001 Paris, France</li>
+                                <li>phone: <a href=" tel:+33(0)140205050 ">+33(0) 1 40 20 50 50</a></li>
+                                <li>mail: <a href=" mailto:info@louvre.fr ">info@louvre.fr</a></li>
+                            </ul>
+                        </div>
+                        <iframe
+                            src="
+                            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5249.381674734698!2d2.3331851254643814!3d48.864105525102076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e25b718a9e1%3A0x6006adbba1988cee!2sPalais-Royal%20-%20Mus%C3%A9e%20du%20Louvre!5e0!3m2!1sru!2sua!4v1632758592990!5m2!1sru!2sua "
+                            width=" 960 " height=" 620 " style=" border:0; " allowfullscreen=" " loading=" lazy "
+                            class=" contacts__map "></iframe>
                     </div>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5249.381674734698!2d2.3331851254643814!3d48.864105525102076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e25b718a9e1%3A0x6006adbba1988cee!2sPalais-Royal%20-%20Mus%C3%A9e%20du%20Louvre!5e0!3m2!1sru!2sua!4v1632758592990!5m2!1sru!2sua"
-                        width="960" height="620" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
                 </div>
             </section>
         </div>
@@ -423,32 +443,33 @@
             </div>
             <nav class="footer__nav">
                 <ul class="footer__menu">
-                    <li><a href="#visiting">Visiting</a></li>
-                    <li><a href="#explore">Explore</a></li>
-                    <li><a href="#video">Video</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#tickets">Tickets</a></li>
-                    <li><a href="#contacts">Contacts</a></li>
+                    <li><a href=" #visiting ">Visiting</a></li>
+                    <li><a href=" #explore ">Explore</a></li>
+                    <li><a href=" #video ">Video</a></li>
+                    <li><a href=" #gallery ">Gallery</a></li>
+                    <li><a href=" #tickets ">Tickets</a></li>
+                    <li><a href=" #contacts ">Contacts</a></li>
                 </ul>
             </nav>
             <ul class="footer__network">
                 <li>
-                    <a href="https://www.youtube.com/user/louvre"><img src="assets/svg/Youtube.svg" alt="Youtube"></a>
+                    <a href=" https://www.youtube.com/user/louvre "><img src=" assets/svg/Youtube.svg "
+                            alt=" Youtube "></a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/museelouvre/"><img src="assets/svg/Instagram.svg"
-                            alt="Instagram"></a>
+                    <a href=" https://www.instagram.com/museelouvre/ "><img src=" assets/svg/Instagram.svg "
+                            alt=" Instagram "></a>
                 </li>
                 <li>
-                    <a href="https://www.facebook.com/museedulouvre"><img src="assets/svg/Facebook.svg"
-                            alt="Facebook"></a>
+                    <a href=" https://www.facebook.com/museedulouvre "><img src=" assets/svg/Facebook.svg "
+                            alt=" Facebook "></a>
                 </li>
                 <li>
-                    <a href="http://twitter.com/museelouvre"><img src="assets/svg/Twitter.svg" alt="Twitter"></a>
+                    <a href=" http://twitter.com/museelouvre "><img src=" assets/svg/Twitter.svg " alt=" Twitter "></a>
                 </li>
                 <li>
-                    <a href="https://www.pinterest.fr/museedulouvre/"><img src="assets/svg/Pinterest.svg"
-                            alt="Pinterest"></a>
+                    <a href=" https://www.pinterest.fr/museedulouvre/ "><img src=" assets/svg/Pinterest.svg "
+                            alt=" Pinterest "></a>
                 </li>
             </ul>
         </div>
@@ -460,7 +481,7 @@
             </ul>
         </div>
     </footer>
-    <script src="index.js"></script>
+    <script src=" index.js "></script>
     <script>
         initComparisons();
     </script>
