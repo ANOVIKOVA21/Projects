@@ -21,6 +21,7 @@ slider.addEventListener('click', (event) => {
     return;
   const targetArrow = target.closest('.welcome__arrow');
   const targetSquare = target.closest('.welcome__square');
+  const screenWidth = window.screen.width;
   squares[indexCurImg].classList.remove('sq-active');
   container.style.opacity = '0';
   if (targetArrow) {
@@ -45,7 +46,11 @@ slider.addEventListener('click', (event) => {
   currentImg = images[indexCurImg];
   setTimeout(() => {
     container.style.opacity = '1';
-    container.style.background = `linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%),url(${currentImg}) no-repeat`;
+    if (screenWidth > 950) {
+      container.style.background = `linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%),center / contain url(${currentImg}) no-repeat`;
+    } else {
+      container.style.background = `center / contain url(${currentImg}) no-repeat`;
+    }
   }, 500);
 });
 const animateCSS = (element, animation, prefix = 'animate__') =>
@@ -240,7 +245,7 @@ function initComparisons() {
   const x = document.getElementsByClassName('img-overlay');
   for (let i = 0; i < x.length; i++) {
     /*once for each "overlay" element:
-                    pass the "overlay" element as a parameter when executing the compareImages function:*/
+                                    pass the "overlay" element as a parameter when executing the compareImages function:*/
     compareImages(x[i]);
   }
 
