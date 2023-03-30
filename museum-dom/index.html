@@ -31,9 +31,21 @@
                     <li><a href="#contacts">Contacts</a></li>
                 </ul>
                 <div class="header__imgs">
-                    <img src="assets/img/menu1.jpg" alt="Louvre photo" />
-                    <img src="assets/img/menu2.jpg" alt="Louvre photo" class="header__img-big" />
-                    <img src="assets/img/menu3.jpg" alt="Louvre photo" />
+                    <picture>
+                        <source media="(max-width: 420px)" srcset="assets/img/menu1-sm.jpg">
+                        <source media="(max-width: 950px)" srcset="assets/img/menu1.jpg">
+                        <img src="assets/img/menu1.jpg" alt="Louvre photo">
+                    </picture>
+                    <picture class="header__img-big">
+                        <source media="(max-width: 420px)" srcset="assets/img/menu2-sm.jpg">
+                        <source media="(max-width: 950px)" srcset="assets/img/menu2.jpg">
+                        <img src="assets/img/menu2.jpg" alt="Louvre photo">
+                    </picture>
+                    <picture>
+                        <source media="(max-width: 420px)" srcset="assets/img/menu3-sm.jpg">
+                        <source media="(max-width: 950px)" srcset="assets/img/menu3.jpg">
+                        <img src="assets/img/menu3.jpg" alt="Louvre photo">
+                    </picture>
                 </div>
                 <ul class="header__network">
                     <li>
@@ -171,7 +183,8 @@
                         <div class="explore__img">
                             <img src="assets/img/after.jpg" alt="Picture" width="720" height="700" />
                         </div>
-                        <img src="assets/svg/explore-slider.svg" alt="explore-slider" class="explore__img-slider" />
+                        <img src="assets/svg/explore-slider.svg" alt="explore-slider" width="39px"
+                            class="explore__img-slider" />
                         <div class="explore__img img-overlay">
                             <img src="assets/img/before.jpg" alt="Picture" width="720" height="700" />
                         </div>
@@ -283,16 +296,15 @@
                     <h2 class="tickets__title title">Buy Tickets</h2>
                     <div class="tickets__content">
                         <div class="tickets__img">
-                            <img srcset="
-                    assets/img/tickets1-380px.jpg 380w,
-                    assets/img/tickets1-444px.jpg 444w,
-                    assets/img/tickets1-700px.jpg 700w,
-                    assets/img/tickets1.jpg       720w
-                  " sizes="(max-width:420px) 380px, 
-             (max-width: 768px) 444px, 
-             (max-width: 1024px) 700px,
-            720px" src="assets/img/tickets1.jpg" alt="picture" />
+                            <picture>
+                                <source media="(max-width: 420px)" srcset="assets/img/tickets1-380px.jpg">
+                                <source media="(max-width: 768px)" srcset="assets/img/tickets1-444px.jpg">
+                                <source media="(max-width: 1024px)" srcset="assets/img/tickets1-700px.jpg">
+                                <source media="(min-width: 1025px)" srcset="assets/img/tickets1.jpg">
+                                <img src="assets/img/tickets1.jpg" alt="Louvre photo">
+                            </picture>
                         </div>
+
                         <div class="tickets__type">
                             <p class="tickets__subtitle">Ticket Type</p>
                             <input type="radio" name="exhibition" value="permanent" id="permanent_type" checked />
