@@ -318,24 +318,16 @@
                             <p class="tickets__subtitle amount">Amount</p>
                             <p class="tickets__age">Basic 18+</p>
                             <div class="tickets__val">
-                                <button type="button" onclick="less(ticketBasic)" class="less">
-                                    –
-                                </button>
+                                <button type="button" class="tickets__less btn-minus">–</button>
                                 <input type="number" min="0" max="20" value="1" class="tickets__num" id="basic" />
-                                <button type="button" onclick="more(ticketBasic)" class="more">
-                                    +
-                                </button>
+                                <button type="button" class="tickets__more btn-plus">+</button>
                             </div>
 
                             <p class="tickets__age">Senior 65+</p>
                             <div class="tickets__val">
-                                <button type="button" onclick="less(this.nextElementSibling)" class="less">
-                                    –
-                                </button>
+                                <button type="button" class="tickets__less btn-minus">–</button>
                                 <input type="number" min="0" max="20" value="1" class="tickets__num" id="senior" />
-                                <button type="button" onclick="more(this.previousElementSibling)" class="more">
-                                    +
-                                </button>
+                                <button type="button" class="tickets__more btn-plus">+</button>
                             </div>
 
                             <p class="tickets__total">
@@ -396,29 +388,17 @@
                                 <div class="booking__entry-basic">
                                     <p>Basic 18+ (20 €)</p>
                                     <div class="booking__val">
-                                        <button type="button" onclick="this.nextElementSibling.stepDown()"
-                                            class="booking__less">
-                                            –
-                                        </button>
+                                        <button type="button" class="booking__less btn-minus">–</button>
                                         <input type="number" min="0" max="20" value="2" class="booking__num" />
-                                        <button type="button" onclick="this.previousElementSibling.stepUp()"
-                                            class="booking__more">
-                                            +
-                                        </button>
+                                        <button type="button" class="booking__more btn-plus">+</button>
                                     </div>
                                 </div>
                                 <div class="booking__entry-senior">
                                     <p>Senior 65+ (10 €)</p>
                                     <div class="booking__val">
-                                        <button type="button" onclick="this.nextElementSibling.stepDown()"
-                                            class="booking__less">
-                                            –
-                                        </button>
+                                        <button type="button" class="booking__less btn-minus">–</button>
                                         <input type="number" min="0" max="20" value="2" class="booking__num" readonly />
-                                        <button type="button" onclick="this.previousElementSibling.stepUp()"
-                                            class="booking__more">
-                                            +
-                                        </button>
+                                        <button type="button" class="booking__more btn-plus">+</button>
                                     </div>
                                 </div>
                             </div>
