@@ -123,7 +123,7 @@
                       padding-right: 0;
                       width: 38px;
                       height: 23px;
-                      background: url(assets/svg/burger.svg) no-repeat right transparent;
+                      background: url("assets/svg/burger.svg") no-repeat right transparent;
                   }
 
                   /* Header styles end */
@@ -166,7 +166,7 @@
                       font-size: 28px;
                       line-height: 33px;
                       letter-spacing: 2px;
-                      margin-bottom: 75px;
+                      margin: 0 0 75px;
                   }
 
                   .welcome__button {
@@ -180,7 +180,7 @@
                       letter-spacing: 2px;
                       background: #710707;
                       border-radius: 10px;
-                      padding: 23px 64px;
+                      padding: 24.5px 64px;
                       color: #FFFFFF;
                       text-decoration: none;
                   }
@@ -767,16 +767,15 @@
                   .tickets__amount {
                       display: flex;
                       flex-direction: column;
+                      align-items: flex-end;
                       margin-left: auto;
                       flex-shrink: 0;
                   }
 
-                  .amount {
-                      text-align: right;
-                  }
-
                   .tickets__age {
-                      margin: 0 0 15px 25px;
+                      max-width: 150px;
+                      width: 100%;
+                      margin: 0 0 15px 0;
                       font-size: 22px;
                       line-height: 26px;
                   }
@@ -785,10 +784,11 @@
                   .booking__val {
                       border: 3px solid #000000;
                       max-width: 150px;
+                      width: 100%;
                       display: flex;
                       justify-content: space-between;
                       align-items: center;
-                      margin: 0 0 10px 25px;
+                      margin: 0 0 10px 0;
                   }
 
                   .tickets__num,
@@ -831,7 +831,7 @@
                       font-weight: 700;
                       font-size: 28px;
                       line-height: 33px;
-                      margin: 40px 0 60px 25px;
+                      margin: 40px 0 60px 0;
                       letter-spacing: 1.65px;
                   }
 
@@ -1053,16 +1053,16 @@
                       line-height: 21px;
                   }
 
-                  .booking__form input[type="text"] {
-                      background: url(assets/svg/name.svg) no-repeat left 15px center;
+                  .booking__form input[name="name"] {
+                      background: url("assets/svg/name.svg") no-repeat left 15px center;
                   }
 
                   .booking__form input[type="email"] {
-                      background: url(assets/svg/email.svg) no-repeat left 15px center;
+                      background: url("assets/svg/email.svg") no-repeat left 15px center;
                   }
 
                   .booking__form input[type="tel"] {
-                      background: url(assets/svg/tel.svg) no-repeat left 15px center;
+                      background: url("assets/svg/tel.svg") no-repeat left 15px center;
                   }
 
                   .booking__ticket-type {
@@ -1148,7 +1148,7 @@
                   }
 
                   .overview__data {
-                      background: url(assets/img/ticket_img.jpg) no-repeat top right;
+                      background: url("assets/img/ticket_img.jpg") no-repeat top right;
                       margin-bottom: 25px;
                   }
 
@@ -1177,15 +1177,15 @@
                   }
 
                   .overview__date {
-                      background: url(assets/svg/date.svg) no-repeat left center;
+                      background: url("assets/svg/date.svg") no-repeat left center;
                   }
 
                   .overview__time {
-                      background: url(assets/svg/time.svg) no-repeat left center;
+                      background: url("assets/svg/time.svg") no-repeat left center;
                   }
 
                   .overview__type {
-                      background: url(assets/svg/check_circle.svg) no-repeat left center;
+                      background: url("assets/svg/check_circle.svg") no-repeat left center;
                   }
 
                   .overview__receipt {
@@ -1288,7 +1288,7 @@
                       row-gap: 5px;
                       column-gap: 15px;
                       top: 48px;
-                      background: url(assets/svg/Visa.svg) no-repeat top 18% right 7%, url(assets/svg/Mastercard.svg)no-repeat top 36% right 7%, #BCBCBC;
+                      background: url("assets/svg/Visa.svg") no-repeat top 18% right 7%, url("assets/svg/Mastercard.svg")no-repeat top 36% right 7%, #BCBCBC;
                   }
 
                   .overview__card-front input,
@@ -1631,12 +1631,11 @@
 
                       .welcome__title {
                           line-height: 90px;
-                          margin-bottom: 23px;
                       }
 
                       .welcome__subtitle {
                           font-size: 24px;
-                          margin: 23px 0 50px 0;
+                          margin: 0 0 50px 0;
                       }
 
                       .welcome__slider {
@@ -1709,12 +1708,11 @@
                           font-weight: 300;
                           font-size: 20px;
                           line-height: 23px;
-                          background: url(assets/svg/menu-arrow.svg) no-repeat center right;
+                          background: url("assets/svg/menu-arrow.svg") no-repeat center right;
                       }
 
                       .welcome__subtitle {
                           line-height: 28px;
-                          margin: 25px 0 53px 0;
                       }
 
                       .welcome__content {
@@ -1724,7 +1722,7 @@
 
                       .welcome__button {
                           max-width: 300px;
-                          padding: 16px 43px 18px 45px;
+                          padding: 18.5px 43px 18.5px 45px;
                           font-size: 20px;
                           line-height: 23px;
                       }
@@ -1882,13 +1880,10 @@
                       }
 
                       .tickets__amount {
+                          align-items: flex-start;
                           max-width: 175px;
                           width: 100%;
                           margin-left: 0;
-                      }
-
-                      .amount {
-                          text-align: left;
                       }
 
                       .tickets__subtitle {
@@ -2067,7 +2062,7 @@
                           max-height: 546px;
                           height: 71.09vw;
                           margin: 0 auto;
-                          background-image: url(assets/img/1-700px.jpg);
+                          background-image: url("assets/img/1-700px.jpg");
                           background-size: cover;
                       }
 
@@ -2142,7 +2137,7 @@
 
                       .header__nav .header__menu li {
                           max-width: 122px;
-                          background: url(assets/svg/menu-arrow.svg) no-repeat right;
+                          background: url("assets/svg/menu-arrow.svg") no-repeat right;
                       }
 
                       .visiting,
@@ -2226,10 +2221,6 @@
 
                       .video__video {
                           max-height: 329px;
-                      }
-
-                      .video__controls {
-                          position: relative;
                       }
 
                       .video__progress {
@@ -2320,11 +2311,7 @@
                           column-gap: 60px;
                       }
 
-                      .tickets__amount {
-                          margin-left: 0;
-                      }
-
-                      .amount {
+                      .tickets__subtitle {
                           margin-bottom: 39px;
                       }
 
@@ -2421,8 +2408,6 @@
                           justify-content: center;
                           row-gap: 40px;
                       }
-
-
 
                       .footer__nav {
                           max-width: 100%;
@@ -2640,22 +2625,22 @@
                           height: 38.1vw;
                       }
 
-                      .amount,
+                      .tickets__subtitle,
                       .tickets__total,
                       .tickets__buy {
                           font-size: 16px;
                           line-height: 19px;
-                          text-align: center;
+                          align-self: center;
                       }
 
-                      .amount {
+                      .tickets__subtitle {
                           margin-bottom: 20px;
                       }
 
                       .tickets__age {
                           font-size: 16px;
                           line-height: 19px;
-                          margin-bottom: 15px;
+                          margin-bottom: 16px;
                       }
 
                       .tickets__val {
@@ -2667,8 +2652,12 @@
                           letter-spacing: 0px;
                       }
 
+                      .tickets__total-price {
+                          margin: 0;
+                      }
+
                       .tickets__buy {
-                          padding: 15.5px 36px;
+                          padding: 15.5px 48px;
                       }
 
                       .booking__container {
@@ -2811,7 +2800,7 @@
                       }
 
                       .overview__data {
-                          background: url(assets/img/ticket_img.jpg) no-repeat top right / 100px 86px;
+                          background: url("assets/img/ticket_img.jpg") no-repeat top right / 100px 86px;
                       }
 
                       .overview__subtitle {

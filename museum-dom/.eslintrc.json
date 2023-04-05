@@ -33,6 +33,8 @@
     ],
     "consistent-return": "off",
     "no-param-reassign": "off",
-    "func-names": ["error", "as-needed"]
+    "func-names": ["error", "as-needed"],
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": ["off"]
   }
 }
