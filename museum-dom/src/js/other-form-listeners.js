@@ -1,3 +1,5 @@
+import { addRippleEffect } from './animation';
+
 function updateMinAndMaxYear() {
   const inputCardYear = document.querySelector('.overview__card-year');
   const year = new Date().getFullYear();
@@ -9,7 +11,8 @@ export function addFormListeners() {
   updateMinAndMaxYear();
   const ticketsBuyButton = document.querySelector('.tickets__buy');
   const ticketsForm = document.querySelector('.booking__tickets');
-  const closeFormButton = document.querySelector('.booking__close');
+  const closeFormButton = ticketsForm.querySelector('.booking__close');
+  const bookButton = ticketsForm.querySelector('.overview__button');
   ticketsBuyButton.addEventListener('click', () => {
     ticketsForm.hidden = false;
     setTimeout(() => {
@@ -27,4 +30,5 @@ export function addFormListeners() {
     const { value } = inputMonth;
     if (value < 10) inputMonth.value = `0${value}`;
   });
+  bookButton.addEventListener('click', (ev) => addRippleEffect(ev, bookButton));
 }
