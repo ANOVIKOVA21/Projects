@@ -6,6 +6,7 @@ import { addFormListeners } from './other-form-listeners';
 import { addMenuListeners } from './menu';
 import { animAndScroll } from './gallery';
 import { initComparisons } from './image-comparison-slider';
+import './video-slider';
 import { addVideoListeners } from './video';
 import { addTicketListeners } from './ticket-price-calculation';
 

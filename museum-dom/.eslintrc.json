@@ -35,6 +35,8 @@
     "no-param-reassign": "off",
     "func-names": ["error", "as-needed"],
     "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": ["off"]
+    "import/no-extraneous-dependencies": ["off"],
+    "no-multi-assign": ["error", { "ignoreNonDeclaration": true }],
+    "no-restricted-globals": "off"
   }
 }
