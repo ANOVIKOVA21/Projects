@@ -9,12 +9,14 @@ function updateMinAndMaxYear() {
 
 export function addFormListeners() {
   updateMinAndMaxYear();
-  const ticketsBuyButton = document.querySelector('.tickets__buy');
-  const ticketsForm = document.querySelector('.booking__tickets');
+  const ticketsSection = document.getElementById('tickets');
+  const ticketsBuyButton = ticketsSection.querySelector('.tickets__buy');
+  const ticketsForm = ticketsSection.querySelector('.booking__tickets');
   const closeFormButton = ticketsForm.querySelector('.booking__close');
   const bookButton = ticketsForm.querySelector('.overview__button');
   ticketsBuyButton.addEventListener('click', () => {
     ticketsForm.hidden = false;
+    ticketsSection.style.contentVisibility = 'visible';
     setTimeout(() => {
       ticketsForm.style.right = '0';
     }, 500);
