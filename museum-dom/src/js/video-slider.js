@@ -41,13 +41,13 @@ $(document).ready(() => {
   $('.video__list').on(
     'beforeChange',
     (event, slick, currentSlide, nextSlide) => {
+      const videoProgress = $('.video__progress', $('.video__controls'));
       if ($('.video__play').attr('data-is-play') === 'true') handleVideo();
-      console.log($('.video__progress').val());
-      videoProgressInfo[currentSlide] = $('.video__progress').val();
-      $('.video__progress').val(videoProgressInfo[nextSlide]);
-      const nextSlideVal = $('.video__progress').val();
-      console.log($('.video__progress').val());
-      $('.video__progress').css(
+      console.log(videoProgress);
+      videoProgressInfo[currentSlide] = videoProgress.val();
+      videoProgress.val(videoProgressInfo[nextSlide]);
+      const nextSlideVal = videoProgress.val();
+      videoProgress.css(
         'background',
         `linear-gradient(to right, #710707 0%, #710707 ${nextSlideVal}%, #C4C4C4 ${nextSlideVal}%, #C4C4C4 100%)`
       );
