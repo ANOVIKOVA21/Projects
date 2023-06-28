@@ -1,7 +1,6 @@
 export function initComparisons() {
   function compareImages(img) {
     const exploreSlider = document.querySelector('.explore__img-slider');
-    // let exploreSlider,
     let clicked = 0;
     /* get the width and height of the img element */
     const imgWidth = img.offsetWidth;
@@ -12,7 +11,7 @@ export function initComparisons() {
     }px`;
     function getCursorPos(event) {
       let cursorX = 0;
-      event = event || window.event;
+      event = event.changedTouches ? event.changedTouches[0] : event;
       /* get the x positions of the image: */
       const imgX = img.getBoundingClientRect();
       /* calculate the cursor's x coordinate, relative to the image: */
