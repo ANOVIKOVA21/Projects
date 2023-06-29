@@ -1,3 +1,5 @@
+import { showMessage } from './general-functions';
+
 const controls = document.querySelector('.video__controls');
 const wrapVideo = document.querySelector('.video__main');
 const videoTrack = document.querySelector('.video__progress');
@@ -19,7 +21,7 @@ function videoPause(currentVideo, videoState) {
   btnPlayImg.src = './svg/play_small.svg';
 }
 function videoPlay(currentVideo) {
-  debugger;
+  // debugger;
   if (videoTrack.value === '100') videoTrack.value = '0';
   if (currentVideo.readyState >= 3) promise = currentVideo.play();
   else {
@@ -34,6 +36,7 @@ function videoPlay(currentVideo) {
   const playingListener = function () {
     btnPlay.dataset.isPlay = 'true';
     btnPlayLarge.style.display = 'none';
+    currentVideo.focus();
   };
 
   const waitingListener = function () {
@@ -136,7 +139,32 @@ export function addVideoListeners() {
       fullscreen(currVideo);
     }
   });
-  // video.addEventListener('keydown', (ev) => {
-  //     console.log(ev.target)
-  // })
+
+  wrapVideo.addEventListener('keydown', (ev) => {
+    console.log('ev.code', ev.code);
+    if (!ev.target.closest('.video__video.slick-active')) return;
+    if (ev.code === 'Space') {
+      ev.preventDefault();
+      handleVideo();
+    }
+    if (ev.code === 'KeyM') {
+      btnVolume.click();
+    }
+    if (ev.code === 'KeyF') {
+      btnFullscreen.click();
+    }
+    let { playbackRate } = ev.target;
+    if (ev.code === 'Comma' && ev.shiftKey) {
+      if (playbackRate === 2) return;
+      playbackRate += 0.25;
+      ev.target.playbackRate = playbackRate;
+      showMessage(wrapVideo, `${playbackRate}x`);
+    }
+    if (ev.code === 'Period' && ev.shiftKey) {
+      if (playbackRate === 0.25) return;
+      playbackRate -= 0.25;
+      ev.target.playbackRate = playbackRate;
+      showMessage(wrapVideo, `${playbackRate}x`);
+    }
+  });
 }

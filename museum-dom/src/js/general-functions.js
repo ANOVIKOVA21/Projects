@@ -4,3 +4,12 @@ export function shuffle(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
+export function showMessage(parent, message) {
+  const messageEl = document.createElement('p');
+  messageEl.classList.add('message');
+  messageEl.textContent = message;
+  parent.appendChild(messageEl);
+  setTimeout(() => {
+    messageEl.remove();
+  }, 500);
+}
