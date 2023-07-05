@@ -398,7 +398,7 @@
                             <input type="tel" name="phone" placeholder="Phone" class="booking__user" required />
                             <label class="booking__type-container booking__user" tabindex="0"><span
                                     class="booking__type-text">Ticket Type</span>
-                                <select name="type-of-ticket" class="booking__ticket-type" multiple size="3" required>
+                                <select name="typeOfTicket" class="booking__ticket-type" multiple size="3" required>
                                     <option value="Permanent exhibition">
                                         Permanent exhibition
                                     </option>
@@ -416,7 +416,8 @@
                                     <p>Basic 18+ (<span class="basic-price">0</span> €)</p>
                                     <div class="booking__val">
                                         <button type="button" class="booking__less btn-minus">–</button>
-                                        <input type="number" min="0" max="20" value="0" class="booking__num" />
+                                        <input type="number" name="basicAmount" min="0" max="20" value="0"
+                                            class="booking__num" />
                                         <button type="button" class="booking__more btn-plus">+</button>
                                     </div>
                                 </div>
@@ -424,7 +425,8 @@
                                     <p>Senior 65+ (<span class="senior-price">0</span> €)</p>
                                     <div class="booking__val">
                                         <button type="button" class="booking__less btn-minus">–</button>
-                                        <input type="number" min="0" max="20" value="0" class="booking__num" readonly />
+                                        <input type="number" name="seniorAmount" min="0" max="20" value="0"
+                                            class="booking__num" readonly />
                                         <button type="button" class="booking__more btn-plus">+</button>
                                     </div>
                                 </div>
@@ -434,9 +436,9 @@
                             <div class="overview__data">
                                 <h5>Overview</h5>
                                 <p class="overview__subtitle">Tour to Louvre</p>
-                                <p class="overview__date">Friday, August 19</p>
-                                <p class="overview__time">16 : 30</p>
-                                <p class="overview__type">Temporary exhibition</p>
+                                <p class="overview__date">Date isn't selected</p>
+                                <p class="overview__time">Time isn't selected</p>
+                                <p class="overview__type">Permanent exhibition</p>
                             </div>
                             <div class="overview__receipt">
                                 <div>
