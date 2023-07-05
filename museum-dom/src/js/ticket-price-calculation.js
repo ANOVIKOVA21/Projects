@@ -1,4 +1,4 @@
-const ticketInfo = {
+export const ticketInfo = {
   typeOfTicket: 0,
   prices: [20, 25, 40],
   basicAmount: 1,

@@ -1,3 +1,6 @@
+import { ticketInfo } from './ticket-price-calculation';
+import { updateTicketType } from './other-form-listeners';
+
 function hideOptions(container, select) {
   if (!container.classList.contains('arrow-open')) return;
   select.style.display = 'none';
@@ -30,10 +33,16 @@ export function addSelectListeners() {
     const { target } = ev;
     const timeText = document.querySelector('.booking__time-text');
     showOptions(target, selectTime, timeContainer, timeText);
+    if (!target.closest('option')) return;
+    const overviewTime = document.querySelector('.overview__time');
+    overviewTime.innerHTML = selectTime.selectedOptions[0].value;
   });
   selectType.addEventListener('click', (ev) => {
     const { target } = ev;
     const typeText = document.querySelector('.booking__type-text');
     showOptions(target, selectType, ticketTypeContainer, typeText);
+    if (!target.closest('option')) return;
+    ticketInfo.typeOfTicket = selectType.selectedIndex;
+    updateTicketType();
   });
 }
