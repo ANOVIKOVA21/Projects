@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-cycle
+import { validateAmount } from './validation';
+
 export const ticketInfo = {
   typeOfTicket: 0,
   prices: [20, 25, 40],
@@ -26,8 +29,7 @@ function more(element) {
 export function addTicketListeners() {
   const ticketsTypeContainer = document.querySelector('.tickets__type');
   const typesOfTicketElem = document.querySelectorAll('.tickets__type label');
-  const ticketBasic = document.querySelector('#basic');
-  const ticketSenior = document.querySelector('#senior');
+  const ticketInputs = document.querySelectorAll('.tickets__num');
   const btnPlus = document.querySelectorAll('.btn-plus');
   const btnMinus = document.querySelectorAll('.btn-minus');
   function getTicketType(element) {
@@ -48,12 +50,10 @@ export function addTicketListeners() {
     getTicketType(event.target);
     countSumOfTicket();
   });
-  ticketBasic.addEventListener('input', () => {
-    ticketInfo.basicAmount = ticketBasic.value;
-    countSumOfTicket();
-  });
-  ticketSenior.addEventListener('input', () => {
-    ticketInfo.seniorAmount = ticketSenior.value;
-    countSumOfTicket();
+  ticketInputs.forEach((amountEl) => {
+    amountEl.addEventListener('input', (ev) => {
+      validateAmount(amountEl, ev);
+      countSumOfTicket();
+    });
   });
 }

@@ -1,5 +1,12 @@
 import { addRippleEffect } from './animation';
 import { ticketInfo } from './ticket-price-calculation';
+import {
+  checkValidation,
+  validate,
+  checkAmount,
+  validateAmount,
+} from './validation';
+import { deleteError } from './general-functions';
 
 const ticketsSection = document.getElementById('tickets');
 const form = document.querySelector('.booking__form');
@@ -43,6 +50,7 @@ export function updateTicketType() {
 function updateTicketAmount() {
   const overviewAmount = ticketsSection.querySelectorAll('.overview__amount');
   const { basicAmount, seniorAmount } = ticketInfo;
+  checkAmount(form);
   overviewAmount[0].textContent = basicAmount;
   overviewAmount[1].textContent = seniorAmount;
 }
@@ -51,6 +59,8 @@ export function addFormListeners() {
   updateMinAndMaxYear();
   const ticketsBuyButton = ticketsSection.querySelector('.tickets__buy');
   const ticketsForm = ticketsSection.querySelector('.booking__tickets');
+  const fieldsToCheck = ticketsSection.querySelectorAll('.field-validation');
+  const ticketsAmountElem = form.querySelectorAll('.booking__num');
   const basicAmountInput = form.basicAmount;
   const seniorAmountInput = form.seniorAmount;
   const closeFormButton = ticketsForm.querySelector('.booking__close');
@@ -59,9 +69,8 @@ export function addFormListeners() {
   ticketsBuyButton.addEventListener('click', () => {
     ticketsForm.hidden = false;
     ticketsSection.style.contentVisibility = 'visible';
-    const { basicAmount, seniorAmount } = ticketInfo;
-    basicAmountInput.value = basicAmount;
-    seniorAmountInput.value = seniorAmount;
+    basicAmountInput.value = ticketInfo.basicAmount;
+    seniorAmountInput.value = ticketInfo.seniorAmount;
     updateTicketAmount();
     updateTicketType();
     setTimeout(() => {
@@ -79,15 +88,50 @@ export function addFormListeners() {
     const { value } = inputMonth;
     if (value < 10) inputMonth.value = `0${value}`;
   });
-  basicAmountInput.addEventListener('input', () => {
-    ticketInfo.basicAmount = basicAmountInput.value;
-    updateTicketAmount();
-    updateTotalPrice();
+  ticketsAmountElem.forEach((amountEl) => {
+    amountEl.addEventListener('input', (ev) => {
+      validateAmount(amountEl, ev);
+      updateTicketAmount();
+      updateTotalPrice();
+    });
   });
-  seniorAmountInput.addEventListener('input', () => {
-    ticketInfo.seniorAmount = seniorAmountInput.value;
-    updateTicketAmount();
-    updateTotalPrice();
+  fieldsToCheck.forEach((input) => {
+    input.addEventListener('blur', (ev) => {
+      const { target } = ev;
+      if (target.validity.valid) return;
+      validate(target, target.name);
+    });
   });
-  bookButton.addEventListener('click', (ev) => addRippleEffect(ev, bookButton));
+  fieldsToCheck.forEach((input) =>
+    input.addEventListener('focus', (ev) => deleteError(ev.target))
+  );
+  fieldsToCheck.forEach((input) =>
+    input.addEventListener('input', (ev) => {
+      const validityState = input.validity;
+      if (!validityState.valueMissing && !validityState.patternMismatch) {
+        input.setCustomValidity('');
+        deleteError(ev.target);
+      }
+    })
+  );
+  bookButton.addEventListener('click', (ev) => {
+    addRippleEffect(ev, bookButton);
+    const validationState = form.checkValidity();
+    if (!validationState) {
+      ev.preventDefault();
+      checkValidation();
+    }
+  });
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const validationState = form.checkValidity();
+    if (validationState) {
+      if (checkAmount(form)) {
+        console.log('submit form');
+        form.submit();
+      }
+    } else {
+      console.log('submit form was not submitted');
+    }
+  });
 }
