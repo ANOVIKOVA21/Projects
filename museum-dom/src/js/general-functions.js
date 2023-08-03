@@ -13,3 +13,16 @@ export function showMessage(parent, message) {
     messageEl.remove();
   }, 500);
 }
+export function showError(elem, error) {
+  const sibling = elem.nextElementSibling;
+  if (sibling === null || !sibling.classList.contains('error')) {
+    const html = `<p class="error">${error}</p>`;
+    elem.insertAdjacentHTML('afterend', html);
+  }
+}
+export function deleteError(elem) {
+  const sibling = elem.nextElementSibling;
+  if (sibling !== null && sibling.classList.contains('error')) {
+    sibling.remove();
+  }
+}
