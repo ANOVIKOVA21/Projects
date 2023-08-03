@@ -342,7 +342,7 @@
                                 <button type="button" class="tickets__less btn-minus"
                                     aria-label="reduce the number of Basic tickets">–</button>
                                 <input type="number" min="0" max="20" value="1" class="tickets__num" id="basic"
-                                    aria-label="number of Basic tickets" />
+                                    aria-label="number of Basic tickets" data-amount="basic" />
                                 <button type="button" class="tickets__more btn-plus"
                                     aria-label="increase the number of Basic tickets">+</button>
                             </div>
@@ -352,7 +352,7 @@
                                 <button type="button" class="tickets__less btn-minus"
                                     aria-label="reduce the number of Senior tickets">–</button>
                                 <input type="number" min="0" max="20" value="1" class="tickets__num" id="senior"
-                                    aria-label="number of Senior tickets" />
+                                    aria-label="number of Senior tickets" data-amount="senior" />
                                 <button type="button" class="tickets__more btn-plus"
                                     aria-label="increase the number of Senior tickets">+</button>
                             </div>
@@ -370,18 +370,19 @@
                     <div class="booking__container">
                         <img src="./svg/Close.svg" alt="Close" class="booking__close" loading="lazy" width="25"
                             height="25" />
-                        <form action="#" class="booking__form">
+                        <form action="#" method="post" class="booking__form" id="ticketForm">
                             <div class="booking__logo">
                                 <div class="booking__img"></div>
                                 <h2 class="booking__title title">Booking tickets</h2>
                                 <p class="booking__subtitle">Tour to Louvre</p>
                             </div>
                             <label class="booking__date-container" tabindex="0">
-                                <input type="date" name="Date" value="" class="booking__date" required />
+                                <input type="date" name="Date" value="" class="booking__date field-validation"
+                                    required />
                             </label>
                             <label class="booking__time-container" tabindex="0"><span
                                     class="booking__time-text">Time</span>
-                                <select name="time" class="booking__time" multiple required>
+                                <select name="time" class="booking__time field-validation" multiple required>
                                     <option value="09:00">09:00</option>
                                     <option value="10:00">10:00</option>
                                     <option value="11:00">11:00</option>
@@ -393,9 +394,18 @@
                                     <option value="17:00">17:00</option>
                                 </select>
                             </label>
-                            <input type="text" name="name" placeholder="Name" class="booking__user" required />
-                            <input type="email" name="email" placeholder="E-mail" class="booking__user" required />
-                            <input type="tel" name="phone" placeholder="Phone" class="booking__user" required />
+                            <label class="booking__user-container">
+                                <input type="text" name="name" placeholder="Name" minlength="4" maxlength="25"
+                                    pattern="^[A-Z][a-z]+\s[A-Z][a-z]+$" class="booking__user field-validation"
+                                    required /></label>
+                            <label class="booking__user-container">
+                                <input type="email" name="email" placeholder="E-mail"
+                                    pattern="^([\w\.\+\-]+)@([\w\-]+)\.([a-zA-Z0-9\.\-]{2,6})$" minlength="6"
+                                    class="booking__user field-validation" required /></label>
+                            <label class="booking__user-container">
+                                <input type="tel" name="phone" placeholder="Phone" maxlength="13"
+                                    pattern="^[\d\s\-]{5,13}$" class="booking__user field-validation"
+                                    required /></label>
                             <label class="booking__type-container booking__user" tabindex="0"><span
                                     class="booking__type-text">Ticket Type</span>
                                 <select name="typeOfTicket" class="booking__ticket-type" multiple size="3" required>
@@ -417,7 +427,7 @@
                                     <div class="booking__val">
                                         <button type="button" class="booking__less btn-minus">–</button>
                                         <input type="number" name="basicAmount" min="0" max="20" value="0"
-                                            class="booking__num" />
+                                            pattern="^\d{1,2}$" class="booking__num" data-amount="basic" />
                                         <button type="button" class="booking__more btn-plus">+</button>
                                     </div>
                                 </div>
@@ -426,7 +436,7 @@
                                     <div class="booking__val">
                                         <button type="button" class="booking__less btn-minus">–</button>
                                         <input type="number" name="seniorAmount" min="0" max="20" value="0"
-                                            class="booking__num" readonly />
+                                            class="booking__num" data-amount="senior" />
                                         <button type="button" class="booking__more btn-plus">+</button>
                                     </div>
                                 </div>
@@ -458,28 +468,34 @@
                                 <p class="overview__total-price">0 €</p>
                                 <div class="overview__card-front">
                                     <label for="cardNumber" class="card-number-text">Card number</label>
-                                    <input type="number" name="cardNumber" id="cardNumber" class="card-number"
-                                        required />
+                                    <input type="text" name="cardNumber" id="cardNumber" form="ticketForm"
+                                        inputmode="numeric" class="card-number field-validation"
+                                        autocomplete="cc-number" minlength="16" maxlength="19"
+                                        pattern="^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$" placeholder required />
                                     <label for="card-month">Expiration date</label>
                                     <input type="number" min="1" max="12" value="03" id="card-month"
-                                        class="overview__card-month" onkeydown="return false" required />
-                                    <input type="number" value="2024" class="overview__card-year"
-                                        onkeydown="return false" required />
-                                    <label for="CardholderName">Cardholder name</label>
-                                    <input type="text" name="CardholderName" id="CardholderName" class="cardholder-name"
-                                        required />
+                                        class="overview__card-month" form="ticketForm" onkeydown="return false"
+                                        autocomplete="cc-exp-month" required />
+                                    <input type="number" value="2024" class="overview__card-year" form="ticketForm"
+                                        onkeydown="return false" autocomplete="cc-exp-year" required />
+                                    <label for="cardholderName">Cardholder name</label>
+                                    <input type="text" name="cardholderName" id="cardholderName"
+                                        class="cardholder-name field-validation" form="ticketForm"
+                                        autocomplete="cc-name" minlength="4" maxlength="25" pattern="^[A-Z]+\s[A-Z]+$"
+                                        placeholder required />
                                 </div>
                             </div>
                             <div class="overview__card-back">
                                 <div class="overview__card-band"></div>
                                 <div class="overview__card-cvv">
                                     <label for="cvv">CVC/CVV</label>
-                                    <input type="password" name="cvv" class="card-cvv" id="cvv" inputmode="numeric"
-                                        minlength="3" maxlength="4" required />
-                                    <p>The last 3 or 4 digits on back of the card</p>
+                                    <input type="text" name="cvv" class="card-cvv field-validation" id="cvv"
+                                        inputmode="numeric" minlength="3" maxlength="4" autocomplete="cc-csc"
+                                        pattern="^\d{3,4}$" form="ticketForm" placeholder required />
+                                    <p class="overview__cvv-info">The last 3 or 4 digits on back of the card</p>
                                 </div>
                             </div>
-                            <button type="submit" data-ripple class="overview__button">Book</button>
+                            <button type="submit" form="ticketForm" data-ripple class="overview__button">Book</button>
                         </div>
                     </div>
                 </article>
