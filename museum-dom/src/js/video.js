@@ -1,16 +1,16 @@
 import { showMessage } from './general-functions';
 
-const controls = document.querySelector('.video__controls');
 const wrapVideo = document.querySelector('.video__main');
-const videoTrack = document.querySelector('.video__progress');
-const btnPlay = document.querySelector('.video__play');
-const btnPlayImg = document.querySelector('.video__play img');
-const btnPlayLarge = document.querySelector('.video__play-large');
-const volumeProgress = document.querySelector('.video__volume-progress');
-const btnVolume = document.querySelector('.video__volume');
-const btnVolumeImg = document.querySelector('.video__volume img');
-const btnFullscreen = document.querySelector('.video__fullscreen');
-const btnFullscreenImg = document.querySelector('.video__fullscreen img');
+const controls = wrapVideo.querySelector('.video__controls');
+const videoTrack = controls.querySelector('.video__progress');
+const btnPlay = controls.querySelector('.video__play');
+const btnPlayImg = controls.querySelector('.video__play img');
+const btnPlayLarge = wrapVideo.querySelector('.video__play-large');
+const volumeProgress = controls.querySelector('.video__volume-progress');
+const btnVolume = controls.querySelector('.video__volume');
+const btnVolumeImg = controls.querySelector('.video__volume img');
+const btnFullscreen = controls.querySelector('.video__fullscreen');
+const btnFullscreenImg = controls.querySelector('.video__fullscreen img');
 
 let promise;
 function videoPause(currentVideo, videoState) {
@@ -21,7 +21,6 @@ function videoPause(currentVideo, videoState) {
   btnPlayImg.src = './svg/play_small.svg';
 }
 function videoPlay(currentVideo) {
-  // debugger;
   if (videoTrack.value === '100') videoTrack.value = '0';
   if (currentVideo.readyState >= 3) promise = currentVideo.play();
   else {
@@ -44,7 +43,7 @@ function videoPlay(currentVideo) {
     btnPlayLarge.style.display = '';
   };
   const timeListener = function () {
-    if (currentVideo !== document.querySelector('.video__video.slick-active'))
+    if (currentVideo !== wrapVideo.querySelector('.video__video.slick-active'))
       return;
     if (videoTrack.value !== '100') {
       if (currentVideo.readyState < 3) return;
@@ -65,7 +64,7 @@ function videoPlay(currentVideo) {
 }
 
 export function handleVideo() {
-  const currVideo = document.querySelector('.video__video.slick-active');
+  const currVideo = wrapVideo.querySelector('.video__video.slick-active');
   if (btnPlay.dataset.isPlay === 'false') {
     videoPlay(currVideo);
     console.log('play ', promise);
@@ -110,8 +109,8 @@ export function addVideoListeners() {
     const { value } = event.target;
     event.target.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
   });
-  controls.addEventListener('click', (event) => {
-    const currVideo = document.querySelector('.video__video.slick-active');
+  controls.addEventListener('pointerdown', (event) => {
+    const currVideo = wrapVideo.querySelector('.video__video.slick-active');
     if (event.target.closest('.video__progress')) {
       const inputWidth = videoTrack.offsetWidth;
       const eventPosition = event.offsetX;
