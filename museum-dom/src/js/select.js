@@ -1,48 +1,73 @@
 import { ticketInfo } from './ticket-price-calculation';
 import { updateTicketType } from './other-form-listeners';
+import { validate } from './validation';
+import { deleteError, makeReadonlyInput } from './general-functions';
 
-function hideOptions(container, select) {
+function hideOptions(container, listEl) {
   if (!container.classList.contains('arrow-open')) return;
-  select.style.display = 'none';
   container.classList.remove('arrow-open');
+  listEl.classList.remove('select-active');
+  listEl.classList.add('select-not-active');
 }
 
-function showOptions(target, select, container, textEl) {
+function showOptions(listEl, container) {
+  if (container.classList.contains('arrow-open'))
+    return hideOptions(container, listEl);
   container.classList.add('arrow-open');
-  select.style.display = 'block';
-  select.focus();
-  if (target.closest('option')) {
-    textEl.textContent = target.textContent;
-    select.style.display = 'none';
-  }
+  listEl.classList.remove('select-not-active');
+  listEl.classList.add('select-active');
+  listEl.focus();
+}
+function showSelectedValues(target, input, container, listEl) {
+  input.value = target.textContent;
+  const prevValue = container.querySelector('.selected');
+  if (prevValue) prevValue.classList.remove('selected');
+  target.classList.add('selected');
+  hideOptions(container, listEl);
 }
 export function addSelectListeners() {
-  const timeContainer = document.querySelector('.booking__time-container');
-  const selectTime = document.querySelector('.booking__time');
-  const ticketTypeContainer = document.querySelector(
-    '.booking__type-container'
-  );
-  const selectType = document.querySelector('.booking__ticket-type');
-  selectTime.addEventListener('blur', () => {
-    hideOptions(timeContainer, selectTime);
+  const form = document.querySelector('.booking__form');
+  const timeContainer = form.querySelector('.booking__time-container');
+  const timeInput = form.time;
+  const timeList = form.querySelector('.booking__time');
+  const ticketTypeContainer = form.querySelector('.booking__type-container');
+  const selectType = form.querySelector('.booking__ticket-type');
+  const ticketTypeInput = form.querySelector('.booking__ticket-type-input');
+  makeReadonlyInput(timeInput);
+  timeList.addEventListener('blur', (ev) => {
+    if (ev.relatedTarget === timeContainer || ev.relatedTarget === timeInput)
+      return;
+    hideOptions(timeContainer, timeList);
+    validate(timeInput, timeInput.name);
   });
-  selectType.addEventListener('blur', () => {
+  selectType.addEventListener('blur', (ev) => {
+    if (
+      ev.relatedTarget === ticketTypeContainer ||
+      ev.relatedTarget === ticketTypeInput
+    )
+      return;
     hideOptions(ticketTypeContainer, selectType);
   });
-  selectTime.addEventListener('click', (ev) => {
+  timeContainer.addEventListener('click', (ev) => {
     const { target } = ev;
-    const timeText = document.querySelector('.booking__time-text');
-    showOptions(target, selectTime, timeContainer, timeText);
-    if (!target.closest('option')) return;
-    const overviewTime = document.querySelector('.overview__time');
-    overviewTime.innerHTML = selectTime.selectedOptions[0].value;
+    if (target.closest('li')) {
+      deleteError(timeInput);
+      showSelectedValues(target, timeInput, timeContainer, timeList);
+      const overviewTime = document.querySelector('.overview__time');
+      overviewTime.innerHTML = timeInput.value;
+    } else showOptions(timeList, timeContainer);
   });
-  selectType.addEventListener('click', (ev) => {
+  ticketTypeContainer.addEventListener('click', (ev) => {
     const { target } = ev;
-    const typeText = document.querySelector('.booking__type-text');
-    showOptions(target, selectType, ticketTypeContainer, typeText);
-    if (!target.closest('option')) return;
-    ticketInfo.typeOfTicket = selectType.selectedIndex;
-    updateTicketType();
+    if (target.closest('li')) {
+      showSelectedValues(
+        target,
+        ticketTypeInput,
+        ticketTypeContainer,
+        selectType
+      );
+      ticketInfo.typeOfTicket = target.dataset.selectedIndex;
+      updateTicketType();
+    } else showOptions(selectType, ticketTypeContainer);
   });
 }
