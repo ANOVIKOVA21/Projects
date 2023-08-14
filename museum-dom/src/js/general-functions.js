@@ -26,3 +26,8 @@ export function deleteError(elem) {
     sibling.remove();
   }
 }
+export function makeReadonlyInput(input) {
+  input.addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Tab') return false;
+  });
+}
