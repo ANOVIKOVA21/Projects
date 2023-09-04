@@ -51,6 +51,9 @@ $(document).ready(() => {
         'background',
         `linear-gradient(to right, #710707 0%, #710707 ${nextSlideVal}%, #C4C4C4 ${nextSlideVal}%, #C4C4C4 100%)`
       );
+      const videos = $('.video__video');
+      videos[nextSlide].volume = videos[currentSlide].volume;
+      videos[nextSlide].muted = videos[currentSlide].muted;
     }
   );
 });
