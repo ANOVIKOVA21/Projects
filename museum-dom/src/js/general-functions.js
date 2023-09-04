@@ -28,6 +28,6 @@ export function deleteError(elem) {
 }
 export function makeReadonlyInput(input) {
   input.addEventListener('keydown', (ev) => {
-    if (ev.key !== 'Tab') return false;
+    if (ev.key !== 'Tab') ev.preventDefault();
   });
 }
