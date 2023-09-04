@@ -373,21 +373,20 @@
     background: #333333;
 }
 
-.fullscreen {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
+.video__main:fullscreen .slick-active {
     min-height: 100vh;
-    z-index: 10;
 }
 
-.controls_fullscreen {
+.video__main:fullscreen .video__controls {
     left: 0;
     position: fixed;
     bottom: 0;
     width: 100%;
     z-index: 1000;
+}
+
+.video__main:fullscreen .video__fullscreen img {
+    content: url("../assets/svg/fullscreen_exit.svg");
 }
 
 .message {
