@@ -376,9 +376,11 @@
                                 <h2 class="booking__title title">Booking tickets</h2>
                                 <p class="booking__subtitle">Tour to Louvre</p>
                             </div>
-                            <label class="booking__date-container" tabindex="0">
-                                <input type="date" name="Date" value="" class="booking__date field-validation"
-                                    required />
+                            <label class="booking__user-container booking__dropdown" tabindex="0">
+                                <input type="text" name="date" placeholder="Date" class="booking__user field-validation"
+                                    autocomplete="off" required>
+                                <img src="./svg/date.svg" alt="date icon" class='input-icon'>
+                                <input type="date" name="datePicker" value="" />
                             </label>
                             <div class="booking__time-container" tabindex="0">
                                 <input type="text" name="time" placeholder="Time"

@@ -1,5 +1,3 @@
-const inputDate = document.querySelector('.booking__date');
-
 function getDateString(date) {
   const year = date.getFullYear();
   let month = date.getMonth() + 1;
@@ -10,11 +8,11 @@ function getDateString(date) {
   return dateString;
 }
 
-function updateMinAndMaxDate() {
+function updateMinAndMaxDate(datePicker) {
   const date = new Date();
-  inputDate.setAttribute('min', getDateString(date));
+  datePicker.setAttribute('min', getDateString(date));
   date.setDate(date.getDate() + 30);
-  inputDate.setAttribute('max', getDateString(date));
+  datePicker.setAttribute('max', getDateString(date));
 }
 function getFullDayName(str) {
   const weekDays = [
@@ -56,26 +54,27 @@ function getDateAsString(date) {
   return dateAsString.join(', ');
 }
 export function addInputDateListeners() {
+  const form = document.querySelector('.booking__form');
+  const inputDatePicker = form.datePicker;
+  const inputDate = form.date;
   const overviewDate = document.querySelector('.overview__date');
-  updateMinAndMaxDate();
+  updateMinAndMaxDate(inputDatePicker);
   inputDate.addEventListener('click', () => {
-    inputDate.style.background =
-      'url(./svg/arrow_top.svg) no-repeat center right';
+    inputDate.parentElement.classList.add('arrow-open');
+    inputDatePicker.showPicker();
   });
   inputDate.addEventListener('blur', () => {
-    inputDate.style.background =
-      'url(./svg/arrow_down.svg) no-repeat center right';
+    inputDate.parentElement.classList.remove('arrow-open');
   });
-  inputDate.addEventListener('change', () => {
-    if (inputDate.value !== '') {
-      inputDate.classList.add('has-value');
-      overviewDate.innerHTML = getDateAsString(inputDate.valueAsDate);
+  inputDatePicker.addEventListener('change', () => {
+    if (inputDatePicker.value !== '') {
+      inputDate.value = inputDatePicker.value;
+      overviewDate.innerHTML = getDateAsString(inputDatePicker.valueAsDate);
     }
-    if (inputDate.value === '' && inputDate.classList.contains('has-value')) {
-      inputDate.classList.remove('has-value');
+    if (inputDatePicker.value === '') {
+      inputDate.value = '';
       overviewDate.innerHTML = 'Select date';
     }
-    inputDate.style.background =
-      'url(./svg/arrow_down.svg) no-repeat center right';
+    inputDate.blur();
   });
 }
