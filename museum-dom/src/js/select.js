@@ -27,12 +27,12 @@ function showSelectedValues(target, input, container, listEl) {
 }
 export function addSelectListeners() {
   const form = document.querySelector('.booking__form');
-  const timeContainer = form.querySelector('.booking__time-container');
   const timeInput = form.time;
+  const timeContainer = timeInput.parentElement;
   const timeList = form.querySelector('.booking__time');
-  const ticketTypeContainer = form.querySelector('.booking__type-container');
   const selectType = form.querySelector('.booking__ticket-type');
-  const ticketTypeInput = form.querySelector('.booking__ticket-type-input');
+  const ticketTypeInput = form.ticketType;
+  const ticketTypeContainer = ticketTypeInput.parentElement;
   makeReadonlyInput(timeInput);
   timeList.addEventListener('blur', (ev) => {
     if (ev.relatedTarget === timeContainer || ev.relatedTarget === timeInput)
