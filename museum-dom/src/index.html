@@ -8,6 +8,7 @@
     <title>Museum</title>
     <meta name="description"
         content="Immerse yourself in the mysterious atmosphere of the Louvre! Admire the works of famous artists, see the palace and museum collections.">
+    <meta name="theme-color" content="#030303" />
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="preload" href="./fonts/forum-regular.woff" as="font" crossOrigin="anonymous">
     <link rel="preload" href="main.css" as="style" onload="this.rel='stylesheet'">
@@ -257,7 +258,7 @@
                             </button>
                             <input type="range" value="40" min="0" max="100" class="video__volume-progress"
                                 aria-label="video volume slider" />
-                            <button class="video__fullscreen" data-is-fullscreen="false" type="button">
+                            <button class="video__fullscreen" type="button">
                                 <img src="./svg/fullscreen.svg" alt="fullscreen" loading="lazy" width="35"
                                     height="35" />
                             </button>
@@ -382,9 +383,10 @@
                                 <img src="./svg/date.svg" alt="date icon" class='input-icon'>
                                 <input type="date" name="datePicker" value="" />
                             </label>
-                            <div class="booking__time-container" tabindex="0">
-                                <input type="text" name="time" placeholder="Time"
-                                    class="booking__time-input field-validation" required />
+                            <div class="booking__user-container booking__dropdown" tabindex="0">
+                                <input type="text" name="time" placeholder="Time" autocomplete="off"
+                                    class="booking__user booking__time-input field-validation" required />
+                                <img src="./svg/time.svg" alt="time icon" class='input-icon'>
                                 <ul class="booking__time" tabindex="0">
                                     <li>09:00</li>
                                     <li>10:00</li>
@@ -414,9 +416,10 @@
                                     pattern="^[\d\s\-]{5,13}$" class="booking__user field-validation" required />
                                 <img src="./svg/tel.svg" alt="phone icon" class='input-icon'>
                             </label>
-                            <div class="booking__type-container booking__user" tabindex="0">
+                            <div class="booking__user-container booking__dropdown" tabindex="0">
                                 <input type="text" name="ticketType" placeholder="Ticket Type" readonly
-                                    class="booking__ticket-type-input" required />
+                                    class="booking__user booking__ticket-type-input" required />
+                                <img src="./svg/ballot.svg" alt="phone icon" class='input-icon'>
                                 <ul class="booking__ticket-type" tabindex="0">
                                     <li data-selected-index="0">Permanent exhibition</li>
                                     <li data-selected-index="1">Temporary exhibition</li>
