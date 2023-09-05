@@ -6,7 +6,7 @@ import {
   checkAmount,
   validateAmount,
 } from './validation';
-import { deleteError } from './general-functions';
+import { deleteError, makeReadonlyInput } from './general-functions';
 
 const ticketsSection = document.getElementById('tickets');
 const form = document.querySelector('.booking__form');
@@ -32,13 +32,14 @@ export function updateTotalPrice() {
   } €`;
 }
 export function updateTicketType() {
-  const selectType = form.typeOfTicket;
+  const typeOptions = form.querySelectorAll('.booking__ticket-type li');
+  const ticketTypeInput = form.ticketType;
   const overviewType = ticketsSection.querySelector('.overview__type');
   const basicPrice = ticketsSection.querySelectorAll('.basic-price');
   const seniorPrice = ticketsSection.querySelectorAll('.senior-price');
   const { typeOfTicket, prices } = ticketInfo;
-  selectType.selectedIndex = typeOfTicket;
-  overviewType.textContent = selectType.value;
+  ticketTypeInput.value = typeOptions[typeOfTicket].textContent;
+  overviewType.textContent = ticketTypeInput.value;
   basicPrice.forEach((el) => {
     el.textContent = prices[typeOfTicket];
   });
@@ -63,6 +64,9 @@ export function addFormListeners() {
   const ticketsAmountElem = form.querySelectorAll('.booking__num');
   const basicAmountInput = form.basicAmount;
   const seniorAmountInput = form.seniorAmount;
+  const expirationDate = ticketsSection.querySelectorAll(
+    '.overview__total input[type="number"]'
+  );
   const closeFormButton = ticketsForm.querySelector('.booking__close');
   const bookButton = ticketsForm.querySelector('.overview__button');
 
@@ -96,24 +100,29 @@ export function addFormListeners() {
     });
   });
   fieldsToCheck.forEach((input) => {
-    input.addEventListener('blur', (ev) => {
-      const { target } = ev;
-      if (target.validity.valid) return;
-      validate(target, target.name);
-    });
+    if (input.name !== 'time') {
+      input.addEventListener('blur', (ev) => {
+        const { target } = ev;
+        if (target.validity.valid) return;
+        validate(target, target.name);
+      });
+    }
   });
   fieldsToCheck.forEach((input) =>
     input.addEventListener('focus', (ev) => deleteError(ev.target))
   );
-  fieldsToCheck.forEach((input) =>
-    input.addEventListener('input', (ev) => {
-      const validityState = input.validity;
-      if (!validityState.valueMissing && !validityState.patternMismatch) {
-        input.setCustomValidity('');
-        deleteError(ev.target);
-      }
-    })
-  );
+  fieldsToCheck.forEach((input) => {
+    if (input.name !== 'time' && input.name !== 'date') {
+      input.addEventListener('input', (ev) => {
+        const validityState = input.validity;
+        if (!validityState.valueMissing && !validityState.patternMismatch) {
+          input.setCustomValidity('');
+          deleteError(ev.target);
+        }
+      });
+    }
+  });
+  expirationDate.forEach((el) => makeReadonlyInput(el));
   bookButton.addEventListener('click', (ev) => {
     addRippleEffect(ev, bookButton);
     const validationState = form.checkValidity();
