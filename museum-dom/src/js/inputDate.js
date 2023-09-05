@@ -1,3 +1,5 @@
+import { makeReadonlyInput } from './general-functions';
+
 function getDateString(date) {
   const year = date.getFullYear();
   let month = date.getMonth() + 1;
@@ -57,14 +59,18 @@ export function addInputDateListeners() {
   const form = document.querySelector('.booking__form');
   const inputDatePicker = form.datePicker;
   const inputDate = form.date;
+  const dateContainer = inputDate.parentElement;
   const overviewDate = document.querySelector('.overview__date');
   updateMinAndMaxDate(inputDatePicker);
-  inputDate.addEventListener('click', () => {
-    inputDate.parentElement.classList.add('arrow-open');
-    inputDatePicker.showPicker();
+  makeReadonlyInput(inputDate);
+  dateContainer.addEventListener('pointerdown', () => {
+    if (!dateContainer.classList.contains('arrow-open')) {
+      dateContainer.classList.add('arrow-open');
+      inputDatePicker.showPicker();
+    } else inputDate.blur();
   });
   inputDate.addEventListener('blur', () => {
-    inputDate.parentElement.classList.remove('arrow-open');
+    dateContainer.classList.remove('arrow-open');
   });
   inputDatePicker.addEventListener('change', () => {
     if (inputDatePicker.value !== '') {

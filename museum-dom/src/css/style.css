@@ -576,7 +576,7 @@
     font-weight: 300;
     font-size: 22px;
     line-height: 26px;
-    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .tickets__num::-webkit-outer-spin-button,
@@ -754,7 +754,7 @@
 .booking__dropdown input {
     background: url("../assets/svg/arrow_down.svg") no-repeat center right 15px, white;
     cursor: pointer;
-    pointer-events: none;
+    caret-color: transparent;
 }
 
 input[type="date"] {
@@ -829,6 +829,7 @@ input[type="tel"]~.input-icon {
 }
 
 .select-active {
+    outline: none;
     visibility: visible;
     animation: open 0.5s ease-out 0s 1 normal forwards;
 }
