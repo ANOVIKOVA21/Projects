@@ -545,15 +545,6 @@ body {
 }
 
 @media (max-width:768px) {
-  .header__nav {
-    width: 100%;
-  }
-
-  .header__nav .header__menu li {
-    max-width: 122px;
-    background: url("./svg/menu-arrow.svg") no-repeat right;
-  }
-
   .visiting {
     padding: 40px 0 80px 0;
   }
@@ -585,6 +576,7 @@ body {
 
   .header__nav {
     top: 90px;
+    height: calc(100% - 90px);
   }
 
   .title {
