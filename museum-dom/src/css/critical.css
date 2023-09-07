@@ -361,6 +361,7 @@ body {
   }
 
   .header__nav {
+    visibility: hidden;
     position: absolute;
     width: 297px;
     z-index: 2;
@@ -370,6 +371,11 @@ body {
     transition: 1s;
     transform: translateX(-100%);
     will-change: transform;
+  }
+
+  .header__nav.-open {
+    visibility: visible;
+    transform: translateX(0);
   }
 
   .header__menu {
@@ -455,6 +461,10 @@ body {
 }
 
 @media (max-width:950px) {
+  .lock {
+    overflow: hidden;
+  }
+
   .header__text {
     line-height: 41px;
     margin: 40px 0 29px 25px;
@@ -463,8 +473,11 @@ body {
   .header__nav {
     max-width: 100%;
     width: 100%;
+    height: calc(100% - 110px);
     background-color: #030303;
     top: 110px;
+    overflow: auto;
+    overscroll-behavior: contain;
   }
 
   .header__menu {
