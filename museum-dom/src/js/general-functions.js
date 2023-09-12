@@ -30,4 +30,7 @@ export function makeReadonlyInput(input) {
   input.addEventListener('keydown', (ev) => {
     if (ev.key !== 'Tab') ev.preventDefault();
   });
+  input.addEventListener('focus', (ev) => {
+    ev.preventDefault();
+  });
 }
