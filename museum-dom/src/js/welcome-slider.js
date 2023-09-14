@@ -6,11 +6,12 @@ export function addWelcomeSliderListener() {
     './img/4.jpg',
     './img/5.jpg',
   ];
-  const welcomeImgContainer = document.querySelector('.welcome__img');
-  const welcomeSlider = document.querySelector('.welcome__slider');
-  const numOfImg = document.querySelector('.welcome__num');
-  const squares = document.querySelectorAll('.welcome__square');
-  const welcomeArrows = document.querySelectorAll('.welcome__arrow');
+  const welcomeContainer = document.querySelector('.welcome__container');
+  const welcomeImgContainer = welcomeContainer.querySelector('.welcome__img');
+  const welcomeSlider = welcomeContainer.querySelector('.welcome__slider');
+  const numOfImg = welcomeSlider.querySelector('.welcome__num');
+  const squares = welcomeSlider.querySelectorAll('.welcome__square');
+  const welcomeArrows = welcomeSlider.querySelectorAll('.welcome__arrow');
   let indexCurImg = 0;
   let currentImg = welcomeImages[indexCurImg];
 
@@ -59,4 +60,33 @@ export function addWelcomeSliderListener() {
       }
     }, 500);
   });
+  let startX = null;
+  let startY = null;
+  function swipe(ev) {
+    if (!startX || !startY) return;
+    const endX = ev.clientX;
+    const endY = ev.clientY;
+    const xDiff = startX - endX;
+    const yDiff = startY - endY;
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff > 0) {
+        welcomeArrows[1].click();
+        console.log('right swipe');
+      } else {
+        welcomeArrows[0].click();
+        console.log('left swipe');
+      }
+    }
+    startX = null;
+    startY = null;
+  }
+  welcomeContainer.addEventListener(
+    'pointerdown',
+    (ev) => {
+      startX = ev.clientX;
+      startY = ev.clientY;
+    },
+    false
+  );
+  welcomeContainer.addEventListener('pointermove', swipe, false);
 }
