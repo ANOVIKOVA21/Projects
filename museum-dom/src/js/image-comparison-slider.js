@@ -58,15 +58,15 @@ export function initComparisons() {
     }
     window.addEventListener('mouseup', slideFinish);
     /* or touched (for touch screens: */
-    exploreSlider.addEventListener('touchstart', slideReady);
+    exploreSlider.addEventListener('touchstart', slideReady, { passive: true });
     /* and released (for touch screens: */
-    window.addEventListener('touchstop', slideFinish);
+    window.addEventListener('touchend', slideFinish);
   }
   /* find all elements with an "overlay" class: */
   const x = document.getElementsByClassName('img-overlay');
   for (let i = 0; i < x.length; i++) {
     /* once for each "overlay" element:
-                                    pass the "overlay" element as a parameter when executing the compareImages function: */
+     pass the "overlay" element as a parameter when executing the compareImages function: */
     compareImages(x[i]);
   }
 }
