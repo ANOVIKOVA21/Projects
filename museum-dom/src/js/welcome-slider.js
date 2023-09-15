@@ -68,13 +68,12 @@ export function addWelcomeSliderListener() {
     const endY = ev.clientY;
     const xDiff = startX - endX;
     const yDiff = startY - endY;
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    const distance = 90;
+    if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) >= distance) {
       if (xDiff > 0) {
         welcomeArrows[1].click();
-        console.log('right swipe');
       } else {
         welcomeArrows[0].click();
-        console.log('left swipe');
       }
     }
     startX = null;
@@ -88,5 +87,14 @@ export function addWelcomeSliderListener() {
     },
     false
   );
-  welcomeContainer.addEventListener('pointermove', swipe, false);
+  welcomeContainer.addEventListener('pointerup', swipe, false);
+  welcomeContainer.addEventListener(
+    'touchend',
+    (ev) => {
+      ev.clientX = ev.changedTouches[0].clientX;
+      ev.clientY = ev.changedTouches[0].clientY;
+      swipe(ev);
+    },
+    false
+  );
 }
