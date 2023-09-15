@@ -1598,7 +1598,6 @@ h5 {
 
     .tickets__amount {
         align-items: flex-start;
-        /* max-width: 175px; */
         max-width: 190px;
         width: 100%;
         margin-left: 0;
@@ -1733,10 +1732,6 @@ h5 {
         right: 43%;
     }
 
-    /* .visiting__cards {
-        column-gap: 56px;
-        row-gap: 40px;
-    } */
     .video__title {
         margin-bottom: 20px;
     }
@@ -2219,6 +2214,10 @@ h5 {
         height: 38.1vw;
     }
 
+    .tickets__amount {
+        max-width: 175px;
+    }
+
     .tickets__subtitle,
     .tickets__total,
     .tickets__buy {
@@ -2268,13 +2267,6 @@ h5 {
         padding-bottom: 10px;
     }
 
-    /* .overview__card-front {
-        position: static;
-        margin-top: 15px;
-        font-size: 11px;
-        line-height: 13px;
-    } */
-
     .card-number {
         width: 74.40%;
     }
@@ -2282,11 +2274,6 @@ h5 {
     .overview__card-front input {
         font-size: 13px;
     }
-
-    /* .overview__card-back {
-        margin-top: 25px;
-        padding-bottom: 18px;
-    } */
 
     .overview__card-cvv label {
         font-size: 13px;
