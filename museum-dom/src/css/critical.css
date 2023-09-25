@@ -146,6 +146,26 @@ body {
   position: relative;
   z-index: 1;
   padding-bottom: 272px;
+  user-select: none;
+  animation: backInLeft 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes backInLeft {
+  0% {
+    transform: translateX(-2000px) scale(.7);
+    opacity: .7;
+  }
+
+  80% {
+    transform: translateX(0) scale(.7);
+    opacity: .7
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .welcome__title {
