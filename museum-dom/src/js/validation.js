@@ -45,9 +45,11 @@ export function checkAmount(form){
   if(basicAmount<=20|| seniorAmount<=20) return true;
 }
 export function validateAmount (amountEl,event){
-  const num = Number(amountEl.value);
+  let num = Math.abs(amountEl.value);
   if (isNaN(num)) amountEl.value = 0;
-  else amountEl.value = num;
+  // to make a two-digit number
+  else if (String(num).length>2) num = Number(String(num).slice(0,2));
+  amountEl.value = num;
   if (event.target.dataset.amount === 'basic') ticketInfo.basicAmount = num;
   else ticketInfo.seniorAmount = num;
 }
