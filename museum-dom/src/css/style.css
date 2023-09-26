@@ -738,7 +738,7 @@
 
 }
 
-.booking__user-container:first-of-type,
+.booking__user-container:nth-child(2),
 .booking__user-container:nth-child(3) {
     max-width: 190px;
 }
@@ -764,7 +764,7 @@ input[type="date"] {
     visibility: hidden;
 }
 
-.booking__user-container:first-of-type.error,
+.booking__user-container:nth-child(2).error,
 .booking__user-container:nth-child(3).error {
     position: absolute;
     bottom: -20px;
@@ -1746,7 +1746,7 @@ h5 {
         justify-content: space-between;
     }
 
-    .booking__user-container:first-of-type,
+    .booking__user-container:nth-child(2),
     .booking__user-container:nth-child(3) {
         max-width: 251px;
     }
@@ -2053,7 +2053,7 @@ h5 {
         line-height: 35px;
     }
 
-    .booking__user-container:first-of-type,
+    .booking__user-container:nth-child(2),
     .booking__user-container:nth-child(3) {
         max-width: 100%;
     }

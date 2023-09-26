@@ -374,12 +374,12 @@
                                 <h2 class="booking__title title">Booking tickets</h2>
                                 <p class="booking__subtitle">Tour to Louvre</p>
                             </div>
-                            <label class="booking__user-container booking__dropdown">
+                            <div class="booking__user-container booking__dropdown">
                                 <input type="text" name="date" placeholder="Date" class="booking__user field-validation"
                                     autocomplete="off" inputmode="none" required>
                                 <img src="./svg/date.svg" alt="date icon" class='input-icon'>
                                 <input type="date" name="datePicker" value="" />
-                            </label>
+                            </div>
                             <div class="booking__user-container booking__dropdown" tabindex="0">
                                 <input type="text" name="time" placeholder="Time" autocomplete="off"
                                     class="booking__user booking__time-input field-validation" inputmode="none"
@@ -431,7 +431,7 @@
                                     <div class="booking__val">
                                         <button type="button" class="booking__less btn-minus">–</button>
                                         <input type="number" name="basicAmount" min="0" max="20" value="0"
-                                            pattern="^\d{1,2}$" class="booking__num" data-amount="basic" />
+                                            class="booking__num" data-amount="basic" />
                                         <button type="button" class="booking__more btn-plus">+</button>
                                     </div>
                                 </div>

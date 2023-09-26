@@ -148,7 +148,6 @@ body {
   padding-bottom: 272px;
   user-select: none;
   animation: backInLeft 1s;
-  animation-fill-mode: both;
 }
 
 @keyframes backInLeft {
@@ -214,7 +213,9 @@ body {
   position: absolute;
   top: 0;
   right: 10px;
-  background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), center / contain image-set("./img/1.jpg" type("image/jpeg"), "./img/1.webp" type("image/webp")) no-repeat;
+  background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), center / contain url("./img/1.jpg");
+  background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), center / contain -webkit-image-set(url("./img/1.webp") type("image/webp"), url("./img/1.jpg") type("image/jpeg"));
+  /* background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), center / contain image-set("./img/1.webp" type("image/webp"), "./img/1.jpg" type("image/jpeg") ); */
   transition: 1s;
 }
 
@@ -534,7 +535,9 @@ body {
     max-height: 546px;
     height: 71.09vw;
     margin: 0 auto;
-    background-image: image-set("./img/1.webp" type("image/webp"), "./img/1.jpg" type("image/jpeg"));
+    background-image: url("./img/1.jpg");
+    background-image: -webkit-image-set(url("./img/1.webp") type("image/webp"), url("./img/1.jpg") type("image/jpeg"));
+    /* background-image: image-set("./img/1.webp" type("image/webp"), "./img/1.jpg" type("image/jpeg")); */
     background-size: cover;
   }
 
