@@ -38,23 +38,28 @@ body {
   margin-right: 10px;
   display: flex;
   align-items: baseline;
-  transition: 1s;
+  transition: 0.5s;
   max-width: 199px;
 }
 
-.header__logo:hover {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(298deg) brightness(109%) contrast(101%);
+.logo:hover {
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 2px 2px 2px rgba(206, 89, 55, 0);
   cursor: pointer;
 }
 
-.header__img {
+.logo:hover>.logo-icon {
+  filter: drop-shadow(0px 0px 3px white) brightness(4) contrast(4) saturate(10);
+}
+
+.logo-icon {
   background-image: url("./svg/logo.svg");
   background-size: cover;
   width: 49px;
   height: 26px;
+  transition: 0.5s;
 }
 
-.header__text {
+.logo-text {
   max-width: 125px;
   margin-left: 25px;
   font-family: 'Forum';
@@ -584,14 +589,17 @@ body {
 }
 
 @media (max-width:420px) {
-  .header__img {
+  .logo-icon {
     max-width: 29px;
     max-height: 16px;
   }
 
-  .header__text {
+  .logo-text {
     font-size: 16px;
     line-height: 18px;
+  }
+
+  .header__text {
     margin: 37px 0 35px 25px;
   }
 

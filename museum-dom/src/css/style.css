@@ -1320,33 +1320,9 @@ h5 {
 .footer__logo {
     display: flex;
     align-items: center;
-    transition: 1s;
+    transition: 0.5s;
     max-width: 199px;
     max-height: 50px;
-}
-
-.footer__logo:hover {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(298deg) brightness(109%) contrast(101%);
-    cursor: pointer;
-    transition: 1s;
-}
-
-.footer__img {
-    background-image: url("../assets/svg/logo.svg");
-    background-size: cover;
-    width: 49px;
-    height: 26px;
-}
-
-.footer__text {
-    max-width: 125px;
-    margin: 0 0 0 25px;
-    font-family: 'Forum';
-    font-weight: normal;
-    font-size: 28px;
-    line-height: 31px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
 }
 
 .footer__nav {
@@ -1675,6 +1651,10 @@ h5 {
 
     .footer__logo {
         align-items: flex-start;
+    }
+
+    .footer__text {
+        margin-top: 0
     }
 
     .footer__nav {
@@ -2074,18 +2054,6 @@ h5 {
 
 @media (max-width: 420px) {
 
-    .footer__img {
-        max-width: 29px;
-        max-height: 16px;
-    }
-
-    .footer__text {
-        font-size: 16px;
-        line-height: 18px;
-        margin: 37px 0 35px 25px;
-    }
-
-
     .header__imgs {
         max-width: 329px;
         padding-bottom: 20px;
@@ -2319,7 +2287,7 @@ h5 {
         align-items: baseline;
     }
 
-    .footer__text {
+    .logo-text.footer__text {
         margin: 0 0 0 20px;
     }
 
