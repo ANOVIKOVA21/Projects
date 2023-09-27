@@ -146,6 +146,7 @@ body {
   position: relative;
   z-index: 1;
   padding-bottom: 272px;
+  -webkit-user-select: none;
   user-select: none;
   animation: backInLeft 1s;
 }
