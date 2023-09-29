@@ -331,6 +331,21 @@ body {
   height: auto;
 }
 
+.explore__img-container {
+  position: relative;
+  max-width: 720px;
+  width: 100%;
+  height: 700px;
+  margin-top: 15px;
+}
+
+.explore__img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
 @media (max-width:1295px) {
 
   .header__container,
@@ -482,6 +497,10 @@ body {
   .visiting-card img {
     margin-bottom: 23px;
   }
+
+  .explore__img-container {
+    margin-top: 62px;
+  }
 }
 
 @media (max-width:950px) {
@@ -586,6 +605,17 @@ body {
   .visiting-card img {
     margin-bottom: 20px;
   }
+
+  .explore__img-container {
+    margin: 0;
+    max-width: 100%;
+    height: calc(100vw - 63px);
+  }
+
+  .explore__img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media (max-width:420px) {
@@ -667,5 +697,9 @@ body {
 
   .visiting {
     padding: 40px 0;
+  }
+
+  .explore__img-container {
+    height: 87.62vw;
   }
 }
