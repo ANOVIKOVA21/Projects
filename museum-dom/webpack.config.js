@@ -56,7 +56,6 @@ module.exports = ({ development }) => ({
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
       inject: false,
-      // minify: false,
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
