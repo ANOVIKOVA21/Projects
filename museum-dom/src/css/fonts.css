@@ -1,0 +1,41 @@
+@font-face {
+    font-family: Roboto;
+    src: local('Roboto'), url("../assets/fonts/roboto-100.woff") format("woff"), url("../assets/fonts/roboto-100.woff2") format("woff2"), url("../assets/fonts/Roboto-100.eot") format("eot"), url("../assets/fonts/Roboto-100.otf") format("otf"), url("../assets/fonts/Roboto-100.ttf") format("ttf");
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: local('Roboto'), url("../assets/fonts/roboto-300.woff") format("woff"), url("../assets/fonts/roboto-300.woff2") format("woff2"), url("../assets/fonts/Roboto-300.eot") format("eot"), url("../assets/fonts/Roboto-300.otf") format("otf"), url("../assets/fonts/Roboto-300.ttf") format("ttf");
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: local('Roboto'), url("../assets/fonts/roboto-regular.woff") format("woff"), url("../assets/fonts/roboto-regular.woff2") format("woff2"), url("../assets/fonts/Roboto-400.eot") format("eot"), url("../assets/fonts/Roboto-400.otf") format("otf"), url("../assets/fonts/Roboto-400.ttf") format("ttf");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: local('Roboto'), url("../assets/fonts/Roboto-500.woff") format("woff"), url("../assets/fonts/Roboto-500.woff2") format("woff2"), url("../assets/fonts/Roboto-500.eot") format("eot"), url("../assets/fonts/Roboto-500.otf") format("otf"), url("../assets/fonts/Roboto-500.ttf") format("ttf");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: local('Roboto'), url("../assets/fonts/roboto-700.woff") format("woff"), url("../assets/fonts/roboto-700.woff2") format("woff2"), url("../assets/fonts/Roboto-700.eot") format("eot"), url("../assets/fonts/Roboto-700.otf") format("otf"), url("../assets/fonts/Roboto-700.ttf") format("ttf");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Forum;
+    src: local('Forum'), url("../assets/fonts/forum-regular.woff") format("woff"), url("../assets/fonts/forum-regular.woff2") format("woff2"), url("../assets/fonts/Forum-400.eot") format("eot"), url("../assets/fonts/Forum-400.otf") format("otf"), url("../assets/fonts/Forum-400.ttf") format("ttf");
+    font-weight: 400;
+    font-display: swap;
+}
