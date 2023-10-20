@@ -56,12 +56,15 @@ main {
 }
 
 .header {
+    position: sticky;
+    top: 0;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #121C1E;
     transition: 0.7s;
+    z-index: 2;
 }
 
 .header__menu,
@@ -88,7 +91,7 @@ main {
 }
 
 .logo:hover {
-    filter: invert(57%) sepia(100%) saturate(329%) hue-rotate( 141deg) brightness(89%) contrast(90%);
+    filter: invert(57%) sepia(100%) saturate(329%) hue-rotate(141deg) brightness(89%) contrast(90%);
 }
 
 .logo {
@@ -168,9 +171,10 @@ main {
     color: white;
     background-color: rgba(31, 112, 127, .3);
     backdrop-filter: blur(4px);
-    border: 3px solid #278D9F;
+    border: 2px solid #278D9F;
     border-radius: 30px;
     font-family: inherit;
+    transition: 0.3s;
     cursor: pointer;
 }
 
@@ -216,7 +220,7 @@ main {
 
 .filters-by-range__container {
     display: flex;
-    column-gap: 10px;
+    column-gap: 15px;
     align-items: center;
 }
 
@@ -241,7 +245,6 @@ main {
 
 /* Start-page end */
 
-
 /* Toys-page start */
 
 .toys-page {
@@ -250,11 +253,44 @@ main {
 }
 
 .toys-page__filters {
-    padding: 0 10px 10px 10px;
-    border-radius: 30px;
+    position: sticky;
+    top: 100px;
+    max-width: 322px;
+    width: 100%;
+    padding: 0 5px 10px 10px;
+    border-radius: 25px;
     background-color: rgba(31, 112, 127, .3);
     backdrop-filter: blur(4px);
     align-self: start;
+}
+
+.filters__container {
+    height: 80vh;
+    padding-right: 5px;
+    overflow: hidden;
+    scrollbar-gutter: stable;
+    scrollbar-color: white rgba(31, 112, 127, .3);
+    overscroll-behavior: contain;
+    transition: 0.2s;
+}
+
+.filters__container:hover {
+    overflow: auto;
+}
+
+.filters__container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.filters__container::-webkit-scrollbar-track {
+    background: rgba(31, 112, 127, .3);
+    margin: 15px 0 5px 0;
+    border-radius: 100px;
+}
+
+.filters__container::-webkit-scrollbar-thumb {
+    background-color: rgb(244, 244, 245);
+    border-radius: 100px;
 }
 
 .filters-by-values__forms,
@@ -321,6 +357,7 @@ main {
     background-size: 70% 70%;
     background-color: rgb(11 139 157);
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .checkbox:checked+label::before {
@@ -328,8 +365,8 @@ main {
 }
 
 .checkbox:not(:disabled):not(:checked)+label:hover::before {
-    border: 1px solid #b3d7ff;
-    transition: 0.7s;
+    border: 1px solid #67b1cf;
+    box-shadow: 0px 0px 2px 1px;
 }
 
 .filters-by-values__color-white+label::before {
@@ -379,7 +416,14 @@ main {
     border-radius: 20px;
     font-family: inherit;
     font-size: 1em;
+    transition: 0.3s;
     cursor: pointer;
+}
+
+.sort__list:hover,
+.button:hover {
+    background-color: rgb(67 149 160);
+    border: 2px solid #72d5e6;
 }
 
 .sort__list:focus-visible {
@@ -391,11 +435,6 @@ main {
     margin-top: 30px;
     font-size: 1em;
     padding: 5px 15px;
-}
-
-.toys-page__reset-filters:hover,
-.toys-page__reset-settings:hover {
-    background-color: rgb(41 100 108);
 }
 
 .toys-page__cards {
