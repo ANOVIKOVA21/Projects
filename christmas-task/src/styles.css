@@ -11,7 +11,7 @@ body {
 }
 
 main {
-    min-height: 80vh;
+    height: 80vh;
     padding: 10px;
     background-image: url("https://raw.githubusercontent.com/ANOVIKOVA21/stage1-tasks/christmas-task/assets/bg.jpg");
     background-size: cover;
@@ -19,7 +19,7 @@ main {
     background-position: center bottom;
 }
 
-.hide {
+main .hide {
     display: none;
     opacity: 0;
 }
@@ -56,6 +56,7 @@ main {
 }
 
 .header {
+    height: 10vh;
     position: sticky;
     top: 0;
     padding: 10px;
@@ -149,13 +150,15 @@ main {
 
 .start-page {
     position: relative;
+    background: url("assets/ball/red-balls.png") repeat-x;
+    padding: 20vh 0 0 0;
 }
 
 .start-page__tittle {
-    max-width: 600px;
+    max-width: 680px;
     padding: 66px 85px;
     text-align: center;
-    margin: 33vh auto;
+    margin: 0 auto 30px;
     font-size: 4em;
     font-family: "Neucha", Arial, Helvetica, sans-serif;
     background-color: rgba(31, 112, 127, .3);
@@ -163,7 +166,6 @@ main {
     border: 3px solid #278D9F;
     border-radius: 30px;
     position: relative;
-    z-index: 2;
 }
 
 .button {
@@ -181,7 +183,7 @@ main {
 .start-page__btn {
     font-size: 2em;
     padding: 13px 119px;
-    margin: 0 auto 155px auto;
+    margin: 0 auto;
 }
 
 .start-page__btn:hover {
@@ -190,21 +192,108 @@ main {
 
 .start-page__ball-img {
     position: absolute;
-    top: 0;
+    top: 10vh;
     width: 100%;
+    z-index: 0;
+    transform-origin: top center;
 }
 
 .ball-img-big {
-    max-width: 500px;
-    background: url("assets/ball/1.png") no-repeat center/contain;
+    top: 20vh;
+    max-width: 400px;
+    background: image-set(url("assets/ball/christmas-ball1.webp") type("image/webp"),
+            url("assets/ball/christmas-ball1.png") type("image/png")) no-repeat center/contain;
+    /* background: url("assets/ball/christmas-ball1.webp") no-repeat center/contain; */
     height: 500px;
+    animation: appearAndSwingLeft 1.3s;
+}
+
+@keyframes appearAndSwingLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    30% {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    40% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+
+    55% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+
+    90% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
 }
 
 .ball-img-small {
-    max-width: 300px;
-    background: url("assets/ball/2.png") no-repeat center/contain;
+    max-width: 200px;
+    background: image-set(url("assets/ball/christmas-ball2.webp") type("image/webp"),
+            url("assets/ball/christmas-ball2.png") type("image/png")) no-repeat center/contain;
+    /* background: url("assets/ball/christmas-ball2.webp") no-repeat center/contain; */
     height: 300px;
-    right: 0;
+    right: 15%;
+    animation: appearAndSwingRight 1.3s;
+}
+
+@keyframes appearAndSwingRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    30% {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    40% {
+        -webkit-transform: rotate(-15deg);
+        transform: rotate(-15deg);
+    }
+
+    55% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+
+    75% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+
+    90% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
 }
 
 
@@ -512,6 +601,7 @@ main {
 /* Toys-page end */
 
 .footer {
+    height: 10vh;
     font-family: "Poppins", Arial, Helvetica, sans-serif;
     padding: 10px;
     background-color: #121C1E;
@@ -535,73 +625,158 @@ main {
     opacity: 0.5;
 }
 
-@media(max-width:830px) {
-    body {
-        font-size: 14px;
+@media (max-height:850px) {
+    .start-page {
+        padding: 10vh 0 0 0;
     }
+
+    .ball-img-big {
+        top: 5vh;
+        height: calc(70vh - 40px);
+        max-width: 300px;
+    }
+
+}
+
+@media (max-height:660px) {
+    .footer__info {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media(max-width:1280px) {
+    .start-page__tittle {
+        padding: 40px 30px;
+        max-width: 600px;
+        font-size: 3.5em;
+    }
+
+
+
+    .ball-img-small {
+        right: 0;
+    }
+}
+
+@media(max-width:1024px) {
+    .ball-img-big {
+        max-width: 220px;
+    }
+
+    .start-page__tittle {
+        max-width: 500px;
+    }
+}
+
+@media(max-width:836px) {
+    body {
+        font-size: 16px;
+    }
+
     .logo {
         width: 38px;
         height: 50px;
     }
+
     .header__search {
         width: 280px;
     }
+
     .header__selected-balls {
         width: 38px;
         height: 46px;
         background: url("assets/svg/ball-2.svg") no-repeat top -5px center/cover;
     }
+
     .selected-balls__num {
-        width: 32px;
+        width: 34px;
         height: 34px;
-        margin: 11px 0 0 3px;
+        margin: 10px 0 0 2px;
         padding: 6px;
     }
+
+    .start-page__tittle {
+        /* padding: 40px 30px; */
+        max-width: 450px;
+        font-size: 3em;
+    }
+
+    .start-page__btn {
+        padding: 10px 50px;
+    }
+
     .toys-page {
         column-gap: 10px;
     }
+
+    .toys-page__filters {
+        top: 90px;
+        max-width: 280px;
+    }
+
     .filters-by-values__form {
         max-width: 30px;
         max-height: 30px;
     }
+
     .toys-page__cards {
         gap: 10px;
     }
+
     .card {
         padding: 5px;
-        max-width: 150px;
+        max-width: 200px;
         gap: 0;
     }
-    .card__img {
+
+    /* .card__img {
         max-width: 60px;
-    }
+    } */
+
     .card__list-item {
         margin: 0;
     }
+
     .checkbox+label::before {
         width: 25px;
         height: 25px;
     }
+
     .filters-by-values__size-big {
         max-width: 40px;
     }
+
     .filters-by-values__size-medium {
         max-width: 30px;
     }
+
     .filters-by-values__size-small {
         max-width: 20px;
     }
+
     .noUi-horizontal .noUi-handle {
         width: 14px;
         height: 14px;
         right: -6px;
         top: -5px;
     }
+
     .noUi-horizontal {
         height: 5px;
         padding: 0 6px;
     }
+
     .sort__list {
         padding: 5px;
+    }
+
+    .toys-page__reset-filters,
+    .toys-page__reset-settings {
+        margin-top: 15px;
+    }
+
+    .footer__info {
+        margin: 0;
     }
 }
