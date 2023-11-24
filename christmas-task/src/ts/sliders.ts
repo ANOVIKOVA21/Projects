@@ -15,7 +15,7 @@ noUiSlider.create(sliderQuantity, {
   step: 1,
 });
 
-sliderQuantity.noUiSlider.on('update', function (values, handle) {
+sliderQuantity.noUiSlider.on('change', function (values, handle) {
   sliderQuantityValues[handle].innerHTML = parseInt(values[handle] as string).toString();
   filters.quantity[handle] = parseInt(values[handle] as string);
   updateToysCards();
@@ -33,7 +33,7 @@ noUiSlider.create(sliderYear, {
   step: 10,
 });
 
-sliderYear.noUiSlider.on('update', function (values, handle) {
+sliderYear.noUiSlider.on('change', function (values, handle) {
   sliderYearValues[handle].innerHTML = parseInt(values[handle] as string).toString();
   filters.years[handle] = parseInt(values[handle] as string);
   updateToysCards();
@@ -59,6 +59,5 @@ resetFiltersBtn.addEventListener('click', () => {
   sliderQuantity.noUiSlider.set([1, 12]);
   sliderYear.noUiSlider.set([1940, 2020]);
   search.value = '';
-
   updateToysCards();
 });
