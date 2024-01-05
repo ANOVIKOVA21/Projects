@@ -1,5 +1,6 @@
 import data from './data';
 import { GetBallOptions, createCard } from './toysCards';
+import { setSliderValues } from './sliders';
 
 interface GetFilters {
   shape: string[];
@@ -10,7 +11,7 @@ interface GetFilters {
   years: number[];
   sortValue: string;
   activeCardsNums: string[];
-  searchValue?: string;
+  searchValue: string;
 }
 
 let filters: GetFilters = {
@@ -18,10 +19,11 @@ let filters: GetFilters = {
   color: [],
   size: [],
   favorite: false,
-  quantity: [],
-  years: [],
+  quantity: [1, 12],
+  years: [1940, 2020],
   sortValue: 'abc',
   activeCardsNums: [],
+  searchValue: '',
 };
 
 function filterToys(toysArr: GetBallOptions[]) {
@@ -67,19 +69,9 @@ function searchCards(toysArr: GetBallOptions[]) {
 }
 function updateToysCards() {
   const cardsContainer = document.querySelector('.toys-page__cards') as HTMLDivElement;
-  const cards = document.querySelectorAll('.card');
-
-  cards.forEach((card) => {
-    const atr = card.getAttribute('data-card-num') as string;
-    if (card.getAttribute('data-is-active') === 'true') {
-      filters.activeCardsNums.push(atr);
-    }
-    (card as HTMLElement).style.opacity = '0';
-  });
-
   cardsContainer.innerHTML = '';
   let sortAndFilterToys = sortToys(filterToys(data));
-  if (filters.searchValue !== undefined) {
+  if (filters.searchValue !== '') {
     sortAndFilterToys = searchCards(sortAndFilterToys);
   }
   if (sortAndFilterToys.length !== 0) {
@@ -88,6 +80,7 @@ function updateToysCards() {
       if (filters.activeCardsNums.length !== 0 && filters.activeCardsNums.includes(filterToy.num)) {
         filterCard.setAttribute('data-is-active', 'true');
         filterCard.classList.add('card-active');
+        filterCard.style.opacity = '0';
       }
       cardsContainer.appendChild(filterCard);
       setTimeout(() => {
@@ -139,7 +132,7 @@ filterFavorite.addEventListener('click', () => {
 });
 
 const selectSort = document.querySelector('.sort__list') as HTMLSelectElement;
-selectSort.addEventListener('click', () => {
+selectSort.addEventListener('change', () => {
   filters.sortValue = selectSort.value;
   updateToysCards();
 });
@@ -157,6 +150,9 @@ resetSettingsBtn.addEventListener('click', () => {
 window.addEventListener('beforeunload', () => {
   localStorage.clear();
   localStorage.setItem('thisFilters', JSON.stringify(filters));
+  const pages = Array.from(document.querySelectorAll('section'));
+  const currentPage = pages.filter((page) => !page.classList.contains('hide'));
+  sessionStorage.setItem('currentPage', currentPage[0].classList[0]);
 });
 
 function getLocalStorage() {
@@ -166,6 +162,7 @@ function getLocalStorage() {
     const selectedShapes = document.querySelectorAll('.filters-by-values__form');
     const selectedColors = document.querySelectorAll('.filters-by-values__color');
     const selectedSizes = document.querySelectorAll('.filters-by-values__size');
+    const selectedBallsEl = document.querySelector('.selected-balls__num') as HTMLSpanElement;
 
     selectedShapes.forEach((element) => {
       if (filters.shape.includes(element.getAttribute('data-shape') as string)) {
@@ -186,8 +183,11 @@ function getLocalStorage() {
       filterFavorite.click();
     }
     selectSort.value = filters.sortValue;
+    selectedBallsEl.textContent = filters.activeCardsNums.length.toString();
+    search.value = filters.searchValue;
+    setSliderValues('sliderQuantity', filters.quantity);
+    setSliderValues('sliderYear', filters.years);
   }
   updateToysCards();
 }
-window.addEventListener('load', getLocalStorage);
-export { filters, updateToysCards, sortToys };
+export { filters, updateToysCards, sortToys, getLocalStorage };
