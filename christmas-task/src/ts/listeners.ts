@@ -1,3 +1,53 @@
+import data from './data';
+import { createCard } from './toysCards';
+import { filters, sortToys, getLocalStorage } from './filters';
+import { showWarning } from './general-fn';
+
+export function addListeners() {
+  const mainEl = document.querySelector('main') as HTMLElement;
+  const startPage = mainEl.querySelector('.start-page') as HTMLElement;
+  const toysPage = mainEl.querySelector('.toys-page') as HTMLElement;
+  const treesPage = mainEl.querySelector('.decoration-page') as HTMLElement;
+  const startBtn = startPage.querySelector('.start-page__btn') as HTMLButtonElement;
+  const hiddenElements = document.querySelectorAll('.hide');
+  const cardsContainer = toysPage.querySelector('.toys-page__cards') as HTMLDivElement;
+
+  function generatePage(page: HTMLElement) {
+    const headerHideEl = document.querySelectorAll('.header .hide');
+    mainEl.style.height = 'auto';
+    if (page === toysPage) {
+      if (localStorage.getItem('thisFilters')) getLocalStorage();
+      else {
+        const sortData = sortToys(data);
+        sortData.forEach((toy) => {
+          const card = createCard(toy);
+          cardsContainer.appendChild(card);
+          card.style.opacity = '1';
+        });
+      }
+      headerHideEl.forEach((el) => el.classList.remove('hide'));
+    } else if (page === treesPage) {
+      headerHideEl.forEach((el) => {
+        if (el.classList.contains('header__menu-item')) el.classList.remove('hide');
+      });
+    }
+  }
+  startBtn.addEventListener('click', () => {
+    hiddenElements.forEach((el) => {
+      if (!el.classList.contains('decoration-page')) el.classList.remove('hide');
+    });
+    startPage.classList.add('hide');
+    generatePage(toysPage);
+  });
+  window.addEventListener('load', () => {
+    if (sessionStorage.getItem('currentPage')) {
+      const currentPage = document.querySelector(`.${sessionStorage.getItem('currentPage')}`) as HTMLElement;
+      if (currentPage === startPage) return;
+      currentPage.classList.remove('hide');
+      startPage.classList.add('hide');
+      generatePage(currentPage);
+    }
+  });
   cardsContainer.addEventListener('click', (ev: Event) => {
     const card = (ev.target as HTMLElement).closest('.card');
     if (card != null) {
@@ -24,3 +74,4 @@
       selectedBallsEl.textContent = chosenToy.toString();
     }
   });
+}
