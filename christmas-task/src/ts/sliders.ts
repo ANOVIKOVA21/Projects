@@ -15,7 +15,7 @@ noUiSlider.create(sliderQuantity, {
   step: 1,
 });
 
-sliderQuantity.noUiSlider.on('change', function (values, handle) {
+sliderQuantity.noUiSlider.on('set', function (values, handle) {
   sliderQuantityValues[handle].innerHTML = parseInt(values[handle] as string).toString();
   filters.quantity[handle] = parseInt(values[handle] as string);
   updateToysCards();
@@ -33,7 +33,7 @@ noUiSlider.create(sliderYear, {
   step: 10,
 });
 
-sliderYear.noUiSlider.on('change', function (values, handle) {
+sliderYear.noUiSlider.on('set', function (values, handle) {
   sliderYearValues[handle].innerHTML = parseInt(values[handle] as string).toString();
   filters.years[handle] = parseInt(values[handle] as string);
   updateToysCards();
@@ -61,3 +61,12 @@ resetFiltersBtn.addEventListener('click', () => {
   search.value = '';
   updateToysCards();
 });
+
+export function setSliderValues(slider: string, values: Array<number>) {
+  console.log('arr ', values, 'val1 ', values[0]);
+  if (slider === 'sliderQuantity') {
+    sliderQuantity.noUiSlider.set(values);
+  } else if (slider === 'sliderYear') {
+    sliderYear.noUiSlider.set(values);
+  }
+}
