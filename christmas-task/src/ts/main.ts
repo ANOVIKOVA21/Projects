@@ -6,15 +6,6 @@ import { filters, sortToys } from './filters';
 
 let chosenToy = 0;
 
-function showWarning(parent: HTMLDivElement) {
-  const warningEl = document.createElement('div');
-  warningEl.classList.add('warning');
-  warningEl.textContent = 'Извините, все слоты заполнены';
-  parent.appendChild(warningEl);
-  setTimeout(() => {
-    warningEl.remove();
-  }, 3000);
-}
 document.addEventListener('DOMContentLoaded', function () {
   const cardsContainer = document.querySelector('.toys-page__cards') as HTMLDivElement;
   const sortData = sortToys(data);
