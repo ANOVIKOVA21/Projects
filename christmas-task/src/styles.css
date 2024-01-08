@@ -19,7 +19,7 @@ main {
     background-position: center bottom;
 }
 
-main .hide {
+body .hide {
     display: none;
     opacity: 0;
 }
@@ -27,6 +27,7 @@ main .hide {
 .warning {
     position: fixed;
     top: 10px;
+    left: 40vw;
     z-index: 5;
     text-align: center;
     background-color: rgba(100, 149, 237, 0.8);
@@ -91,14 +92,19 @@ main .hide {
     color: #278D9F;
 }
 
-.logo:hover {
-    filter: invert(57%) sepia(100%) saturate(329%) hue-rotate(141deg) brightness(89%) contrast(90%);
-}
-
 .logo {
     width: 48px;
     height: 60px;
-    background: url("assets/svg/tree.svg") no-repeat center/cover;
+}
+
+.logo:hover path {
+    transition: 0.3s;
+    fill: #278D9F;
+}
+
+.logo:hover .star {
+    transition: 0.3s;
+    fill: #e5d473;
 }
 
 .header__search {
@@ -297,16 +303,6 @@ main .hide {
 }
 
 
-/* .start-page__ball-img::before {
-    position: absolute;
-    content: "";
-    width: 5px;
-    height: 215px;
-    background-color: rgb(196, 194, 193);
-    top: -210px;
-    left: 50%;
-} */
-
 .filters-by-range__container {
     display: flex;
     column-gap: 15px;
@@ -359,6 +355,7 @@ main .hide {
     overflow: hidden;
     scrollbar-gutter: stable;
     scrollbar-color: white rgba(31, 112, 127, .3);
+    scrollbar-width: thin;
     overscroll-behavior: contain;
     transition: 0.2s;
 }
@@ -372,7 +369,7 @@ main .hide {
 }
 
 .filters__container::-webkit-scrollbar-track {
-    background: rgba(31, 112, 127, .3);
+    background-color: rgba(31, 112, 127, .3);
     margin: 15px 0 5px 0;
     border-radius: 100px;
 }
