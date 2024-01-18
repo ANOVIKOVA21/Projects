@@ -9,6 +9,7 @@ export function addListeners() {
   const toysPage = mainEl.querySelector('.toys-page') as HTMLElement;
   const treesPage = mainEl.querySelector('.decoration-page') as HTMLElement;
   const startBtn = startPage.querySelector('.start-page__btn') as HTMLButtonElement;
+  const menu = document.querySelector('.header__menu') as HTMLUListElement;
   const hiddenElements = document.querySelectorAll('.hide');
   const cardsContainer = toysPage.querySelector('.toys-page__cards') as HTMLDivElement;
 
@@ -25,8 +26,12 @@ export function addListeners() {
           card.style.opacity = '1';
         });
       }
+      treesPage.classList.add('hide');
+      toysPage.classList.remove('hide');
       headerHideEl.forEach((el) => el.classList.remove('hide'));
     } else if (page === treesPage) {
+      toysPage.classList.add('hide');
+      treesPage.classList.remove('hide');
       headerHideEl.forEach((el) => {
         if (el.classList.contains('header__menu-item')) el.classList.remove('hide');
       });
@@ -46,6 +51,14 @@ export function addListeners() {
       currentPage.classList.remove('hide');
       startPage.classList.add('hide');
       generatePage(currentPage);
+    }
+  });
+  menu.addEventListener('click', (ev: Event) => {
+    const target = ev.target as HTMLElement;
+    if (target.closest('.menu-item-toys')) {
+      generatePage(toysPage);
+    } else if (target.closest('.menu-item-tree')) {
+      generatePage(treesPage);
     }
   });
   cardsContainer.addEventListener('click', (ev: Event) => {
