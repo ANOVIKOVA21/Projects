@@ -7,7 +7,7 @@
     <link href="assets/favicon.ico" rel="shortcut icon" />
     <link rel="stylesheet" href="css/owfont-regular.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>momentum</title>
+    <title>Momentum</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             <ul class="play-list hide-playlist"></ul>
         </div>
         <div class="weather hide-weather">
-            <input type="text" class="city" value="Minsk" />
+            <input type="text" class="city" value="Kyiv" />
             <i class="weather-icon owf"></i>
             <div class="weather-error"></div>
             <div class="description-container">
@@ -58,7 +58,7 @@
         </div>
     </main>
     <footer class="footer">
-        <div class="hide-quote">
+        <div class="quote-container hide-quote">
             <button class="change-quote"></button>
             <div>
                 <div class="quote"></div>
@@ -67,14 +67,16 @@
         </div>
         <button type="button" class="settings-btn"></button>
         <div class="settings">
-            <select class="background">
-                <option value="gitHub" selected>GitHub</option>
-                <option value="unsplash">Unsplash API</option>
-                <option value="flickr">Flickr API</option>
-            </select>
-            <p class="settings-text">Theme selection:</p>
-            <button type="button" class="btn-theme">Default theme</button>
-            <input type="text" placeholder="enter tag theme" class="tag-theme">
+            <label class="background-label"> Set background from:
+                <select class="background" name="background">
+                    <option value="gitHub" selected>GitHub (default)</option>
+                    <option value="unsplash">Unsplash API</option>
+                    <option value="flickr">Flickr API</option>
+                </select>
+            </label>
+            <label class="settings-text">Theme selection:
+                <button type="button" class="btn-theme">Default theme</button>
+                <input type="text" name="tag-theme" placeholder="Enter tag theme" class="tag-theme"></label>
             <p class="settings-text">Select the item from the list below that you want to hide:</p>
             <ul class="hide-list">
                 <li class="hide-btns">Player buttons</li>
