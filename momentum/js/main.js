@@ -218,7 +218,7 @@ const playList = [
     duration: '01:50',
   },
 ];
-playList.forEach((el, index) => {
+playList.forEach((el) => {
   const li = document.createElement('li');
   li.classList.add('play-item');
   li.textContent = el.title;
@@ -227,17 +227,11 @@ playList.forEach((el, index) => {
 const tracks = document.querySelectorAll('.play-item');
 
 tracks.forEach((track, index) => {
-  // let prevTrack = []
   track.addEventListener('click', () => {
+    tracks[playNum].classList.remove('item-active');
+    isPlay = false;
     playNum = index;
-    // track.classList.add('track-active');
     playPauseAudio();
-    // if (prevTrack.length > 0) {
-    //     // tracks[prevTrack[0]].classList.remove('track-active')
-    //     tracks[prevTrack[0]].classList.remove('item-active')
-    //     prevTrack = []
-    // }
-    // prevTrack.push(index)
   });
 });
 btnPlay.addEventListener('click', playPauseAudio);
@@ -417,7 +411,3 @@ function hideElement(event) {
     }
   });
 }
-console.log('оценка 135 баллов');
-console.log('не засчитанные пункты:');
-console.log('Перевод приложения на два языка');
-console.log('Дополнительный функционал на выбор');
